@@ -8,12 +8,12 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: "Home", path: "/", icon: Home },
-    { name: "About", path: "/about", icon: User },
-    { name: "Properties", path: "/properties", icon: Building },
+    { name: "Laman Utama", path: "/", icon: Home },
+    { name: "Tentang Saya", path: "/about", icon: User },
+    { name: "Hartanah", path: "/properties", icon: Building },
     { name: "Blog", path: "/blog", icon: FileText },
-    { name: "Gallery", path: "/gallery", icon: Camera },
-    { name: "Contact", path: "/contact", icon: Phone },
+    { name: "Galeri", path: "/gallery", icon: Camera },
+    { name: "Hubungi Saya", path: "/contact", icon: Phone },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -27,7 +27,7 @@ const Navigation = () => {
             <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
               <Building className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-primary">Brosham Properties</span>
+            <span className="text-xl font-bold text-primary">BroSham</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,7 +46,8 @@ const Navigation = () => {
               </Link>
             ))}
             <Button variant="default" size="sm" className="ml-4">
-              Schedule Viewing
+              <Phone className="w-4 h-4 mr-2" />
+              019-703 4036
             </Button>
           </div>
 
@@ -83,7 +84,8 @@ const Navigation = () => {
               })}
               <div className="px-4 pt-2">
                 <Button variant="default" size="sm" className="w-full">
-                  Schedule Viewing
+                  <Phone className="w-4 h-4 mr-2" />
+                  019-703 4036
                 </Button>
               </div>
             </div>
