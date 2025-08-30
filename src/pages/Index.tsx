@@ -24,8 +24,8 @@ const Index = () => {
   const featuredProperties = [
     {
       id: "1",
-      title: "Modern Luxury Villa",
-      price: "$1,250,000",
+      title: "Vila Mewah Moden",
+      price: "RM 1,250,000",
       location: "Beverly Hills, CA",
       beds: 4,
       baths: 3,
@@ -36,8 +36,8 @@ const Index = () => {
     },
     {
       id: "2",
-      title: "Contemporary Family Home",
-      price: "$850,000",
+      title: "Rumah Keluarga Kontemporari",
+      price: "RM 850,000",
       location: "Manhattan Beach, CA",
       beds: 3,
       baths: 2,
@@ -48,8 +48,8 @@ const Index = () => {
     },
     {
       id: "3",
-      title: "Luxury Oceanfront Estate",
-      price: "$2,100,000",
+      title: "Rumah Mewah Tepi Pantai",
+      price: "RM 2,100,000",
       location: "Malibu, CA",
       beds: 5,
       baths: 4,
@@ -61,36 +61,36 @@ const Index = () => {
   ];
 
   const stats = [
-    { icon: Home, label: "Properties Sold", value: "500+" },
-    { icon: Users, label: "Happy Clients", value: "250+" },
-    { icon: Award, label: "Years Experience", value: "15+" },
-    { icon: Star, label: "Average Rating", value: "4.9" },
+    { icon: Home, label: "Hartanah Terjual", value: "500+" },
+    { icon: Users, label: "Pelanggan Gembira", value: "250+" },
+    { icon: Award, label: "Tahun Pengalaman", value: "15+" },
+    { icon: Star, label: "Purata Penilaian", value: "4.9" },
   ];
 
   const services = [
-    "Residential Sales & Purchases",
-    "Investment Property Consulting", 
-    "Market Analysis & Valuations",
-    "Property Management Services",
+    "Jualan & Pembelian Kediaman",
+    "Perundingan Hartanah Pelaburan", 
+    "Analisis Pasaran & Penilaian",
+    "Perkhidmatan Pengurusan Hartanah",
   ];
 
   const testimonials = [
     {
       name: "Jennifer Martinez",
       location: "Beverly Hills",
-      text: "Sarah helped us find our dream home in just 3 weeks. Her knowledge of the market and attention to detail is exceptional.",
+      text: "Sarah membantu kami mencari rumah impian dalam masa 3 minggu sahaja. Pengetahuan beliau tentang pasaran dan perhatian kepada detail sangat luar biasa.",
       rating: 5,
     },
     {
       name: "Michael Chen",
-      location: "Manhattan Beach",
-      text: "Professional, responsive, and results-driven. Brosham Properties sold our home above asking price!",
+      location: "Manhattan Beach", 
+      text: "Profesional, responsif, dan berorientasikan hasil. Brosham Properties menjual rumah kami melebihi harga yang diminta!",
       rating: 5,
     },
     {
       name: "Lisa Thompson",
       location: "Santa Monica",
-      text: "As first-time buyers, we were nervous, but Sarah guided us through every step. Highly recommend!",
+      text: "Sebagai pembeli kali pertama, kami gugup, tetapi Sarah membimbing kami melalui setiap langkah. Sangat disyorkan!",
       rating: 5,
     },
   ];
@@ -104,15 +104,15 @@ const Index = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge variant="outline" className="mb-4">Featured Properties</Badge>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Exceptional Properties Await
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                Discover our handpicked selection of premium properties in the most desirable locations.
-              </p>
-            </div>
+          <div className="text-center mb-12">
+            <Badge variant="outline" className="mb-4">Hartanah Pilihan</Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Hartanah Istimewa Menanti
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Temui pilihan hartanah premium kami yang dipilih khas di lokasi-lokasi yang paling diingini.
+            </p>
+          </div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
               {featuredProperties.map((property) => (
@@ -122,7 +122,7 @@ const Index = () => {
             
             <div className="text-center">
               <Button size="lg" variant="outline">
-                View All Properties
+                Lihat Semua Hartanah
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
@@ -135,9 +135,9 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Proven Track Record</h2>
+              <h2 className="text-3xl font-bold mb-4">Rekod Kejayaan Terbukti</h2>
               <p className="text-xl text-muted-foreground">
-                Our results speak for themselves
+                Hasil kami berkata-kata untuk diri mereka sendiri
               </p>
             </div>
             
@@ -165,14 +165,14 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <Badge variant="outline" className="mb-4">About Brosham Properties</Badge>
+                <Badge variant="outline" className="mb-4">Tentang Brosham Properties</Badge>
                 <h2 className="text-3xl font-bold mb-6">
-                  Your Trusted Real Estate Partner
+                  Rakan Kongsi Hartanah Yang Dipercayai
                 </h2>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  With over 15 years of experience in the real estate industry, we're committed to 
-                  helping you find your perfect home and achieve your property goals. Our personalized 
-                  approach ensures every client receives the attention they deserve.
+                  Dengan lebih dari 15 tahun pengalaman dalam industri hartanah, kami komited untuk 
+                  membantu anda mencari rumah yang sempurna dan mencapai matlamat hartanah anda. Pendekatan 
+                  peribadi kami memastikan setiap pelanggan mendapat perhatian yang mereka layak.
                 </p>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -186,12 +186,12 @@ const Index = () => {
                 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button>
-                    Learn More About Us
+                    Ketahui Lebih Lanjut Tentang Kami
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                   <Button variant="outline">
                     <Phone className="w-4 h-4 mr-2" />
-                    (555) 123-4567
+                    019-703 4036
                   </Button>
                 </div>
               </div>
@@ -199,7 +199,7 @@ const Index = () => {
               <div className="relative">
                 <img
                   src={agentPortrait}
-                  alt="Sarah Brosham - Real Estate Expert"
+                  alt="Sarah Brosham - Pakar Hartanah"
                   className="w-full max-w-md mx-auto rounded-2xl shadow-lg"
                 />
                 <Card className="absolute -bottom-6 -left-6 bg-gradient-card shadow-lg">
@@ -207,8 +207,8 @@ const Index = () => {
                     <div className="flex items-center">
                       <Star className="w-5 h-5 text-yellow-500 mr-2" />
                       <div>
-                        <div className="font-bold">4.9/5 Rating</div>
-                        <div className="text-xs text-muted-foreground">250+ Reviews</div>
+                        <div className="font-bold">Penilaian 4.9/5</div>
+                        <div className="text-xs text-muted-foreground">250+ Ulasan</div>
                       </div>
                     </div>
                   </CardContent>
@@ -224,10 +224,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <Badge variant="secondary" className="mb-4">Client Reviews</Badge>
-              <h2 className="text-3xl font-bold mb-4">What Our Clients Say</h2>
+              <Badge variant="secondary" className="mb-4">Ulasan Pelanggan</Badge>
+              <h2 className="text-3xl font-bold mb-4">Apa Kata Pelanggan Kami</h2>
               <p className="text-lg opacity-90 max-w-2xl mx-auto">
-                Don't just take our word for it - hear from the families we've helped find their perfect homes.
+                Jangan hanya percaya kata-kata kami - dengar dari keluarga-keluarga yang telah kami bantu mencari rumah impian mereka.
               </p>
             </div>
             
@@ -258,25 +258,25 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to Start Your Real Estate Journey?
+              Bersedia untuk Memulakan Perjalanan Hartanah Anda?
             </h2>
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Whether you're buying, selling, or investing, we're here to make your real estate goals a reality.
+              Sama ada anda ingin membeli, menjual, atau melabur, kami di sini untuk menjadikan matlamat hartanah anda kenyataan.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Button size="lg" className="text-lg px-8">
-                Schedule Free Consultation
+                Jadual Perundingan Percuma
               </Button>
               <Button variant="outline" size="lg" className="text-lg px-8">
                 <Mail className="w-5 h-5 mr-2" />
-                Get Market Analysis
+                Dapatkan Analisis Pasaran
               </Button>
             </div>
             
             <div className="flex items-center justify-center text-muted-foreground">
               <MapPin className="w-4 h-4 mr-2" />
-              <span>Serving Beverly Hills, Santa Monica, Manhattan Beach & Surrounding Areas</span>
+              <span>Melayani Kuala Lumpur, Selangor, Putrajaya & Kawasan Sekitar</span>
             </div>
           </div>
         </div>
