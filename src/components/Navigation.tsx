@@ -8,12 +8,12 @@ const Navigation = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: "Laman Utama", path: "/", icon: Home },
-    { name: "Tentang Saya", path: "/about", icon: User },
-    { name: "Hartanah", path: "/properties", icon: Building },
+    { name: "Home", path: "/", icon: Home },
+    { name: "About Me", path: "/about", icon: User },
+    { name: "Listing", path: "/properties", icon: Building },
     { name: "Blog", path: "/blog", icon: FileText },
-    { name: "Galeri", path: "/gallery", icon: Camera },
-    { name: "Hubungi Saya", path: "/contact", icon: Phone },
+    { name: "Gallery", path: "/gallery", icon: Camera },
+    { name: "Contact Me", path: "/contact", icon: Phone },
   ];
 
   const isActive = (path: string) => location.pathname === path;
