@@ -45,10 +45,6 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button variant="default" size="sm" className="ml-4">
-              <Phone className="w-4 h-4 mr-2" />
-              6019 703 4036
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}

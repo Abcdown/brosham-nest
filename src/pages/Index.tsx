@@ -285,52 +285,55 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="grid lg:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="group animate-fade-in hover-scale transition-all duration-500"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <Card className="h-full bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl border-0 transition-all duration-300 group-hover:-translate-y-2 relative overflow-hidden">
-                    {/* Gradient accent */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/80 to-primary/60"></div>
-                    
-                    <CardContent className="p-8">
-                      {/* Stars */}
-                      <div className="flex mb-6 justify-center">
-                        {[...Array(testimonial.rating)].map((_, i) => (
-                          <Star 
-                            key={i} 
-                            className="w-5 h-5 fill-yellow-400 text-yellow-400 transform group-hover:scale-110 transition-transform duration-300" 
-                            style={{ transitionDelay: `${i * 50}ms` }}
-                          />
-                        ))}
-                      </div>
-                      
-                      {/* Quote */}
-                      <div className="relative mb-8">
-                        <div className="absolute -top-4 -left-2 text-6xl text-primary/20 font-serif leading-none">"</div>
-                        <p className="text-foreground/90 leading-relaxed italic text-center relative z-10 text-lg">
-                          {testimonial.text}
-                        </p>
-                        <div className="absolute -bottom-4 -right-2 text-6xl text-primary/20 font-serif leading-none rotate-180">"</div>
-                      </div>
-                      
-                      {/* Customer info */}
-                      <div className="text-center pt-6 border-t border-border/50">
-                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
-                          {testimonial.name.charAt(0)}
-                        </div>
-                        <div className="font-bold text-foreground text-lg">{testimonial.name}</div>
-                        <div className="text-muted-foreground text-sm font-medium uppercase tracking-wide">
-                          {testimonial.location}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+            <div className="relative w-full max-w-4xl mx-auto">
+              <div className="overflow-hidden rounded-2xl">
+                <div className="flex transition-transform duration-500 ease-in-out" id="testimonialSlider">
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="w-full flex-shrink-0 px-4">
+                      <Card className="bg-white dark:bg-slate-800 shadow-2xl border-0 mx-auto max-w-2xl">
+                        <CardContent className="p-12 text-center">
+                          <div className="flex justify-center mb-6">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 mx-1" />
+                            ))}
+                          </div>
+                          <div className="text-6xl text-primary/20 mb-4">"</div>
+                          <p className="text-xl text-foreground/90 leading-relaxed italic mb-8">
+                            {testimonial.text}
+                          </p>
+                          <div className="flex items-center justify-center">
+                            <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center text-white font-bold text-2xl mr-4">
+                              {testimonial.name.charAt(0)}
+                            </div>
+                            <div className="text-left">
+                              <div className="font-bold text-lg">{testimonial.name}</div>
+                              <div className="text-muted-foreground uppercase tracking-wide text-sm">
+                                {testimonial.location}
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+              
+              {/* Navigation dots */}
+              <div className="flex justify-center mt-8 space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    className="w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300"
+                    onClick={() => {
+                      const slider = document.getElementById('testimonialSlider');
+                      if (slider) {
+                        slider.style.transform = `translateX(-${index * 100}%)`;
+                      }
+                    }}
+                  />
+                ))}
+              </div>
             </div>
 
             {/* Bottom CTA */}
