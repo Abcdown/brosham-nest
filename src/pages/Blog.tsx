@@ -260,6 +260,30 @@ const Blog = () => {
         </div>
       </section>
 
+      {/* Newsletter Section */}
+      <section className="py-16 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Stay Updated with Market Insights
+            </h2>
+            <p className="text-xl mb-8 opacity-90">
+              Subscribe to our newsletter and get the latest real estate tips and market updates delivered to your inbox.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <Input
+                type="email"
+                placeholder="Enter your email"
+                className="flex-1 bg-white text-foreground"
+              />
+              <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                Subscribe Now
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
