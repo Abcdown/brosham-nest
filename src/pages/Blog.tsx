@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Calendar, User, Search, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,32 +13,32 @@ const Blog = () => {
   const blogPosts = [
     {
       id: "1",
-      title: "Malaysia Budget 2023 Property Analysis",
-      excerpt: "100% stamp duty exemption provided specifically for homes priced below RM500,000. Understanding the complete impact on property buyers.",
+      title: "Mari Teliti Pembentangan Bajet 2023 Berkaitan Hartanah",
+      excerpt: "Pengeculian bayaran duti setem 100% diberikan khas untuk rumah berharga kurang RM500,000. Sehingga akhir tahun 2025.",
       author: "Sarah Brosham",
       date: "October 12, 2022",
       category: "Property",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=400&fit=crop",
+      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2022/10/Bajet-2023-Galakkan-Rumah-Pertama.jpeg?w=800&h=400&fit=crop",
       readTime: "6 min read",
     },
     {
       id: "2",
-      title: "Importance of Rental Deposit",
-      excerpt: "Understanding the critical role of rental deposits in property rental transactions and tenant protection.",
+      title: "Kepentingan Deposit Rumah Sewa",
+      excerpt: "Blog sebelum ini, Bro Sham ada ulas mengenai deposit rumah sewa. Deposit rumah sewa memang PENTING untuk kedua-dua belah pihak.",
       author: "Sarah Brosham",
       date: "March 18, 2023",
       category: "Property",
-      image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=400&fit=crop",
+      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Kepentingan-Deposit-Rumah-Sewa.jpeg?w=800&h=400&fit=crop",
       readTime: "5 min read",
     },
     {
       id: "3",
-      title: "How to Avoid Rental Scams",
-      excerpt: "Essential tips and warning signs to help you identify and avoid property rental scammers.",
+      title: "Cara Elak Di Tipu Scammer Rumah Sewa",
+      excerpt: "Perkara yang boleh anda lakukan untuk memastikan anda tidak ditipu oleh scammer rumah sewa sama ada sebelum atau selepas perjanjian sewa.",
       author: "Sarah Brosham",
       date: "March 18, 2023",
       category: "Property",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=400&fit=crop",
+      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Cara-Elak-DiTipu-Scammer-Rumah-Sewa.jpeg?w=800&h=400&fit=crop",
       readTime: "7 min read",
     },
     {
@@ -354,10 +355,12 @@ const Blog = () => {
 
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-muted-foreground">{post.readTime}</span>
-                        <Button variant="ghost" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          Read More
-                          <ArrowRight className="w-3 h-3 ml-1" />
-                        </Button>
+                        <Link to={`/blog/${post.id}`}>
+                          <Button variant="ghost" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                            Read More
+                            <ArrowRight className="w-3 h-3 ml-1" />
+                          </Button>
+                        </Link>
                       </div>
                     </CardContent>
                   </Card>
