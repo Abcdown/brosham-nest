@@ -79,7 +79,7 @@ const Blog = () => {
       author: "Sarah Brosham",
       date: "February 12, 2023",
       category: "Property",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/02/Kepentingan-Deposit-Developer.jpeg?w=800&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=800&h=400&fit=crop",
       readTime: "8 min read",
     },
     {
@@ -89,7 +89,7 @@ const Blog = () => {
       author: "Sarah Brosham",
       date: "February 12, 2023",
       category: "Loan",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/02/Sebab-Loan-Tak-Approve.jpeg?w=800&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
       readTime: "7 min read",
     },
     {
@@ -99,7 +99,7 @@ const Blog = () => {
       author: "Sarah Brosham",
       date: "February 12, 2023",
       category: "Loan",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/02/Refinance-Part-2.jpeg?w=800&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop",
       readTime: "9 min read",
     },
     {
@@ -109,7 +109,7 @@ const Blog = () => {
       author: "Sarah Brosham",
       date: "January 21, 2023",
       category: "Loan",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/01/Refinance-Part-1.jpeg?w=800&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=800&h=400&fit=crop",
       readTime: "8 min read",
     },
     {
@@ -119,7 +119,7 @@ const Blog = () => {
       author: "Sarah Brosham",
       date: "January 21, 2023",
       category: "Experience",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/01/One-Stop-Centre.jpeg?w=800&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=400&fit=crop",
       readTime: "6 min read",
     },
     {
@@ -129,7 +129,7 @@ const Blog = () => {
       author: "Sarah Brosham",
       date: "January 4, 2023",
       category: "Experience",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/01/Thank-You.jpeg?w=800&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&h=400&fit=crop",
       readTime: "4 min read",
     },
     {
@@ -139,7 +139,7 @@ const Blog = () => {
       author: "Sarah Brosham",
       date: "January 2, 2023",
       category: "Loan",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/01/CTOS-Part-2.jpeg?w=800&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop",
       readTime: "10 min read",
     },
   ];
