@@ -20,11 +20,26 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
+    
+    // Create mailto link with form data
+    const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone}
+Subject: ${formData.subject}
+Message: ${formData.message}
+    `;
+    
+    const mailtoLink = `mailto:sham@broshamproperties.my,support@broshamproperties.my?subject=Contact Form Submission - ${formData.subject}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open email client
+    window.open(mailtoLink);
+    
     toast({
-      title: "Message Sent!",
-      description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+      title: "Opening Email Client",
+      description: "Your default email client will open to send the message.",
     });
+    
     setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
   };
 
@@ -99,21 +114,21 @@ const Contact = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium mb-2">Full Name *</label>
-                      <Input
-                        required
-                        value={formData.name}
-                        onChange={(e) => handleChange("name", e.target.value)}
-                        placeholder="John Smith"
-                      />
+                        <Input
+                          required
+                          value={formData.name}
+                          onChange={(e) => handleChange("name", e.target.value)}
+                          placeholder="Ahmad Abdullah"
+                        />
                     </div>
                     <div>
                       <label className="block text-sm font-medium mb-2">Phone Number</label>
-                      <Input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) => handleChange("phone", e.target.value)}
-                        placeholder="(555) 123-4567"
-                      />
+                        <Input
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => handleChange("phone", e.target.value)}
+                          placeholder="0123456789"
+                        />
                     </div>
                   </div>
                   
@@ -124,7 +139,7 @@ const Contact = () => {
                       required
                       value={formData.email}
                       onChange={(e) => handleChange("email", e.target.value)}
-                      placeholder="john@example.com"
+                      placeholder="ahmad@example.com"
                     />
                   </div>
 
