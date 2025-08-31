@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Bed, Bath, Square, MapPin, Heart } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface PropertyCardProps {
   id: string;
@@ -91,8 +92,15 @@ const PropertyCard = ({
         </div>
 
         <div className="flex gap-2 mt-auto">
-          <Button variant="default" size="sm" className="flex-1">
-            View Details
+          <Button 
+            variant="default" 
+            size="sm" 
+            className="flex-1"
+            asChild
+          >
+            <Link to={`/properties/${id}`}>
+              View Details
+            </Link>
           </Button>
           <Button variant="outline" size="sm" className="flex-1">
             Schedule Tour
