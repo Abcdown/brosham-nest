@@ -125,14 +125,14 @@ const Gallery = () => {
 
   const goToPrevious = () => {
     if (selectedImage !== null) {
-      const newIndex = selectedImage > 0 ? selectedImage - 1 : filteredImages.length - 1;
+      const newIndex = selectedImage > 0 ? selectedImage - 1 : sliderImages.length - 1;
       setSelectedImage(newIndex);
     }
   };
 
   const goToNext = () => {
     if (selectedImage !== null) {
-      const newIndex = selectedImage < filteredImages.length - 1 ? selectedImage + 1 : 0;
+      const newIndex = selectedImage < sliderImages.length - 1 ? selectedImage + 1 : 0;
       setSelectedImage(newIndex);
     }
   };
@@ -154,38 +154,50 @@ const Gallery = () => {
         </div>
       </section>
 
-      {/* Automated Slider */}
-      <section className="py-12 bg-muted/30">
+      {/* Main Slider */}
+      <section className="py-20 bg-muted/30 min-h-[80vh] flex items-center">
         <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">Featured Properties</h2>
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-4xl font-bold text-center mb-12">Featured Properties</h2>
             <Carousel
               plugins={[
                 Autoplay({
-                  delay: 4000,
+                  delay: 5000,
                 }),
               ]}
               className="w-full"
               opts={{
-                align: "start",
+                align: "center",
                 loop: true,
               }}
             >
-              <CarouselContent>
-                {sliderImages.map((image) => (
-                  <CarouselItem key={image.id} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                      <Card className="overflow-hidden">
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {sliderImages.map((image, index) => (
+                  <CarouselItem key={image.id} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-2/3">
+                    <div className="p-2">
+                      <Card className="overflow-hidden cursor-pointer group hover:shadow-2xl transition-all duration-300">
                         <div className="relative">
                           <img
                             src={image.src}
                             alt={image.title}
-                            className="w-full h-64 object-cover"
+                            className="w-full h-96 md:h-[500px] object-cover transition-transform duration-300 group-hover:scale-105"
+                            onClick={() => openLightbox(index)}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                          <div className="absolute bottom-4 left-4 text-white">
-                            <h3 className="font-semibold text-lg mb-1">{image.title}</h3>
-                            <p className="text-sm opacity-90">{image.description}</p>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                          <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <Button
+                              variant="secondary"
+                              size="lg"
+                              onClick={() => openLightbox(index)}
+                              className="bg-white/90 hover:bg-white text-black"
+                            >
+                              <ZoomIn className="w-5 h-5 mr-2" />
+                              View Larger
+                            </Button>
+                          </div>
+                          <div className="absolute bottom-6 left-6 text-white">
+                            <h3 className="font-bold text-2xl mb-2">{image.title}</h3>
+                            <p className="text-lg opacity-90">{image.description}</p>
                           </div>
                         </div>
                       </Card>
@@ -193,126 +205,49 @@ const Gallery = () => {
                   </CarouselItem>
                 ))}
               </CarouselContent>
-              <CarouselPrevious />
-              <CarouselNext />
+              <CarouselPrevious className="left-4" />
+              <CarouselNext className="right-4" />
             </Carousel>
           </div>
         </div>
       </section>
 
-      {/* Category Filters */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="flex flex-wrap gap-2 justify-center">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-            <p className="text-center text-muted-foreground mt-4">
-              {filteredImages.length} {filteredImages.length === 1 ? 'image' : 'images'} found
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Grid */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredImages.map((image, index) => (
-                <Card key={image.id} className="group overflow-hidden cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-card">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={image.src}
-                      alt={image.title}
-                      className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-                      onClick={() => openLightbox(index)}
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        onClick={() => openLightbox(index)}
-                        className="bg-white/90 hover:bg-white"
-                      >
-                        <ZoomIn className="w-4 h-4 mr-2" />
-                        View
-                      </Button>
-                    </div>
-                    <Badge 
-                      variant="secondary" 
-                      className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm"
-                    >
-                      {image.category}
-                    </Badge>
-                  </div>
-                  
-                  <div className="p-4">
-                    <h3 className="font-semibold mb-1 line-clamp-1">{image.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-2">{image.location}</p>
-                    <p className="text-xs text-muted-foreground line-clamp-2">{image.description}</p>
-                  </div>
-                </Card>
-              ))}
-            </div>
-
-            {filteredImages.length === 0 && (
-              <div className="text-center py-12">
-                <h3 className="text-xl font-semibold mb-2">No images found</h3>
-                <p className="text-muted-foreground mb-4">
-                  Try selecting a different category.
-                </p>
-                <Button onClick={() => setSelectedCategory("All")}>Show All Images</Button>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* Lightbox Modal */}
       <Dialog open={selectedImage !== null} onOpenChange={closeLightbox}>
-        <DialogContent className="max-w-7xl w-full p-0 border-0 bg-black/95">
+        <DialogContent className="max-w-[95vw] w-full p-0 border-0 bg-black/95 h-[95vh]">
           {selectedImage !== null && (
-            <div className="relative">
+            <div className="relative w-full h-full flex items-center justify-center">
               <button
                 onClick={closeLightbox}
-                className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                className="absolute top-4 right-4 z-10 p-3 bg-black/70 hover:bg-black/90 rounded-full text-white transition-colors"
               >
-                <X className="w-6 h-6" />
+                <X className="w-8 h-8" />
               </button>
               
               <button
                 onClick={goToPrevious}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/70 hover:bg-black/90 rounded-full text-white transition-colors"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-8 h-8" />
               </button>
               
               <button
                 onClick={goToNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 bg-black/50 hover:bg-black/70 rounded-full text-white transition-colors"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/70 hover:bg-black/90 rounded-full text-white transition-colors"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-8 h-8" />
               </button>
 
               <img
-                src={filteredImages[selectedImage].src}
-                alt={filteredImages[selectedImage].title}
-                className="w-full h-auto max-h-[90vh] object-contain"
+                src={sliderImages[selectedImage].src}
+                alt={sliderImages[selectedImage].title}
+                className="max-w-full max-h-full object-contain"
               />
               
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
-                <h3 className="text-xl font-semibold mb-2">{filteredImages[selectedImage].title}</h3>
-                <p className="text-sm opacity-90 mb-1">{filteredImages[selectedImage].location}</p>
-                <p className="text-sm opacity-75">{filteredImages[selectedImage].description}</p>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-8 text-white">
+                <h3 className="text-3xl font-bold mb-3">{sliderImages[selectedImage].title}</h3>
+                <p className="text-lg opacity-90">{sliderImages[selectedImage].description}</p>
               </div>
             </div>
           )}
