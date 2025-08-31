@@ -140,14 +140,14 @@ const Gallery = () => {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="py-16 bg-gradient-to-br from-background to-muted/50">
+      <section className="py-12 bg-gradient-to-br from-background to-muted/50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <Badge variant="outline" className="mb-4">Property Gallery</Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Showcase of Premium Properties
             </h1>
-            <p className="text-xl text-muted-foreground mb-8">
+            <p className="text-xl text-muted-foreground mb-4">
               Explore our collection of stunning properties featuring exceptional design and architecture.
             </p>
           </div>
@@ -155,10 +155,10 @@ const Gallery = () => {
       </section>
 
       {/* Main Slider */}
-      <section className="py-20 bg-muted/30 min-h-[80vh] flex items-center">
+      <section className="py-8 bg-muted/30 min-h-[80vh] flex items-center">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
-            <h2 className="text-4xl font-bold text-center mb-12">Featured Properties</h2>
+            <h2 className="text-4xl font-bold text-center mb-8">Featured Gallery</h2>
             <Carousel
               plugins={[
                 Autoplay({
