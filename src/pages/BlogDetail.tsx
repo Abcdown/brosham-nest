@@ -115,6 +115,150 @@ Pastikan kedua-dua belah pihak faham dengan apa yang tertulis dalam tenancy agre
       category: "Property",
       image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Cara-Elak-DiTipu-Scammer-Rumah-Sewa.jpeg?fit=1080%2C1080&ssl=1",
       readTime: "7 min read",
+    },
+    "4": {
+      id: "4",
+      title: "Apa Itu Deposit Rumah Sewa",
+      content: `
+Ramai yang beranggapan bahawa deposit sewa rumah ini sebenarnya membebankan penyewa dan tidak perlu pon diwujudkan. Tapi tahukah anda tanggapan ini sememangnya tidak benar. Kenapa? Jom kita baca lebih lanjut…
+
+Sebelum itu, Bro Sham terangkan dulu apa itu 'Deposit Sewa Rumah'.
+
+Secara umumnya, deposit rumah sewa ialah sejumlah wang yang diserahkan oleh pihak penyewa kepada tuan rumah sebagai salah satu syarat wajib sebelum masuk menyewa. Wang tersebut akan menjadi jaminan kepada tuan rumah sekiranya berlaku sebarang kerosakan, tunggakan atau masalah yang berkaitan. Wang tersebut juga akan dipulangkan kepada penyewa selepas tamat tempoh menyewa SEKIRANYA tiada sebarang masalah yang timbul.
+
+### Jenis deposit rumah sewa
+
+**1. Deposit Tempahan (Booking Deposit)**
+
+Deposit tempahan akan diserahkan kepada tuan rumah setelah pihak penyewa bersetuju untuk menyewa rumah tersebut. Sekiranya tuan rumah telah menerima deposit ini, bermakna beliau tidak boleh lagi menerima tawaran daripada mana–mana pihak lagi. Kebiasaannya, tuan rumah akan minta jumlah deposit serta jumlah sewa bulanan.
+
+**2. Deposit Utiliti**
+
+Deposit utiliti ini biasanya dikenakan kepada pihak penyewa sekiranya mereka akan menanggung bil elektrik dan air sepanjang tempoh menyewa. Hal ini bagi mengurangkan risiko sekiranya terdapat sebarang tunggakan. Kebiasaannya, jumlah deposit utiliti akan diminta bersamaan dengan sewa bulanan.
+
+**3. Deposit Sekuriti**
+
+Deposit sekuriti ini lebih dikenali sebagai wang perlindungan bagi pihak tuan. Tuan rumah boleh menggunakan deposit ini untuk menanggung kerugian sekiranya berlaku sebarang kerosakan yang disebabkan oleh pihak penyewa. Segala kos pembaikian akan ditolak daripada deposit sekeruti tersebut.
+
+Biasanya, penyewa perlu memaklumkan kepada pihak tuan rumah dua bulan awal sekiranya ingin menamatkan tempoh menyewa. Namun, sekiranya pihak penyewa gagal melakukan perkara tersebut, pihak tuan rumah berhak menolak deposit sekuriti tersebut untuk menggantikan kos kerugian dua bulannya.
+
+Jenis deposit sekuriti yang sering digunakan:
+
+> **1+1**
+> 
+> 1 Deposit Sekuriti + 1 Deposit Utiliti
+> 
+> RM1,000 + RM 1,000 = RM2,000
+>
+> **2+1**
+>
+> 2 Deposit Sekuriti + 1 Deposit Utiliti
+>
+> RM2,000 + RM1,000 = RM3,000
+>
+> **2+1+1**
+>
+> 2 Deposit Sekuriti + 1 Deposit Utiliti + 1 Sewa Bulanan Pertama
+>
+> RM2,000 + RM1,000 + RM1,000 = RM 4,000
+      `,
+      author: "Sarah Brosham",
+      date: "March 3, 2023",
+      category: "Property",
+      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Apa-Itu-Deposit-Rumah-Sewa.jpeg?fit=1080%2C1080&ssl=1",
+      readTime: "5 min read",
+    },
+    "5": {
+      id: "5",
+      title: "Cara Kenalpasti Scammer Rumah Sewa",
+      content: `
+Pada dunia digital sekarang, kegiatan scammer juga semakin berleluasa. Game plan mereka pon dah bercabang. Bukan setakat menjadi pegawai LHDN atau banker sahaja, baru-baru ini ada kes individu ditipu atau discam oleh mereka yang acah-acah menjadi owner rumah sewa. Kemudian senang-senang je duit anda dilesapkan.
+
+Oleh itu, sebelum anda ingin sewa rumah. Pastikan rumah atau owner rumah itu adalah benar dan bukan scammer. Bagaimana nak kenalpasti perkara tersebut?
+
+### HARGA SEWA TERLALU MURAH
+
+Cara ini paling senang dan mudah untuk dikenalpasti. Selidik terlebih dahulu berapa market value untuk rumah sewa di kawasan tersebut. Sekiranya harga yang ditawarkan terlalu rendah, individu tersebut berpotensi adalah seorang scammer.
+
+Dan paling senang bila anda bandingkan harga dengan keadaan rumah yang ditawarkan. Logik ke untuk rumah yang besar dan cantik dengan harga sewa yang serendah itu? Berhati-hati juga dengan iklan deposit yang terlalu rendah sebab itu juga salah satu taktik scammer untuk tarik penyewa.
+
+### RUMAH SEWA INDAH KHABAR DARI RUPA
+
+Yang ini anda perlu berhati-hati. Memandangkan rumah sewa ini mempunyai permintaan yang tinggi, jadi platform pengiklanannya juga luas. Contohnya di platform mudah.my, facebook dan banyak lagi. Oleh itu, senang jugalah scammer nak buat kegiatan mereka.
+
+Sebab itu jangan mudah jatuh cinta bila tengok gambar yang indah-indah dekat platform tersebut. Belum tentu lagi rumah itu wujud atau 'seindah' itu. Kadang-kadang scammer ini main ambil sahaja gambar dari mana-mana dan info rumah juga tidak tepat.
+
+### TUAN RUMAH ELAK JUMPA UNTUK VIEWING
+
+Sekiranya betul tuan rumah tersebut adalah seorang scammer, kebiasaanya mereka akan elak untuk berjumpa. Sebab mereka tidak mahu muka mereka dikenali, takut – takut nanti anda buat laporan polis atau viralkan muka mereka. Tuan rumah yang betul -betul ingin sewakan rumah, mereka mesti ingin bersua muka dengan bakal penyewa. Iyalah nak bagi orang pinjam barang kita mestilah kita mahu tengok orang itu sama ada boleh dipercayai atau tidak.
+
+Kebiasaanya scammer juga akan suruh anda pergi viewing rumah sendiri. Tetapi dapat tengok dari luar sahaja. Ini sudah terang lagi bersuluh yang mereka sebenarnya tiada akses pun untuk memberi anda masuk ke bahagian dalam rumah. Tuan rumah yang bagus atau tuan rumah ada melantik perunding hartanah, mereka akan sentiasa follow proses sewa beli yang betul.
+
+### BOLEH PINDAH MASUK TANPA VIEWING
+
+Sebelum anda nak proceed atau nak bayar deposit, lebih baik anda buat viewing terlebih dahulu. Risau kalau-kalau sebenarnya rumah itu tidak wujud pun tapi deposit sudah dibayar. Pastikan juga yang tuan rumah itu benar-benar memiliki hartanah tersebut. Sebab ada juga kes, penyewa sudah pindah masuk tiba-tiba tuan rumah sebenar datang dan tak izinkan rumahnya untuk disewa. Tak pasal-pasal penyewa kene keluar balik.
+      `,
+      author: "Sarah Brosham",
+      date: "March 3, 2023",
+      category: "Property",
+      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Cara-Kenal-Pasti-Scammer-Rumah-Sewa.jpeg?fit=1080%2C1080&ssl=1",
+      readTime: "6 min read",
+    },
+    "6": {
+      id: "6",
+      title: "Ketahui Kos-Kos Tambahan Semasa Pembelian Rumah",
+      content: `
+Sudah masuk tahun 2023, tapi masih ada lagi segelintir pembeli hartanah yang tidak tahu atau kurang pengetahuan tentang caj-caj lain yang terlibat dalam proses jual beli hartanah. Ada yang terkejut bila dapat tahu ada kos atau yuran lain yang perlu mereka sediakan sebelum memeterai perjanjian.
+
+Ramai tak tahu yang mereka bukan sahaja perlu sediakan bayaran pendahuluan, tapi mereka juga perlu sediakan bayaran tambahan untuk kos **CUKAI DUTI SETEM** dan **YURAN GUAMAN**. Oleh itu sebagai pembeli, anda perlu tahu dulu kos-kos yang terlibat supaya anda dapat merancang kewangan anda.
+
+Jom baca penerangan lebih lanjut..
+
+## CUKAI DUTI SETEM
+
+Apa yang umum mengetahui, Duti Setem SPA hanya RM10 per salinan. Tetapi ada juga Duti Setem lain yang perlu diambil kira iaitu Duti Setem untuk Memorandum of Transfer (MOT) dan Surat Ikatan Penyerahan Hak (DOA). Kedua-dua yuran ini akan dikira berdasarkan pelan caj antara 1% hingga 4%.
+
+### Contoh:
+
+Ahmad membeli hartanah yang bernilai RM500,00. Bermakna Ahmad berada dalam kelompok pertama (1% untuk RM100,000) dan kedua (2% untuk RM400,000).
+
+- Nilai hartanah = RM500,000
+- 1% daripada RM100,000 = RM1,000  
+- 2% daripada RM400,000 = RM8,000
+- **Jumlah duti setem yang perlu dibayar = RM9,000**
+
+Selain itu, bayaran cukai duti setem sebanyak 0.5% DARIPADA JUMLAH PENUH PINJAMAN juga dikenakan ke atas perjanjian pinjaman pembeli hartanah.
+
+### Contoh:
+- Nilai hartanah = RM500,000
+- Pendahuluan = 10% x RM500,000 = RM 50,000
+- Pembiayaan = 90% x RM500,000 = RM450,000
+- **Jumlah duti setem yang perlu dibayar = RM450,000 x 0.5% = RM2,250**
+
+## YURAN GUAMAN
+
+Apakah itu yuran guaman?
+
+Yuran guaman adalah sebahagian daripada SPA dan dicaj atas bantuan servis peguam dari segi proses perundangan semasa pembelian hartanah.
+
+Yuran guaman akan dikira berdasarkan peratusan harga jualan hartanah, antara 0.5% sehingga ke 1% bergantung kepada nilai hartanah.
+
+### Contoh:
+
+Farhana membeli hartanah yang bernilai RM600,000, bermakna yuran guaman beliau berada dalam kelompok pertama (1% untuk RM500,000) dan kedua (0.8% untuk RM100,000).
+
+- Nilai hartanah = RM600,000
+- 1% daripada RM500,000 = RM5,000
+- 0.8% daripada RM100,000 = RM800  
+- **Jumlah yuran guaman = RM5,800**
+
+Semoga serba sedikit penerangan daripada Bro Sham ini dapat memberi manfaat kepada para pembeli untuk merancang kewangan anda sebelum membeli rumah.
+      `,
+      author: "Sarah Brosham",
+      date: "February 12, 2023",
+      category: "Property", 
+      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/02/Ketahui-Kos-Kos-Tambahan-Semasa-Pembelian-Rumah.jpeg?fit=1080%2C1080&ssl=1",
+      readTime: "8 min read",
     }
   };
 
