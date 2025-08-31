@@ -1,5 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import PropertyCard from "@/components/PropertyCard";
+import PropertyValueForm from "@/components/PropertyValueForm";
+import LoanEligibilityForm from "@/components/LoanEligibilityForm";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -12,7 +14,12 @@ import {
   MapPin, 
   Phone, 
   Mail,
-  CheckCircle 
+  CheckCircle,
+  MessageCircle,
+  Shield,
+  Target,
+  BookOpen,
+  Wrench
 } from "lucide-react";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
@@ -100,6 +107,27 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection />
 
+      {/* Quick Services Forms */}
+      <section className="py-12 bg-gradient-to-br from-primary/5 to-secondary/5">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Perkhidmatan Pantas
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Dapatkan maklumat dan semakan secara percuma dalam masa 24 jam
+              </p>
+            </div>
+            
+            <div className="flex flex-col lg:flex-row gap-8 justify-center items-start">
+              <PropertyValueForm />
+              <LoanEligibilityForm />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Properties */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -130,30 +158,96 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-gradient-to-br from-primary to-primary/90 text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Rekod Kejayaan Terbukti</h2>
-              <p className="text-xl text-muted-foreground">
-                Hasil kami berkata-kata untuk diri mereka sendiri
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-secondary">
+                KENAPA PERLU PILIH KAMI?
+              </h2>
+              <p className="text-xl text-white/90 max-w-4xl mx-auto">
+                Kepuasan pelanggan adalah keutamaan kami. Kami sentiasa memberikan 100% komitmen dan 
+                konsistens dalam melaksanakan tanggungjawab sebagai perunding hartanah. Sejajar dengan visi kami 
+                iaitu Commitments, Consistency & Responsibility.
               </p>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <Card key={index} className="text-center bg-gradient-card hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
-                      <Icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                      <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+              {/* Komitmen */}
+              <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl mx-auto mb-4 flex items-center justify-center">
+                    <Target className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">KOMITMEN</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Kami sentiasa fokus dan komited dalam memberi perkhidmatan yang terbaik bagi 
+                    mencapai matlamat membantu menyelesaikan masalah dan memenuhi kehendak pelanggan.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Konsisten */}
+              <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl mx-auto mb-4 flex items-center justify-center">
+                    <CheckCircle className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">KONSISTEN</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Kami memastikan proses dan hasil kerja yang dilaksanakan 
+                    sentiasa dalam keadaan yang konsisten supaya perkhidmatan 
+                    kami dapat membantu setiap pelanggan mendapatkan rumah idaman mereka.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Tanggung Jawab */}
+              <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl mx-auto mb-4 flex items-center justify-center">
+                    <Shield className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">TANGGUNG JAWAB</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Kami bertanggungjawab melaksanakan segala tugas 
+                    sebagai perunding hartanah yang telah dilantik oleh 
+                    pelanggan dalam menguruskan proses Jual Beli Hartanah dari A to Z.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Ejen Berdaftar */}
+              <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl mx-auto mb-4 flex items-center justify-center">
+                    <Award className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">EJEN BERDAFTAR</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Kami Perunding hartanah yang berdaftar dengan Lembaga 
+                    Penilai, Pentaksir, Ejen Hartanah & Pengurus Harta (LPPEH) 
+                    Malaysia. Berpengalaman lebih dari tiga tahun dalam bidang 
+                    hartanah dan dipercayai ramai pelanggan.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Perkhidmatan Kami */}
+              <Card className="bg-white/95 backdrop-blur-sm border-0 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-xl mx-auto mb-4 flex items-center justify-center">
+                    <Wrench className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">PERKHIDMATAN KAMI</h3>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    Kami menyediakan perkhidmatan penuh daripada 
+                    urusan jual beli hartanah, sewaan, pajakan, refinance, 
+                    urusan pinjaman perumahan dan urusan guaman.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
