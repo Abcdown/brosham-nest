@@ -40,9 +40,6 @@ const About = () => {
             <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gradient">
               ABOUT ME
             </h1>
-            <h2 className="text-2xl font-semibold mb-8 text-primary">
-              ASSALAMMUALAIKUM DAN SALAM SEJAHTERA
-            </h2>
           </div>
         </div>
       </section>
@@ -55,14 +52,17 @@ const About = () => {
               <div className="relative">
                 <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full"></div>
                 <img
-                  src={agentPortrait}
-                  alt="Ejen BroSham Properties"
+                  src="/lovable-uploads/92e54a24-50e7-422c-a376-9a09682f92ec.png"
+                  alt="Mohd Noorhisham - Bro Sham"
                   className="relative w-full max-w-lg mx-auto rounded-3xl shadow-hero"
                 />
                 <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-secondary/20 rounded-full"></div>
               </div>
               <div className="space-y-8">
                 <div>
+                  <h2 className="text-2xl font-semibold mb-6 text-primary">
+                    ASSALAMMUALAIKUM DAN SALAM SEJAHTERA
+                  </h2>
                   <p className="text-muted-foreground mb-6 leading-relaxed text-lg">
                     Nama saya <span className="font-semibold text-primary">Mohd Noorhisham</span> atau lebih mesra <span className="font-semibold text-primary">Bro Sham</span>. Saya merupakan perunding hartanah berdaftar <span className="font-semibold text-primary">REN 41336</span> dari agensi <span className="font-semibold text-primary">GPLEX ICONIC JB</span>. Dengan ilmu yang ada, Insya Allah saya akan terus membantu lebih ramai sahabat untuk memiliki rumah idaman dan menjual hartanah pada harga yang terbaik.
                   </p>
