@@ -1,95 +1,115 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { X, ZoomIn, ChevronLeft, ChevronRight } from "lucide-react";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
-import heroProperty from "@/assets/hero-property.jpg";
+import Autoplay from "embla-carousel-autoplay";
+import houseExterior1 from "@/assets/house-exterior-1.jpg";
+import houseExterior2 from "@/assets/house-exterior-2.jpg";
+import houseInterior1 from "@/assets/house-interior-1.jpg";
+import houseInterior2 from "@/assets/house-interior-2.jpg";
+import houseFlip1 from "@/assets/house-flip-1.jpg";
+import houseFlip2 from "@/assets/house-flip-2.jpg";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  // Sample gallery images
-  const galleryImages = [
+  // Automated slider images
+  const sliderImages = [
     {
       id: 1,
-      src: heroProperty,
-      title: "Luxury Modern Estate",
-      category: "Exteriors",
-      location: "Beverly Hills, CA",
-      description: "Stunning contemporary architecture with panoramic views",
+      src: houseExterior1,
+      title: "Modern House Exterior",
+      description: "Beautiful landscaping and modern architecture"
     },
     {
       id: 2,
-      src: property1,
-      title: "Designer Living Space",
-      category: "Interiors",
-      location: "Manhattan Beach, CA",
-      description: "Open-concept living with premium finishes",
+      src: houseExterior2,
+      title: "Luxury House with Pool",
+      description: "Premium exterior design with swimming pool"
     },
     {
       id: 3,
-      src: property2,
-      title: "Contemporary Family Home",
-      category: "Exteriors",
-      location: "West Hollywood, CA",
-      description: "Modern family residence with beautiful landscaping",
+      src: houseInterior1,
+      title: "Modern Living Room",
+      description: "Elegant interior design with premium fixtures"
     },
     {
       id: 4,
-      src: property3,
-      title: "Oceanfront Paradise",
-      category: "Exteriors",
-      location: "Malibu, CA",
-      description: "Luxury villa with direct ocean access",
+      src: houseInterior2,
+      title: "Contemporary Kitchen",
+      description: "Modern kitchen with granite countertops"
     },
     {
       id: 5,
-      src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop",
-      title: "Master Suite Elegance",
-      category: "Interiors",
-      location: "Beverly Hills, CA",
-      description: "Luxurious master bedroom with walk-in closet",
+      src: houseFlip1,
+      title: "House Flipping Project",
+      description: "Before and after transformation"
     },
     {
       id: 6,
-      src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop",
-      title: "Gourmet Kitchen",
-      category: "Interiors",
-      location: "Santa Monica, CA",
-      description: "Chef's kitchen with premium appliances",
-    },
-    {
-      id: 7,
-      src: "https://images.unsplash.com/photo-1600566753051-25756e7cfc7e?w=800&h=600&fit=crop",
-      title: "Spa-Like Bathroom",
-      category: "Interiors",
-      location: "Manhattan Beach, CA",
-      description: "Resort-style master bathroom with soaking tub",
-    },
-    {
-      id: 8,
-      src: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?w=800&h=600&fit=crop",
-      title: "Private Pool Oasis",
-      category: "Exteriors",
-      location: "Hollywood Hills, CA",
-      description: "Infinity pool with city views",
-    },
-    {
-      id: 9,
-      src: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&h=600&fit=crop",
-      title: "Home Office Suite",
-      category: "Interiors",
-      location: "Brentwood, CA",
-      description: "Professional home office with built-in storage",
-    },
+      src: houseFlip2,
+      title: "Renovated Bathroom",
+      description: "Complete bathroom renovation with modern fixtures"
+    }
   ];
 
-  const categories = ["All", "Exteriors", "Interiors"];
+  // Sample gallery images for the grid
+  const galleryImages = [
+    {
+      id: 1,
+      src: houseExterior1,
+      title: "Modern House Exterior",
+      category: "Exteriors",
+      location: "Johor Bahru, Johor",
+      description: "Beautiful modern house with landscaping"
+    },
+    {
+      id: 2,
+      src: houseInterior1,
+      title: "Modern Living Room",
+      category: "Interiors", 
+      location: "Johor Bahru, Johor",
+      description: "Elegant living space with modern furnishing"
+    },
+    {
+      id: 3,
+      src: houseExterior2,
+      title: "Luxury Villa with Pool",
+      category: "Exteriors",
+      location: "Johor Bahru, Johor", 
+      description: "Premium villa with swimming pool and modern design"
+    },
+    {
+      id: 4,
+      src: houseInterior2,
+      title: "Contemporary Kitchen",
+      category: "Interiors",
+      location: "Johor Bahru, Johor",
+      description: "Modern kitchen with granite countertops and appliances"
+    },
+    {
+      id: 5,
+      src: houseFlip1,
+      title: "House Renovation Project",
+      category: "Flipping Projects", 
+      location: "Johor Bahru, Johor",
+      description: "Complete house transformation and renovation"
+    },
+    {
+      id: 6,
+      src: houseFlip2,
+      title: "Bathroom Renovation",
+      category: "Flipping Projects",
+      location: "Johor Bahru, Johor", 
+      description: "Modern bathroom renovation with premium fixtures"
+    }
+  ];
+
+  const categories = ["All", "Exteriors", "Interiors", "Flipping Projects"];
 
   const filteredImages = galleryImages.filter(image => 
     selectedCategory === "All" || image.category === selectedCategory
@@ -130,6 +150,52 @@ const Gallery = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Explore our collection of stunning properties featuring exceptional design and architecture.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Automated Slider */}
+      <section className="py-12 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-8">Featured Properties</h2>
+            <Carousel
+              plugins={[
+                Autoplay({
+                  delay: 4000,
+                }),
+              ]}
+              className="w-full"
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+            >
+              <CarouselContent>
+                {sliderImages.map((image) => (
+                  <CarouselItem key={image.id} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <Card className="overflow-hidden">
+                        <div className="relative">
+                          <img
+                            src={image.src}
+                            alt={image.title}
+                            className="w-full h-64 object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                          <div className="absolute bottom-4 left-4 text-white">
+                            <h3 className="font-semibold text-lg mb-1">{image.title}</h3>
+                            <p className="text-sm opacity-90">{image.description}</p>
+                          </div>
+                        </div>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext />
+            </Carousel>
           </div>
         </div>
       </section>
