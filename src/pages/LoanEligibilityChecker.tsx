@@ -291,56 +291,6 @@ const LoanEligibilityChecker = () => {
               </CardContent>
             </Card>
 
-            {/* Information Section */}
-            <div className="mt-12 grid md:grid-cols-4 gap-6">
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Shield className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Semakan CTOS</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Analisis skor kredit dan rekod pembayaran
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <DollarSign className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Kelayakan Loan</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Penilaian berdasarkan pendapatan dan komitmen
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CreditCard className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Nasihat Pakar</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Tips meningkatkan peluang kelulusan
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Percuma 100%</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Tiada caj tersembunyi atau komitmen
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </section>

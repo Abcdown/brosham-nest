@@ -262,44 +262,6 @@ const PropertyValueChecker = () => {
               </CardContent>
             </Card>
 
-            {/* Information Section */}
-            <div className="mt-12 grid md:grid-cols-3 gap-8">
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Calculator className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Analisis Komprehensif</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Menggunakan data pasaran terkini dan perbandingan hartanah serupa
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Home className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Pakar Berpengalaman</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Dinilai oleh ejen hartanah berdaftar dengan pengalaman 15+ tahun
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="text-center">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <MapPin className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="font-semibold mb-2">Respons Pantas</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Anggaran nilai akan dihantar dalam masa 24 jam
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
           </div>
         </div>
       </section>

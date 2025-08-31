@@ -76,21 +76,39 @@ const Index = () => {
 
   const testimonials = [
     {
-      name: "Jennifer Martinez",
-      location: "Beverly Hills",
-      text: "Sarah membantu kami mencari rumah impian dalam masa 3 minggu sahaja. Pengetahuan beliau tentang pasaran dan perhatian kepada detail sangat luar biasa.",
+      name: "Muhammad Sazwan Karim",
+      location: "Home Buyer",
+      text: "Process jual beli rumah yang mudah dan sangat cepat, dalam masa 5 hari sahaja telah mendapat keputusan, semua urusan dibuat secepat mungkin oleh BroSham Properties. Terima Kasih",
       rating: 5,
     },
     {
-      name: "Michael Chen",
-      location: "Manhattan Beach", 
-      text: "Profesional, responsif, dan berorientasikan hasil. Brosham Properties menjual rumah kami melebihi harga yang diminta!",
+      name: "Mohamad Edad",
+      location: "Home Buyer", 
+      text: "TQ BroSham sebab bantu saya dapat rumah. Highly recommended untuk sesiapa yang nak cari rumah. Sangat membantu, kerja cepat dan mudah berurusan. Walaupun dah dapat kunci masih lagi tolong untuk process renovation. Saya bagi 10/10",
       rating: 5,
     },
     {
-      name: "Lisa Thompson",
-      location: "Santa Monica",
-      text: "Sebagai pembeli kali pertama, kami gugup, tetapi Sarah membimbing kami melalui setiap langkah. Sangat disyorkan!",
+      name: "Minnie Arsad",
+      location: "Home Owner",
+      text: "Alhamdulilah. Berurusan dengan BroSham Properties memang terbaik... Saya suami isteri sudah 2 kali berurusan dengan Bro Sham, memang puas hati. Memang terbaik... Dari A-Z... TQ BroSham",
+      rating: 5,
+    },
+    {
+      name: "Syaza Rahman",
+      location: "Home Buyer",
+      text: "Saya client BroSham yang menetap di Selangor, dan beli property di Johor. Segala urusan memang diuruskan oleh BroSham. Tak payah pening-pening kepala dah. Sentiasa keep me updated tentang process jual beli dari mula hingga akhir dan tidak kedekut untuk beri tips tentang pelaburan hartanah. Pada saya BroSham adalah trusted consultant/agent dari syurga. Alhamdulillah syukur sangat dipertemukan dengan agent yang ikhlas dan ada passion dalam menjalankan tugasanya",
+      rating: 5,
+    },
+    {
+      name: "Suffrina Riena",
+      location: "Home Owner",
+      text: "Terbaikkk... Service bagus, tiada syarat terselindung... Senang sangat berurusan.",
+      rating: 5,
+    },
+    {
+      name: "Aimi Shahida Selamat",
+      location: "Home Buyer",
+      text: "Agen yang cepat buat kerja. Mudah berurusan dengan beliau. Senang di ajak berunding. Always Positive",
       rating: 5,
     },
   ];
@@ -246,65 +264,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Preview */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <Badge variant="outline" className="mb-4">Tentang Brosham Properties</Badge>
-                <h2 className="text-3xl font-bold mb-6">
-                  Rakan Kongsi Hartanah Yang Dipercayai
-                </h2>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Dengan lebih dari 15 tahun pengalaman dalam industri hartanah, kami komited untuk 
-                  membantu anda mencari rumah yang sempurna dan mencapai matlamat hartanah anda. Pendekatan 
-                  peribadi kami memastikan setiap pelanggan mendapat perhatian yang mereka layak.
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                  {services.map((service, index) => (
-                    <div key={index} className="flex items-start">
-                      <CheckCircle className="w-5 h-5 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">{service}</span>
-                    </div>
-                  ))}
-                </div>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button>
-                    Ketahui Lebih Lanjut Tentang Kami
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                  <Button variant="outline">
-                    <Phone className="w-4 h-4 mr-2" />
-                    019-703 4036
-                  </Button>
-                </div>
-              </div>
-              
-              <div className="relative">
-                <img
-                  src={agentPortrait}
-                  alt="Sarah Brosham - Pakar Hartanah"
-                  className="w-full max-w-md mx-auto rounded-2xl shadow-lg"
-                />
-                <Card className="absolute -bottom-6 -left-6 bg-gradient-card shadow-lg">
-                  <CardContent className="p-4">
-                    <div className="flex items-center">
-                      <Star className="w-5 h-5 text-yellow-500 mr-2" />
-                      <div>
-                        <div className="font-bold">Penilaian 4.9/5</div>
-                        <div className="text-xs text-muted-foreground">250+ Ulasan</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Testimonials */}
       <section className="py-16 bg-primary text-primary-foreground">
