@@ -259,6 +259,386 @@ Semoga serba sedikit penerangan daripada Bro Sham ini dapat memberi manfaat kepa
       category: "Property", 
       image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/02/Ketahui-Kos-Kos-Tambahan-Semasa-Pembelian-Rumah.jpeg?fit=1080%2C1080&ssl=1",
       readTime: "8 min read",
+    },
+    "7": {
+      title: "Sebab-sebab permohonan loan ditolak oleh bank",
+      content: `
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Sebab-sebab-permohonan-loan-ditolak-oleh-bank.jpg" alt="Sebab-sebab permohonan loan ditolak" class="w-full rounded-lg mb-6" />
+          
+          <p>Permohonan pinjaman rumah yang ditolak boleh menjadi pengalaman yang mengecewakan. Namun, memahami sebab-sebab di sebalik penolakan ini dapat membantu anda mempersiapkan diri dengan lebih baik untuk permohonan akan datang.</p>
+
+          <h2>Sebab-sebab Utama Permohonan Loan Ditolak</h2>
+
+          <h3>1. Skor Kredit Yang Rendah</h3>
+          <p>Bank akan menyemak rekod kredit anda melalui CCRIS dan CTOS. Jika terdapat rekod pembayaran lewat atau gagal bayar, ini akan menjejaskan permohonan anda.</p>
+
+          <h3>2. Pendapatan Tidak Mencukupi</h3>
+          <p>Bank biasanya menggunakan nisbah DSR (Debt Service Ratio) untuk menilai kemampuan bayar. Jika DSR melebihi 70%, permohonan mungkin ditolak.</p>
+
+          <h3>3. Tempoh Pekerjaan Yang Singkat</h3>
+          <p>Kebanyakan bank memerlukan sekurang-kurangnya 6 bulan untuk pekerja tetap dan 2 tahun untuk pekerja sendiri.</p>
+
+          <h3>4. Dokumen Yang Tidak Lengkap</h3>
+          <p>Kegagalan menyediakan dokumen yang diperlukan atau dokumen yang tidak sah boleh menyebabkan permohonan ditolak.</p>
+
+          <h2>Cara Mengatasi Masalah Ini</h2>
+          <ul>
+            <li>Perbaiki skor kredit dengan membayar hutang tepat masa</li>
+            <li>Tingkatkan pendapatan atau kurangkan komitmen bulanan</li>
+            <li>Pastikan tempoh pekerjaan mencukupi sebelum memohon</li>
+            <li>Sediakan semua dokumen yang diperlukan dengan lengkap</li>
+          </ul>
+
+          <p><strong>Tip:</strong> Jika permohonan ditolak oleh satu bank, cuba bank lain kerana setiap bank mempunyai kriteria yang berbeza.</p>
+        </div>
+      `,
+      author: "Brosham Properties",
+      date: "2024-11-19",
+      category: "Kewangan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Sebab-sebab-permohonan-loan-ditolak-oleh-bank.jpg",
+      readTime: "6 min read",
+    },
+    "8": {
+      title: "Apakah itu Refinance Rumah?",
+      content: `
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Apakah-itu-Refinance-Rumah.jpg" alt="Refinance Rumah" class="w-full rounded-lg mb-6" />
+          
+          <p>Refinance rumah adalah proses menukar pinjaman rumah sedia ada dengan pinjaman baru, biasanya dengan syarat yang lebih baik seperti kadar faedah yang lebih rendah.</p>
+
+          <h2>Mengapa Perlu Refinance?</h2>
+
+          <h3>1. Kadar Faedah Yang Lebih Rendah</h3>
+          <p>Ini adalah sebab utama kebanyakan orang memilih untuk refinance. Penjimatan walaupun 0.5% boleh membawa perbezaan besar dalam jangka panjang.</p>
+
+          <h3>2. Mengurangkan Tempoh Bayaran</h3>
+          <p>Dengan menukar kepada tempoh yang lebih pendek, anda boleh menjimatkan lebih banyak faedah walaupun bayaran bulanan mungkin lebih tinggi.</p>
+
+          <h3>3. Menukar Jenis Pinjaman</h3>
+          <p>Contohnya, menukar dari pinjaman kadar berubah kepada kadar tetap untuk kestabilan bayaran.</p>
+
+          <h2>Proses Refinance</h2>
+          <ol>
+            <li><strong>Bandingkan Tawaran:</strong> Dapatkan sebut harga dari beberapa bank</li>
+            <li><strong>Kira Kos:</strong> Pertimbangkan yuran peguam, penilaian, dan penalti</li>
+            <li><strong>Mohon:</strong> Hantar permohonan dengan dokumen lengkap</li>
+            <li><strong>Penilaian:</strong> Bank akan menilai semula hartanah anda</li>
+            <li><strong>Kelulusan:</strong> Setelah lulus, proses tukar bank akan bermula</li>
+          </ol>
+
+          <h2>Kos Yang Terlibat</h2>
+          <ul>
+            <li>Yuran peguam (biasanya 0.25% - 0.5% dari jumlah pinjaman)</li>
+            <li>Yuran penilaian hartanah</li>
+            <li>Yuran pemprosesan bank</li>
+            <li>Penalti bayar awal (jika ada)</li>
+          </ul>
+
+          <p><strong>Petua:</strong> Pastikan penjimatan jangka panjang melebihi kos refinance sebelum membuat keputusan.</p>
+        </div>
+      `,
+      author: "Brosham Properties",
+      date: "2024-11-18",
+      category: "Kewangan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Apakah-itu-Refinance-Rumah.jpg",
+      readTime: "7 min read",
+    },
+    "9": {
+      title: "One Stop Centre",
+      content: `
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/One-Stop-Centre.jpg" alt="One Stop Centre" class="w-full rounded-lg mb-6" />
+          
+          <p>One Stop Centre adalah konsep perkhidmatan menyeluruh yang menyediakan semua keperluan berkaitan hartanah di satu tempat. Ia memudahkan pembeli rumah untuk mendapatkan semua perkhidmatan yang diperlukan tanpa perlu berurusan dengan pelbagai pihak secara berasingan.</p>
+
+          <h2>Apa Yang Ditawarkan oleh One Stop Centre?</h2>
+
+          <h3>1. Perkhidmatan Pinjaman</h3>
+          <ul>
+            <li>Permohonan pinjaman rumah</li>
+            <li>Refinancing</li>
+            <li>Pinjaman bridging</li>
+            <li>Konsultasi kewangan</li>
+          </ul>
+
+          <h3>2. Perkhidmatan Guaman</h3>
+          <ul>
+            <li>Sale & Purchase Agreement (SPA)</li>
+            <li>Loan Documentation Agreement (LDA)</li>
+            <li>Memorandum of Transfer (MOT)</li>
+            <li>Strata title transfer</li>
+          </ul>
+
+          <h3>3. Perkhidmatan Insurans</h3>
+          <ul>
+            <li>Fire insurance (wajib untuk loan)</li>
+            <li>MRTA/MLTA</li>
+            <li>Insurans kemalangan diri</li>
+            <li>Insurans rumah komprehensif</li>
+          </ul>
+
+          <h3>4. Perkhidmatan Penilaian</h3>
+          <ul>
+            <li>Penilaian hartanah untuk pinjaman</li>
+            <li>Penilaian untuk refinancing</li>
+            <li>Market valuation</li>
+          </ul>
+
+          <h2>Kelebihan One Stop Centre</h2>
+
+          <h3>✅ Kemudahan dan Keselesaan</h3>
+          <p>Semua perkhidmatan di satu tempat menjimatkan masa dan tenaga anda.</p>
+
+          <h3>✅ Koordinasi Yang Lebih Baik</h3>
+          <p>Tim yang berpengalaman memastikan semua proses berjalan lancar dan mengikut jadual.</p>
+
+          <h3>✅ Harga Kompetitif</h3>
+          <p>Package deal biasanya lebih murah berbanding menggunakan perkhidmatan berasingan.</p>
+
+          <h3>✅ Sokongan Berterusan</h3>
+          <p>Satu contact point untuk semua pertanyaan dan keperluan anda.</p>
+
+          <p><strong>Kesimpulan:</strong> One Stop Centre memudahkan proses pembelian rumah dengan menyediakan semua perkhidmatan yang diperlukan di bawah satu bumbung.</p>
+        </div>
+      `,
+      author: "Brosham Properties",
+      date: "2024-11-17",
+      category: "Perkhidmatan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/One-Stop-Centre.jpg",
+      readTime: "6 min read",
+    },
+    "10": {
+      title: "Terima Kasih Dan Penghargaan",
+      content: `
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Terima-kasih-dan-penghargaan.jpg" alt="Terima Kasih Dan Penghargaan" class="w-full rounded-lg mb-6" />
+          
+          <p>Pada tahun 2024 ini, kami dengan rendah hati ingin mengucapkan ribuan terima kasih kepada semua klien, rakan kongsi perniagaan, dan ahli keluarga yang telah menyokong perjalanan kami dalam industri hartanah.</p>
+
+          <h2>Pencapaian 2024</h2>
+
+          <p>Tahun 2024 telah menjadi tahun yang sangat bermakna bagi pasukan Brosham Properties. Dengan sokongan dan kepercayaan daripada anda semua, kami telah berjaya:</p>
+
+          <ul>
+            <li>Membantu lebih 500+ keluarga mendapatkan rumah impian mereka</li>
+            <li>Menyediakan perkhidmatan one-stop centre yang komprehensif</li>
+            <li>Menjalinkan hubungan kerjasama dengan lebih banyak pemaju dan institusi kewangan</li>
+            <li>Mengembangkan perkhidmatan digital untuk kemudahan klien</li>
+          </ul>
+
+          <h2>Kepada Klien-Klien Tersayang</h2>
+
+          <p>Terima kasih kerana mempercayai kami sebagai rakan kongsi dalam perjalanan mencari dan memiliki hartanah. Setiap cerita kejayaan anda adalah inspirasi kepada kami untuk terus memberikan perkhidmatan yang terbaik.</p>
+
+          <h2>Kepada Rakan Kongsi Perniagaan</h2>
+
+          <p>Kerjasama yang erat dengan bank-bank, firma guaman, syarikat insurans, dan pemaju telah membolehkan kami menyediakan perkhidmatan yang menyeluruh dan berkualiti tinggi.</p>
+
+          <h2>Visi Untuk 2025</h2>
+
+          <p>Memasuki tahun 2025, kami komited untuk terus:</p>
+          <ul>
+            <li>Meningkatkan kualiti perkhidmatan</li>
+            <li>Memperluas rangkaian dan jangkauan</li>
+            <li>Menggunakan teknologi terkini untuk kemudahan klien</li>
+            <li>Mengekalkan integriti dan profesionalisme yang tinggi</li>
+          </ul>
+
+          <p><strong>Sekali lagi, terima kasih atas sokongan berterusan. Mari kita sambut tahun 2025 dengan lebih banyak kejayaan bersama!</strong></p>
+
+          <div class="text-center mt-8 p-4 bg-primary/10 rounded-lg">
+            <p class="font-semibold">🏠 Brosham Properties - Your Trusted Property Partner 🏠</p>
+          </div>
+        </div>
+      `,
+      author: "Brosham Properties",
+      date: "2024-11-16",
+      category: "Umum",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Terima-kasih-dan-penghargaan.jpg",
+      readTime: "4 min read",
+    },
+    "11": {
+      title: "Segala yang anda perlu tahu tentang Deposit Rumah - Developer",
+      content: `
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Segala-yang-anda-perlu-tahu-tentang-Deposit-Rumah-Developer.jpg" alt="Deposit Rumah Developer" class="w-full rounded-lg mb-6" />
+          
+          <p>Deposit kepada developer adalah bayaran awal yang perlu dibuat semasa membeli rumah baru. Ini berbeza dengan deposit bank dan mempunyai fungsi serta kepentingan tersendiri dalam proses pembelian hartanah.</p>
+
+          <h2>Apa itu Deposit Developer?</h2>
+
+          <p>Deposit developer adalah bayaran awal (biasanya 10% dari harga rumah) yang dibayar terus kepada pemaju/developer untuk menempah unit hartanah. Bayaran ini dibuat sebelum menandatangani Sale & Purchase Agreement (SPA).</p>
+
+          <h2>Jenis-jenis Deposit Developer</h2>
+
+          <h3>1. Booking Fee (RM1,000 - RM5,000)</h3>
+          <ul>
+            <li>Bayaran tempahan awal</li>
+            <li>Untuk "reserve" unit pilihan</li>
+            <li>Boleh dikira sebagai sebahagian dari deposit</li>
+          </ul>
+
+          <h3>2. Deposit 10%</h3>
+          <ul>
+            <li>Dibayar semasa menandatangani SPA</li>
+            <li>Biasanya 10% dari harga pembelian</li>
+            <li>Komitmen rasmi untuk membeli</li>
+          </ul>
+
+          <h2>Jadual Bayaran Biasa</h2>
+
+          <table class="min-w-full border-collapse border border-gray-300 my-4">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border border-gray-300 px-4 py-2">Peringkat</th>
+                <th class="border border-gray-300 px-4 py-2">Peratus</th>
+                <th class="border border-gray-300 px-4 py-2">Bila Dibayar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">Booking Fee</td>
+                <td class="border border-gray-300 px-4 py-2">RM1,000-5,000</td>
+                <td class="border border-gray-300 px-4 py-2">Semasa booking</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">Deposit SPA</td>
+                <td class="border border-gray-300 px-4 py-2">10%</td>
+                <td class="border border-gray-300 px-4 py-2">Tandatangan SPA</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">Progress Payment</td>
+                <td class="border border-gray-300 px-4 py-2">80%</td>
+                <td class="border border-gray-300 px-4 py-2">Mengikut kemajuan</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">Final Payment</td>
+                <td class="border border-gray-300 px-4 py-2">10%</td>
+                <td class="border border-gray-300 px-4 py-2">Serah kunci</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>Perlindungan Deposit</h2>
+
+          <h3>✅ Housing Development Account (HDA)</h3>
+          <p>Deposit anda dilindungi di bawah Housing Development Account yang dikawal oleh kerajaan.</p>
+
+          <h3>✅ Defect Liability Period</h3>
+          <p>Developer bertanggungjawab membaiki sebarang kecacatan dalam tempoh 24 bulan.</p>
+
+          <h3>✅ Abandoned Project Protection</h3>
+          <p>Jika projek terbengkalai, terdapat mekanisme perlindungan untuk pembeli.</p>
+
+          <h2>Tips Penting</h2>
+
+          <ul>
+            <li><strong>Baca SPA dengan teliti</strong> - Pastikan semua terms and conditions jelas</li>
+            <li><strong>Periksa lesen developer</strong> - Sahkan developer mempunyai lesen yang sah</li>
+            <li><strong>Simpan semua resit</strong> - Dokumentasi penting untuk tuntutan</li>
+            <li><strong>Faham jadual pembayaran</strong> - Ketahui bila dan berapa perlu bayar</li>
+          </ul>
+
+          <div class="bg-yellow-50 p-4 rounded-lg mt-6">
+            <p><strong>⚠️ Peringatan:</strong> Jangan buat sebarang bayaran sebelum memastikan kesahihan developer dan projek. Sentiasa dapatkan nasihat profesional sebelum membuat komitmen.</p>
+          </div>
+        </div>
+      `,
+      author: "Brosham Properties",
+      date: "2024-11-15",
+      category: "Kewangan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Segala-yang-anda-perlu-tahu-tentang-Deposit-Rumah-Developer.jpg",
+      readTime: "8 min read",
+    },
+    "12": {
+      title: "Apa kepentingan deposit kepada developer",
+      content: `
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Apa-kepentingan-deposit-kepada-developer.jpg" alt="Kepentingan Deposit Developer" class="w-full rounded-lg mb-6" />
+          
+          <p>Deposit kepada developer bukan sahaja penting untuk pembeli, tetapi juga mempunyai kepentingan yang besar untuk developer itu sendiri. Mari kita fahami mengapa deposit ini sangat kritikal dalam industri hartanah.</p>
+
+          <h2>Kepentingan Deposit untuk Developer</h2>
+
+          <h3>1. Aliran Tunai (Cash Flow) Projek</h3>
+          <p>Deposit 10% yang diterima dari pembeli membantu developer menampung kos permulaan projek seperti:</p>
+          <ul>
+            <li>Bayaran kepada kontraktor</li>
+            <li>Pembelian bahan binaan</li>
+            <li>Kos operasi harian</li>
+            <li>Bayaran gaji pekerja</li>
+          </ul>
+
+          <h3>2. Komitmen Serius dari Pembeli</h3>
+          <p>Dengan membayar deposit, pembeli menunjukkan komitmen serius untuk membeli hartanah tersebut. Ini membantu developer:</p>
+          <ul>
+            <li>Merancang pembinaan dengan lebih tepat</li>
+            <li>Mengurangkan risiko pembeli menarik diri</li>
+            <li>Mendapat kepastian jualan unit</li>
+          </ul>
+
+          <h3>3. Memudahkan Permohonan Pinjaman Projek</h3>
+          <p>Bank lebih yakin untuk meluluskan pinjaman projek apabila developer dapat menunjukkan:</p>
+          <ul>
+            <li>Jumlah unit yang telah ditempah</li>
+            <li>Deposit yang telah dikutip</li>
+            <li>Permintaan pasaran yang positif</li>
+          </ul>
+
+          <h2>Perlindungan untuk Kedua-dua Pihak</h2>
+
+          <h3>Untuk Developer:</h3>
+          <ul>
+            <li><strong>Jaminan pembayaran:</strong> Deposit menjamin pembeli akan meneruskan pembelian</li>
+            <li><strong>Pampasan kerugian:</strong> Jika pembeli menarik diri, deposit boleh menampung kerugian</li>
+            <li><strong>Modal kerja:</strong> Membantu melancarkan operasi projek</li>
+          </ul>
+
+          <h3>Untuk Pembeli:</h3>
+          <ul>
+            <li><strong>Unit terjamin:</strong> Deposit memastikan unit tidak dijual kepada orang lain</li>
+            <li><strong>Harga terkunci:</strong> Melindungi dari kenaikan harga masa depan</li>
+            <li><strong>Keutamaan pilihan:</strong> Mendapat pilihan unit dan lokasi terbaik</li>
+          </ul>
+
+          <h2>Mekanisme Perlindungan</h2>
+
+          <h3>Housing Development Account (HDA)</h3>
+          <p>Semua deposit disimpan dalam akaun khas yang dikawal ketat oleh undang-undang:</p>
+          <ul>
+            <li>Wang tidak boleh digunakan untuk projek lain</li>
+            <li>Diaudit secara berkala</li>
+            <li>Dilindungi jika projek terbengkalai</li>
+          </ul>
+
+          <h3>Tribunal for Homebuyer Claims</h3>
+          <p>Jika berlaku pertikaian, pembeli boleh membuat aduan kepada tribunal khas ini untuk menyelesaikan masalah dengan cepat dan murah.</p>
+
+          <h2>Tips untuk Pembeli</h2>
+
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h4>✅ Sebelum Bayar Deposit:</h4>
+            <ul>
+              <li>Periksa lesen developer</li>
+              <li>Sahkan projek mendapat kelulusan pihak berkuasa</li>
+              <li>Baca dan faham Surat Purchase Agreement (SPA)</li>
+              <li>Pastikan developer mempunyai rekod prestasi yang baik</li>
+            </ul>
+          </div>
+
+          <h2>Kesimpulan</h2>
+
+          <p>Deposit kepada developer adalah sistem yang saling menguntungkan kedua-dua pihak. Ia memberikan jaminan kepada developer untuk meneruskan projek manakala melindungi hak pembeli untuk mendapat unit hartanah yang dibeli.</p>
+
+          <p><strong>Ingat:</strong> Sentiasa buat penyelidikan menyeluruh sebelum membayar deposit dan pastikan semua dokumen lengkap dan sah.</p>
+        </div>
+      `,
+      author: "Brosham Properties",
+      date: "2024-11-14",
+      category: "Kewangan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Apa-kepentingan-deposit-kepada-developer.jpg",
+      readTime: "7 min read",
     }
   };
 
