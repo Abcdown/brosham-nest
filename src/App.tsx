@@ -12,6 +12,8 @@ import Blog from "./pages/Blog";
 import BlogDetail from "./pages/BlogDetail";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import PropertyValueChecker from "./pages/PropertyValueChecker";
+import LoanEligibilityChecker from "./pages/LoanEligibilityChecker";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/semak-nilai-hartanah" element={<PropertyValueChecker />} />
+            <Route path="/semak-kelayakan-loan" element={<LoanEligibilityChecker />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

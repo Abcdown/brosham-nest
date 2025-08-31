@@ -100,6 +100,31 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection />
 
+      {/* CTA Buttons Section */}
+      <section className="py-8 bg-muted/20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-6"
+                onClick={() => window.location.href = '/semak-nilai-hartanah'}
+              >
+                Semak Nilai Hartanah
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-lg px-8 py-6"
+                onClick={() => window.location.href = '/semak-kelayakan-loan'}
+              >
+                Semak Kelayakan Loan
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Properties */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -130,30 +155,92 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-muted/30">
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Rekod Kejayaan Terbukti</h2>
-              <p className="text-xl text-muted-foreground">
-                Hasil kami berkata-kata untuk diri mereka sendiri
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-300">
+                KENAPA PERLU PILIH KAMI?
+              </h2>
+              <p className="text-lg text-white/90 max-w-4xl mx-auto leading-relaxed">
+                Kepuasan pelanggan adalah keutamaan kami. Kami sentiasa memberikan 100% komitmen dan 
+                konsistensi dalam melaksanakan tanggungjawab sebagai perunding hartanah. Sejajar dengan visi kami 
+                iaitu Commitments, Consistency & Responsibility.
               </p>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-              {stats.map((stat, index) => {
-                const Icon = stat.icon;
-                return (
-                  <Card key={index} className="text-center bg-gradient-card hover:shadow-md transition-shadow">
-                    <CardContent className="p-6">
-                      <Icon className="w-8 h-8 text-primary mx-auto mb-4" />
-                      <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-                      <div className="text-sm text-muted-foreground">{stat.label}</div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+              {/* Komitmen */}
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-yellow-400/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <CheckCircle className="w-8 h-8 text-yellow-300" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3">KOMITMEN</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    Kami sentiasa fokus dan komited dalam memberi perkhidmatan yang terbaik bagi 
+                    mencapai matlamat membantu menyelesaikan masalah dan memenuhi kehendak pelanggan.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Konsisten */}
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-yellow-400/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Award className="w-8 h-8 text-yellow-300" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3">KONSISTEN</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    Kami memastikan proses dan hasil kerja yang dilaksanakan sentiasa dalam keadaan yang 
+                    konsisten supaya perkhidmatan kami dapat membantu setiap pelanggan mendapatkan rumah idaman mereka.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Tanggung Jawab */}
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-yellow-400/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Users className="w-8 h-8 text-yellow-300" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3">TANGGUNG JAWAB</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    Kami bertanggungjawab melaksanakan segala tugas sebagai perunding hartanah yang telah 
+                    dilantik oleh pelanggan dalam menguruskan proses Jual Beli Hartanah dari A to Z.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Ejen Berdaftar */}
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-yellow-400/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Star className="w-8 h-8 text-yellow-300" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3">EJEN BERDAFTAR</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    Kami Perunding hartanah yang berdaftar dengan Lembaga Penilai, Pentaksir, Ejen Hartanah 
+                    & Pengurus Harta (LPPEH) Malaysia. Berpengalaman lebih dari tiga tahun dalam bidang 
+                    hartanah dan dipercayai ramai pelanggan.
+                  </p>
+                </CardContent>
+              </Card>
+
+              {/* Perkhidmatan Kami */}
+              <Card className="bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/15 transition-all duration-300 md:col-span-2 lg:col-span-1">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 bg-yellow-400/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Home className="w-8 h-8 text-yellow-300" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-3">PERKHIDMATAN KAMI</h3>
+                  <p className="text-white/80 text-sm leading-relaxed">
+                    Kami menyediakan perkhidmatan penuh daripada urusan jual beli hartanah, sewaan, pajakan, 
+                    refinance, urusan pinjaman perumahan dan urusan guaman.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
