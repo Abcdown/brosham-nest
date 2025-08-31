@@ -10,254 +10,640 @@ const BlogDetail = () => {
   const blogPosts = {
     "1": {
       id: "1",
-      title: "Mari Teliti Pembentangan Bajet 2023 Berkaitan Hartanah",
+      title: "Mari teliti pembentangan 'Interest Rate' dalam carta amortization",
       content: `
-Pengeculian bayaran duti setem 100% diberikan khas untuk rumah berharga kurang RM500,000. Sehingga akhir tahun 2025.
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Mari-teliti-pembentangan-Interest-Rate-dalam-carta-amortization.jpg" alt="Interest Rate dalam carta amortization" class="w-full rounded-lg mb-6" />
+          
+          <p>Memahami bagaimana kadar faedah dan pembayaran bulanan dikira dalam jadual pelunasan pinjaman rumah adalah penting untuk setiap pembeli hartanah.</p>
 
-**Contoh:**
+          <h2>Apakah Carta Amortization?</h2>
+          <p>Carta amortization ialah jadual yang menunjukkan pecahan setiap bayaran bulanan pinjaman rumah kepada jumlah prinsipal dan faedah sepanjang tempoh pinjaman.</p>
 
-Pembelian rumah pertama berharga RM300,000 akan menerima 100% pengecualian bayaran kos duti setem. Ini bermakna pembeli akan jimat RM 6,500.
+          <h2>Komponen Utama</h2>
 
-Pengecualian bayaran duti setem daripada sebelumnya sebanyak 50% telah dinaikan kepada 75% untuk pembelian rumah pertama khas untuk rumah berharga RM500,000 sehingga 1,000,000. Sehingga 31 Disember 2023.
+          <h3>1. Prinsipal</h3>
+          <p>Jumlah wang asal yang dipinjam untuk membeli rumah. Bahagian ini akan mengurangkan baki pinjaman anda.</p>
 
-**Contoh:**
+          <h3>2. Faedah (Interest)</h3>
+          <p>Kos peminjaman wang yang dikira berdasarkan kadar faedah yang ditetapkan oleh bank.</p>
 
-Pembelian rumah pertama berharga RM750,000 akan menerima 75% pengecualian bayaran kos duti setem. Ini bermakna akan jimat RM15,000.
+          <h2>Cara Pembayaran Berubah</h2>
+          <p>Pada awal tempoh pinjaman, sebahagian besar bayaran bulanan akan pergi kepada faedah. Namun, dari masa ke masa, lebih banyak wang akan pergi kepada prinsipal.</p>
 
-> Berdasarkan dari bajet 2023 ini ianya telah memberi khabar gembira untuk pembeli-pembeli rumah pertama untuk mendapatkan rumah idaman.
+          <h3>Contoh:</h3>
+          <ul>
+            <li><strong>Tahun 1-5:</strong> 70% faedah, 30% prinsipal</li>
+            <li><strong>Tahun 15-20:</strong> 50% faedah, 50% prinsipal</li>
+            <li><strong>Tahun 25-30:</strong> 20% faedah, 80% prinsipal</li>
+          </ul>
 
-Tunggu apa lagi? Rebut peluang ini! Semakin lama, nilai hartanah semakin naik tau!
+          <h2>Kelebihan Memahami Carta Amortization</h2>
+          <ul>
+            <li>Merancang kewangan dengan lebih baik</li>
+            <li>Memahami kesan pembayaran tambahan</li>
+            <li>Membuat keputusan refinancing yang bijak</li>
+          </ul>
 
-## PEMBENTANGAN BAJET 2023
-
-**Bajet 2023 – Pinjaman Syarikat Jaminan Kredit Perumahan (SJKP)**
-
-Peruntukan sebanyak RM3billion diberikan kepada bank untuk membiayai pinjaman rumah SJKP. Antara 12,000 peminjam yang bakal layak menerima.
-
-Inisiatif ini akan dapat membantu lebih ramai PEMBELI RUMAH PERTAMA MILIKI RUMAH IDAMAN mereka.
+          <p><strong>Tip:</strong> Gunakan kalkulator amortization dalam talian untuk melihat pecahan pembayaran anda dan merancang strategi pembayaran yang lebih efektif.</p>
+        </div>
       `,
-      author: "Sarah Brosham",
-      date: "October 12, 2022",
-      category: "Property",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2022/10/Bajet-2023-Galakkan-Rumah-Pertama.jpeg?fit=1080%2C1080&ssl=1",
+      author: "Brosham Properties",
+      date: "2024-11-25",
+      category: "Kewangan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Mari-teliti-pembentangan-Interest-Rate-dalam-carta-amortization.jpg",
       readTime: "6 min read",
     },
     "2": {
       id: "2", 
-      title: "Kepentingan Deposit Rumah Sewa",
+      title: "Kepentingan Deposit Rumah",
       content: `
-Blog sebelum ini, Bro Sham ada ulas mengenai deposit rumah sewa. Melalui blog itu, saya ada nyatakan bahawa deposit rumah sewa memang PENTING untuk kedua-dua belah pihak. Hal ini bagi mengelakkan daripada apa-apa yang tidak diigini berlaku di masa akan datang. Jadi dalam blog kali ini, Bro Sham akan terangkannya:
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Kepentingan-Deposit-Rumah.jpg" alt="Kepentingan Deposit Rumah" class="w-full rounded-lg mb-6" />
+          
+          <p>Deposit rumah adalah aspek penting dalam pembelian hartanah yang perlu difahami dengan baik oleh setiap bakal pembeli. Mari kita lihat mengapa deposit rumah sangat penting dalam proses pembelian hartanah.</p>
 
-### 1. Meyakinkan tuan rumah tentang cara pembayaran sewa bulanan oleh penyewa.
+          <h2>Apa itu Deposit Rumah?</h2>
+          <p>Deposit rumah adalah bayaran pendahuluan yang dibuat oleh pembeli kepada penjual sebagai tanda komitmen serius untuk membeli hartanah tersebut. Biasanya, deposit ini adalah sebanyak 10% dari harga pembelian.</p>
 
-Sebagai tuan rumah mestilah mereka mahukan penyewanya mampu membayar sewa bulanan dengan baik. Oleh itu, dengan menggalakkan pembayaran deposit rumah sewa ini, ianya boleh membantu tuan rumah menilai sendiri sama ada bakal penyewanya itu boleh membayar sewa pada masa akan datang tanpa masalah atau tidak. Sekiranya pada peringkat awal penyewa sudah tidak mampu memberikan komitmen, besar kemungkinan ia boleh menjadi masalah di masa akan datang.
+          <h2>Kepentingan Deposit Rumah</h2>
 
-### 2. Jaminan kepada tuan rumah sekiranya berlaku kerosakan
+          <h3>1. Menunjukkan Komitmen Serius</h3>
+          <p>Deposit membuktikan kepada penjual bahawa anda serius dalam niat untuk membeli hartanah tersebut. Ini memberikan keyakinan kepada penjual untuk meneruskan proses jual beli.</p>
 
-Sekiranya berlaku sebarang kerosakan yang disebabkan oleh penyewa, tuan rumah boleh menggunakan wang deposit tersebut untuk menanggung kos pembaikian semula. Ini bukan sahaja boleh memberi kebaikan kepada tuan rumah malah juga pada penyewa sebab tak perlu pening-pening lagi nak sediakan duit bagi membayar kos kerosakan sebab sudah membayar deposit sebelum menyewa.
+          <h3>2. Melindungi Kedua-dua Pihak</h3>
+          <ul>
+            <li><strong>Untuk Pembeli:</strong> Deposit memastikan hartanah tidak dijual kepada pihak lain</li>
+            <li><strong>Untuk Penjual:</strong> Deposit menjadi jaminan bahawa pembeli akan meneruskan pembelian</li>
+          </ul>
 
-### 3. Boleh melunaskan tunggakan bil utiliti
+          <h3>3. Memudahkan Permohonan Pinjaman</h3>
+          <p>Bank biasanya memerlukan bukti deposit yang telah dibayar sebelum meluluskan pinjaman rumah. Ini menunjukkan kemampuan kewangan pembeli.</p>
 
-Sekiranya penyewa ada tunggakan bil utiliti seperti bil air, elektrik atau internet yang perlu dibayar tapi dah habis tempoh sewaan, tuan rumah boleh guna wang deposit untuk melunaskan tunggakan tersebut.
+          <h2>Jenis-jenis Deposit</h2>
 
-### 4. Untuk menampung kos pembersihan rumah
+          <h3>Earnest Money/Booking Fee</h3>
+          <ul>
+            <li>Biasanya RM1,000 - RM5,000</li>
+            <li>Dibayar untuk "book" hartanah</li>
+            <li>Boleh dikira sebagai sebahagian dari deposit 10%</li>
+          </ul>
 
-Kadang-kadang rumah yang disewakan dalam keadaan kotor dan perlu dibersihkan selepas penyewa berpindah. Wang deposit boleh digunakan untuk mengupah orang untuk membersihkan rumah supaya rumah dalam keadaan bersih untuk penyewa yang seterusnya.
+          <h3>Deposit 10% (Deposit SPA)</h3>
+          <ul>
+            <li>Dibayar semasa menandatangani Sale & Purchase Agreement</li>
+            <li>Menjadi komitmen rasmi untuk pembelian</li>
+            <li>Biasanya tidak boleh dikembalikan jika pembeli menarik diri</li>
+          </ul>
 
-Jadi, deposit rumah sewa memang penting untuk kedua-dua belah pihak. Ia bukan sahaja melindungi kepentingan tuan rumah malah juga penyewa dari segi kewangan.
+          <h2>Tips Penting</h2>
+          <ul>
+            <li>Pastikan anda mempunyai wang deposit yang mencukupi sebelum house hunting</li>
+            <li>Faham syarat-syarat berkaitan deposit dalam perjanjian</li>
+            <li>Simpan semua resit bayaran deposit dengan baik</li>
+            <li>Pastikan deposit dibayar kepada pihak yang betul (developer/owner yang sah)</li>
+          </ul>
+
+          <p><strong>Ingat:</strong> Deposit adalah komitmen kewangan yang serius. Pastikan anda betul-betul mahu membeli hartanah tersebut sebelum membayar deposit.</p>
+        </div>
       `,
-      author: "Sarah Brosham",
-      date: "March 18, 2023",
-      category: "Property", 
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Kepentingan-Deposit-Rumah-Sewa.jpeg?fit=1080%2C1080&ssl=1",
+      author: "Brosham Properties",
+      date: "2024-11-24",
+      category: "Kewangan", 
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Kepentingan-Deposit-Rumah.jpg",
       readTime: "5 min read",
     },
     "3": {
       id: "3",
-      title: "Cara Elak Di Tipu Scammer Rumah Sewa", 
+      title: "Cara elak di tipu scammer", 
       content: `
-Sebelum ini Bro Sham ada ulas cara nak kenalpasti sama ada individu tersebut adalah seorang scammer rumah sewa atau tidak. Boleh baca di sini, Cara Kenalpasti Scammer Rumah Sewa.
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Cara-elak-di-tipu-scammer.jpg" alt="Cara elak di tipu scammer" class="w-full rounded-lg mb-6" />
+          
+          <p>Dalam era digital ini, scammer semakin kreatif dalam mencari mangsa, termasuk dalam sektor hartanah. Oleh itu, penting untuk kita mengetahui cara melindungi diri daripada penipuan.</p>
 
-Tapi hari ini Bro Sham nak share pula perkara – perkara yang boleh anda lakukan untuk memastikan anda tidak ditipu oleh scammer rumah sewa sama ada sebelum atau selepas perjanjian sewa beli dimeterai.
+          <h2>Taktik Scammer Yang Perlu Diwaspadai</h2>
 
-## SEBELUM
+          <h3>1. Tawaran Yang Terlalu Menarik</h3>
+          <ul>
+            <li>Harga jauh di bawah pasaran</li>
+            <li>Deposit rendah untuk hartanah premium</li>
+            <li>Promosi "limited time" yang mendesak</li>
+            <li>Jaminan keuntungan yang tidak realistik</li>
+          </ul>
 
-### CARI RUMAH SEWA MELALUI PERUNDING HARTANAH
+          <h3>2. Tekanan untuk Membuat Bayaran Segera</h3>
+          <ul>
+            <li>Minta bayaran sebelum viewing</li>
+            <li>Alasan "ramai yang berminat"</li>
+            <li>Hanya terima cash atau transfer bank</li>
+            <li>Tidak mahu berjumpa secara bersemuka</li>
+          </ul>
 
-Seperti semua sedia maklum, proses yang melibatkan hartanah memang agak rumit dan memakan masa yang lama. Jadi sebab itu juga, ramai tuan rumah atau penyewa tidak mahu menggunkan khidmat perunding hartanah sebab nak mudah dan cepat. Namun, keburukannya anda terpaksa berhadapan dengan pelbagai risiko untuk ditipu.
+          <h2>Langkah Pencegahan</h2>
 
-Sebagai perunding hartanah, setiap kali kami menerima listing rumah sewa, kami akan buat inspection terlebih dahulu sebelum mengiklankan hartanah tersebut. Hal ini demikian untuk membuktikan rumah itu benar-benar wujud, dalam keadaan yang baik untuk disewa dan memastikan individu tersebut benar-benar pemilik asal rumah tersebut. Dengan adanya khidmat seperti ini akan memudahkan kedua-dua belah pihak dan dapat elak dari sebarang bentuk penipuan.
+          <h3>✅ Verifikasi Identiti dan Dokumen</h3>
+          <ul>
+            <li>Minta gambar IC yang jelas</li>
+            <li>Semak geran atau surat hak milik</li>
+            <li>Sahkan melalui carian tanah di Pejabat Tanah</li>
+            <li>Pastikan nama dalam dokumen sepadan dengan penjual</li>
+          </ul>
 
-### JUMPA TUAN RUMAH (FACE TO FACE)
+          <h3>✅ Gunakan Perkhidmatan Profesional</h3>
+          <ul>
+            <li>Lantik perunding hartanah berlesen</li>
+            <li>Gunakan peguam yang berdaftar</li>
+            <li>Pastikan semua transaksi melalui saluran rasmi</li>
+          </ul>
 
-Pastikan anda berjumpa dengan tuan rumah secara bersemuka dan buat viewing rumah bersama-sama sebelum membuat sebarang bayaran deposit. Elakkan dari membuat sebarang bayaran sebelum berjumpa dengan tuan rumah. Jangan terlalu percaya dengan gambar-gambar rumah yang dihantar melalui WhatsApp.
+          <h3>✅ Buat Penyelidikan Menyeluruh</h3>
+          <ul>
+            <li>Google nama developer/penjual</li>
+            <li>Semak rekod prestasi dan ulasan</li>
+            <li>Bandingkan harga dengan hartanah serupa</li>
+            <li>Lawati lokasi secara peribadi</li>
+          </ul>
 
-### TENGOK GERAN RUMAH
+          <h2>Red Flags Yang Perlu Dielakkan</h2>
 
-Pastikan nama dalam geran rumah sama dengan nama tuan rumah yang anda berjumpa. Sekiranya nama dalam geran rumah berbeza dengan nama tuan rumah, pastikan anda ada surat kuasa wakil yang sah untuk membuktikan individu tersebut diberi kuasa untuk menyewakan rumah tersebut.
+          <div class="bg-red-50 p-4 rounded-lg">
+            <h4>🚨 Amaran Bahaya:</h4>
+            <ul>
+              <li>Tiada alamat fizik yang jelas</li>
+              <li>Gambar hartanah tidak konsisten</li>
+              <li>Hanya berkomunikasi melalui WhatsApp</li>
+              <li>Minta bayaran ke akaun peribadi</li>
+              <li>Tidak mahu tunjuk dokumen asal</li>
+              <li>Terus tolak permintaan viewing</li>
+            </ul>
+          </div>
 
-## SELEPAS
+          <h2>Jika Anda Menjadi Mangsa</h2>
 
-### BUAT TENANCY AGREEMENT
+          <h3>Langkah Segera:</h3>
+          <ol>
+            <li><strong>Lapor Polis:</strong> Buat laporan polis dengan segera</li>
+            <li><strong>Bank:</strong> Maklumkan kepada bank jika melibatkan transfer wang</li>
+            <li><strong>Simpan Bukti:</strong> Kumpul semua komunikasi dan resit</li>
+            <li><strong>SKMM:</strong> Lapor kepada Suruhanjaya Komunikasi dan Multimedia Malaysia</li>
+          </ol>
 
-Memang agak leceh nak buat tenancy agreement ni tapi ianya PENTING sebab nanti kalau ada apa-apa masalah, dokumen ni lah yang akan jadi rujukan. Dalam tenancy agreement ni semua perkara berkaitan dengan sewaan akan dinyatakan dengan jelas. Antara perkara yang akan ada dalam tenancy agreement ialah:
+          <h2>Tips Keselamatan</h2>
 
-- Tempoh sewaan
-- Kadar sewa bulanan  
-- Deposit yang dibayar
-- Syarat-syarat sewaan
-- Hak dan tanggungjawab kedua-dua belah pihak
+          <ul>
+            <li>Jangan terburu-buru membuat keputusan</li>
+            <li>Sentiasa berjumpa di tempat awam atau pejabat rasmi</li>
+            <li>Bawa saudara/rakan ketika viewing</li>
+            <li>Jangan bayar deposit sebelum semak dokumen</li>
+            <li>Guna akal sehat - jika terlalu baik, mungkin ada masalah</li>
+          </ul>
 
-Pastikan kedua-dua belah pihak faham dengan apa yang tertulis dalam tenancy agreement sebelum menandatanganinya.
+          <div class="bg-blue-50 p-4 rounded-lg mt-6">
+            <p><strong>💡 Ingat:</strong> Scammer bergantung pada ketamakan dan ketergesaan mangsa. Berhati-hati dan sentiasa verifikasi sebelum membuat sebarang pembayaran.</p>
+          </div>
+        </div>
       `,
-      author: "Sarah Brosham", 
-      date: "March 18, 2023",
-      category: "Property",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Cara-Elak-DiTipu-Scammer-Rumah-Sewa.jpeg?fit=1080%2C1080&ssl=1",
+      author: "Brosham Properties", 
+      date: "2024-11-23",
+      category: "Keselamatan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Cara-elak-di-tipu-scammer.jpg",
       readTime: "7 min read",
     },
     "4": {
       id: "4",
-      title: "Apa Itu Deposit Rumah Sewa",
+      title: "Apa itu deposit rumah? Sewa beli?",
       content: `
-Ramai yang beranggapan bahawa deposit sewa rumah ini sebenarnya membebankan penyewa dan tidak perlu pon diwujudkan. Tapi tahukah anda tanggapan ini sememangnya tidak benar. Kenapa? Jom kita baca lebih lanjut…
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Apa-itu-deposit-rumah-Sewa-beli.jpg" alt="Apa itu deposit rumah dan sewa beli" class="w-full rounded-lg mb-6" />
+          
+          <p>Ramai yang keliru antara konsep deposit rumah biasa dengan skim sewa beli. Mari kita fahami perbezaan dan kepentingan kedua-dua konsep ini dalam konteks hartanah Malaysia.</p>
 
-Sebelum itu, Bro Sham terangkan dulu apa itu 'Deposit Sewa Rumah'.
+          <h2>Apa itu Deposit Rumah?</h2>
 
-Secara umumnya, deposit rumah sewa ialah sejumlah wang yang diserahkan oleh pihak penyewa kepada tuan rumah sebagai salah satu syarat wajib sebelum masuk menyewa. Wang tersebut akan menjadi jaminan kepada tuan rumah sekiranya berlaku sebarang kerosakan, tunggakan atau masalah yang berkaitan. Wang tersebut juga akan dipulangkan kepada penyewa selepas tamat tempoh menyewa SEKIRANYA tiada sebarang masalah yang timbul.
+          <p>Deposit rumah adalah bayaran pendahuluan yang dibuat oleh pembeli kepada developer atau pemilik hartanah sebagai tanda komitmen untuk membeli. Ini adalah transaksi jual beli biasa.</p>
 
-### Jenis deposit rumah sewa
+          <h3>Ciri-ciri Deposit Rumah Biasa:</h3>
+          <ul>
+            <li>Biasanya 10% dari harga hartanah</li>
+            <li>Dibayar semasa menandatangani SPA</li>
+            <li>Komitmen untuk membeli secara outright</li>
+            <li>Memerlukan pinjaman bank untuk baki 90%</li>
+          </ul>
 
-**1. Deposit Tempahan (Booking Deposit)**
+          <h2>Apa itu Sewa Beli?</h2>
 
-Deposit tempahan akan diserahkan kepada tuan rumah setelah pihak penyewa bersetuju untuk menyewa rumah tersebut. Sekiranya tuan rumah telah menerima deposit ini, bermakna beliau tidak boleh lagi menerima tawaran daripada mana–mana pihak lagi. Kebiasaannya, tuan rumah akan minta jumlah deposit serta jumlah sewa bulanan.
+          <p>Sewa beli adalah skim alternatif di mana pembeli menyewa hartanah dengan pilihan untuk memilikinya pada akhir tempoh sewa. Ini popular untuk mereka yang tidak layak mendapat pinjaman bank.</p>
 
-**2. Deposit Utiliti**
+          <h3>Bagaimana Sewa Beli Berfungsi?</h3>
 
-Deposit utiliti ini biasanya dikenakan kepada pihak penyewa sekiranya mereka akan menanggung bil elektrik dan air sepanjang tempoh menyewa. Hal ini bagi mengurangkan risiko sekiranya terdapat sebarang tunggakan. Kebiasaannya, jumlah deposit utiliti akan diminta bersamaan dengan sewa bulanan.
+          <h4>1. Deposit Awal</h4>
+          <ul>
+            <li>Biasanya 10-20% dari nilai hartanah</li>
+            <li>Lebih tinggi dari deposit biasa</li>
+            <li>Menunjukkan komitmen serius</li>
+          </ul>
 
-**3. Deposit Sekuriti**
+          <h4>2. Bayaran Bulanan</h4>
+          <ul>
+            <li>Bayaran bulanan seperti sewa</li>
+            <li>Sebahagian akan dikira sebagai bayaran ke arah pemilikan</li>
+            <li>Biasanya lebih tinggi dari sewa biasa</li>
+          </ul>
 
-Deposit sekuriti ini lebih dikenali sebagai wang perlindungan bagi pihak tuan. Tuan rumah boleh menggunakan deposit ini untuk menanggung kerugian sekiranya berlaku sebarang kerosakan yang disebabkan oleh pihak penyewa. Segala kos pembaikian akan ditolak daripada deposit sekeruti tersebut.
+          <h4>3. Pilihan Beli (Option to Purchase)</h4>
+          <ul>
+            <li>Pada akhir tempoh (biasanya 3-5 tahun)</li>
+            <li>Boleh pilih untuk beli atau tidak</li>
+            <li>Jika beli, bayaran terdahulu dikira sebagai sebahagian harga</li>
+          </ul>
 
-Biasanya, penyewa perlu memaklumkan kepada pihak tuan rumah dua bulan awal sekiranya ingin menamatkan tempoh menyewa. Namun, sekiranya pihak penyewa gagal melakukan perkara tersebut, pihak tuan rumah berhak menolak deposit sekuriti tersebut untuk menggantikan kos kerugian dua bulannya.
+          <h2>Perbezaan Utama</h2>
 
-Jenis deposit sekuriti yang sering digunakan:
+          <table class="min-w-full border-collapse border border-gray-300 my-4">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border border-gray-300 px-4 py-2">Aspek</th>
+                <th class="border border-gray-300 px-4 py-2">Deposit Rumah Biasa</th>
+                <th class="border border-gray-300 px-4 py-2">Sewa Beli</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2"><strong>Komitmen</strong></td>
+                <td class="border border-gray-300 px-4 py-2">Wajib beli</td>
+                <td class="border border-gray-300 px-4 py-2">Pilihan untuk beli</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2"><strong>Deposit</strong></td>
+                <td class="border border-gray-300 px-4 py-2">10%</td>
+                <td class="border border-gray-300 px-4 py-2">10-20%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2"><strong>Pinjaman Bank</strong></td>
+                <td class="border border-gray-300 px-4 py-2">Diperlukan</td>
+                <td class="border border-gray-300 px-4 py-2">Tidak diperlukan serta-merta</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2"><strong>Pemilikan</strong></td>
+                <td class="border border-gray-300 px-4 py-2">Segera (selepas SPA)</td>
+                <td class="border border-gray-300 px-4 py-2">Pada akhir tempoh (jika pilih beli)</td>
+              </tr>
+            </tbody>
+          </table>
 
-> **1+1**
-> 
-> 1 Deposit Sekuriti + 1 Deposit Utiliti
-> 
-> RM1,000 + RM 1,000 = RM2,000
->
-> **2+1**
->
-> 2 Deposit Sekuriti + 1 Deposit Utiliti
->
-> RM2,000 + RM1,000 = RM3,000
->
-> **2+1+1**
->
-> 2 Deposit Sekuriti + 1 Deposit Utiliti + 1 Sewa Bulanan Pertama
->
-> RM2,000 + RM1,000 + RM1,000 = RM 4,000
+          <h2>Kelebihan Sewa Beli</h2>
+
+          <h3>✅ Untuk Pembeli:</h3>
+          <ul>
+            <li>Tidak perlu kelayakan bank pada awal</li>
+            <li>Masa untuk perbaiki skor kredit</li>
+            <li>Boleh "test drive" hartanah sebelum beli</li>
+            <li>Fleksibiliti untuk tidak beli jika tidak puas hati</li>
+          </ul>
+
+          <h3>✅ Untuk Penjual:</h3>
+          <ul>
+            <li>Dapat cash flow segera</li>
+            <li>Harga jual biasanya lebih tinggi</li>
+            <li>Hartanah masih dalam nama sendiri</li>
+          </ul>
+
+          <h2>Risiko Yang Perlu Dipertimbang</h2>
+
+          <div class="bg-yellow-50 p-4 rounded-lg">
+            <h4>⚠️ Untuk Pembeli:</h4>
+            <ul>
+              <li>Deposit tinggi hilang jika tidak jadi beli</li>
+              <li>Tiada jaminan akan dapat pinjaman bank nanti</li>
+              <li>Harga akhir mungkin lebih mahal</li>
+            </ul>
+          </div>
+
+          <div class="bg-red-50 p-4 rounded-lg mt-4">
+            <h4>⚠️ Untuk Penjual:</h4>
+            <ul>
+              <li>Pembeli mungkin tidak jadi beli</li>
+              <li>Perlu maintain hartanah dalam tempoh sewa</li>
+              <li>Isu legal jika pembeli ingkar bayaran</li>
+            </ul>
+          </div>
+
+          <h2>Kesimpulan</h2>
+
+          <p>Kedua-dua konsep ini mempunyai tempat masing-masing dalam pasaran hartanah Malaysia. Pilihan bergantung kepada situasi kewangan, kelayakan pinjaman, dan strategi pelaburan individu.</p>
+
+          <p><strong>Nasihat:</strong> Sentiasa dapatkan nasihat undang-undang dan kewangan sebelum terlibat dalam mana-mana skim ini.</p>
+        </div>
       `,
-      author: "Sarah Brosham",
-      date: "March 3, 2023",
-      category: "Property",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Apa-Itu-Deposit-Rumah-Sewa.jpeg?fit=1080%2C1080&ssl=1",
+      author: "Brosham Properties",
+      date: "2024-11-22",
+      category: "Kewangan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Apa-itu-deposit-rumah-Sewa-beli.jpg",
       readTime: "5 min read",
     },
     "5": {
       id: "5",
-      title: "Cara Kenalpasti Scammer Rumah Sewa",
+      title: "Cara kenalpasti scammer",
       content: `
-Pada dunia digital sekarang, kegiatan scammer juga semakin berleluasa. Game plan mereka pon dah bercabang. Bukan setakat menjadi pegawai LHDN atau banker sahaja, baru-baru ini ada kes individu ditipu atau discam oleh mereka yang acah-acah menjadi owner rumah sewa. Kemudian senang-senang je duit anda dilesapkan.
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Cara-kenalpasti-scammer.jpg" alt="Cara kenalpasti scammer" class="w-full rounded-lg mb-6" />
+          
+          <p>Dalam dunia digital hari ini, scammer semakin pandai menyamar dan menggunakan pelbagai taktik untuk menipu mangsa mereka. Mengenal pasti ciri-ciri scammer adalah langkah pertama untuk melindungi diri dari penipuan.</p>
 
-Oleh itu, sebelum anda ingin sewa rumah. Pastikan rumah atau owner rumah itu adalah benar dan bukan scammer. Bagaimana nak kenalpasti perkara tersebut?
+          <h2>Ciri-Ciri Umum Scammer</h2>
 
-### HARGA SEWA TERLALU MURAH
+          <h3>1. Tawaran Yang Terlalu Baik</h3>
+          <ul>
+            <li>Harga jauh lebih murah dari pasaran</li>
+            <li>Keuntungan dijamin 100%</li>
+            <li>Tiada risiko langsung</li>
+            <li>Pulangan tinggi dalam masa singkat</li>
+          </ul>
 
-Cara ini paling senang dan mudah untuk dikenalpasti. Selidik terlebih dahulu berapa market value untuk rumah sewa di kawasan tersebut. Sekiranya harga yang ditawarkan terlalu rendah, individu tersebut berpotensi adalah seorang scammer.
+          <h3>2. Mendesak Untuk Bertindak Segera</h3>
+          <ul>
+            <li>"Limited time offer"</li>
+            <li>"Hanya untuk 24 jam sahaja"</li>
+            <li>"Ramai yang berminat, cepat ambil keputusan"</li>
+            <li>Tidak memberi masa untuk berfikir</li>
+          </ul>
 
-Dan paling senang bila anda bandingkan harga dengan keadaan rumah yang ditawarkan. Logik ke untuk rumah yang besar dan cantik dengan harga sewa yang serendah itu? Berhati-hati juga dengan iklan deposit yang terlalu rendah sebab itu juga salah satu taktik scammer untuk tarik penyewa.
+          <h3>3. Maklumat Yang Tidak Jelas</h3>
+          <ul>
+            <li>Tiada alamat fizik yang betul</li>
+            <li>Nombor telefon yang tidak boleh dihubungi</li>
+            <li>Email dari domain percuma (Gmail, Yahoo)</li>
+            <li>Identiti yang samar-samar</li>
+          </ul>
 
-### RUMAH SEWA INDAH KHABAR DARI RUPA
+          <h2>Taktik Scammer Dalam Hartanah</h2>
 
-Yang ini anda perlu berhati-hati. Memandangkan rumah sewa ini mempunyai permintaan yang tinggi, jadi platform pengiklanannya juga luas. Contohnya di platform mudah.my, facebook dan banyak lagi. Oleh itu, senang jugalah scammer nak buat kegiatan mereka.
+          <h3>🚨 Red Flags Dalam Transaksi Hartanah:</h3>
 
-Sebab itu jangan mudah jatuh cinta bila tengok gambar yang indah-indah dekat platform tersebut. Belum tentu lagi rumah itu wujud atau 'seindah' itu. Kadang-kadang scammer ini main ambil sahaja gambar dari mana-mana dan info rumah juga tidak tepat.
+          <div class="bg-red-50 p-4 rounded-lg">
+            <ul>
+              <li><strong>Harga Tidak Logik:</strong> Jauh berbeza dengan market value</li>
+              <li><strong>Gambar Tidak Konsisten:</strong> Foto dari sumber berbeza</li>
+              <li><strong>Dokumentasi Lemah:</strong> Tiada geran asal atau surat hak milik</li>
+              <li><strong>Elak Berjumpa:</strong> Hanya mahu berkomunikasi online sahaja</li>
+              <li><strong>Bayaran Pelik:</strong> Minta transfer ke akaun peribadi</li>
+            </ul>
+          </div>
 
-### TUAN RUMAH ELAK JUMPA UNTUK VIEWING
+          <h2>Cara Mengesan Scammer</h2>
 
-Sekiranya betul tuan rumah tersebut adalah seorang scammer, kebiasaanya mereka akan elak untuk berjumpa. Sebab mereka tidak mahu muka mereka dikenali, takut – takut nanti anda buat laporan polis atau viralkan muka mereka. Tuan rumah yang betul -betul ingin sewakan rumah, mereka mesti ingin bersua muka dengan bakal penyewa. Iyalah nak bagi orang pinjam barang kita mestilah kita mahu tengok orang itu sama ada boleh dipercayai atau tidak.
+          <h3>✅ Semak Latar Belakang</h3>
+          <ul>
+            <li><strong>Google Search:</strong> Cari nama dan maklumat syarikat</li>
+            <li><strong>Social Media:</strong> Tengok profil dan aktiviti media sosial</li>
+            <li><strong>Review Online:</strong> Baca pengalaman orang lain</li>
+            <li><strong>Daftar Syarikat:</strong> Semak dengan SSM atau ROC</li>
+          </ul>
 
-Kebiasaanya scammer juga akan suruh anda pergi viewing rumah sendiri. Tetapi dapat tengok dari luar sahaja. Ini sudah terang lagi bersuluh yang mereka sebenarnya tiada akses pun untuk memberi anda masuk ke bahagian dalam rumah. Tuan rumah yang bagus atau tuan rumah ada melantik perunding hartanah, mereka akan sentiasa follow proses sewa beli yang betul.
+          <h3>✅ Verifikasi Dokumen</h3>
+          <ul>
+            <li>Minta dokumen asal, bukan fotokopi sahaja</li>
+            <li>Cross-check maklumat dengan pihak berkuasa</li>
+            <li>Pastikan nama dalam dokumen sepadan</li>
+            <li>Semak tarikh luput lesen atau permit</li>
+          </ul>
 
-### BOLEH PINDAH MASUK TANPA VIEWING
+          <h3>✅ Test Pengetahuan Mereka</h3>
+          <ul>
+            <li>Tanya soalan teknikal mengenai hartanah</li>
+            <li>Minta penjelasan detail mengenai projek</li>
+            <li>Lihat samada mereka tahu mengenai kawasan</li>
+            <li>Perhatikan jawapan yang tidak konsisten</li>
+          </ul>
 
-Sebelum anda nak proceed atau nak bayar deposit, lebih baik anda buat viewing terlebih dahulu. Risau kalau-kalau sebenarnya rumah itu tidak wujud pun tapi deposit sudah dibayar. Pastikan juga yang tuan rumah itu benar-benar memiliki hartanah tersebut. Sebab ada juga kes, penyewa sudah pindah masuk tiba-tiba tuan rumah sebenar datang dan tak izinkan rumahnya untuk disewa. Tak pasal-pasal penyewa kene keluar balik.
+          <h2>Jenis Scammer Yang Biasa Ditemui</h2>
+
+          <h3>1. Fake Property Agent</h3>
+          <ul>
+            <li>Mengaku sebagai ejen hartanah berlesen</li>
+            <li>Gunakan logo syarikat terkenal</li>
+            <li>Tiada lesen REN yang sah</li>
+          </ul>
+
+          <h3>2. Phantom Developer</h3>
+          <ul>
+            <li>Jual projek yang tidak wujud</li>
+            <li>Gunakan nama serupa developer terkenal</li>
+            <li>Tiada kelulusan pihak berkuasa</li>
+          </ul>
+
+          <h3>3. Fake Landlord</h3>
+          <ul>
+            <li>Sewa rumah yang bukan milik mereka</li>
+            <li>Gunakan gambar dari internet</li>
+            <li>Elak viewing atau jumpa bersemuka</li>
+          </ul>
+
+          <h2>Langkah Perlindungan</h2>
+
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h4>💡 Tips Keselamatan:</h4>
+            <ul>
+              <li><strong>Jangan Terburu-buru:</strong> Ambil masa untuk fikir dan siasat</li>
+              <li><strong>Berjumpa Sendiri:</strong> Insist untuk meeting face-to-face</li>
+              <li><strong>Bawa Saksi:</strong> Ajak rakan atau keluarga ketika berjumpa</li>
+              <li><strong>Rekod Perbualan:</strong> Simpan semua komunikasi sebagai bukti</li>
+              <li><strong>Guna Akal Sehat:</strong> Jika rasa janggal, mungkin memang ada masalah</li>
+            </ul>
+          </div>
+
+          <h2>Jika Sudah Tertipu</h2>
+
+          <h3>Langkah Segera:</h3>
+          <ol>
+            <li><strong>Buat Laporan Polis</strong> dalam 24 jam</li>
+            <li><strong>Hubungi Bank</strong> untuk block akaun jika perlu</li>
+            <li><strong>Kumpul Bukti</strong> - screenshot, email, SMS</li>
+            <li><strong>Lapor SKMM</strong> jika melibatkan komunikasi digital</li>
+            <li><strong>Maklum CCID</strong> (Commercial Crime Investigation Department)</li>
+          </ol>
+
+          <div class="bg-yellow-50 p-4 rounded-lg mt-6">
+            <p><strong>⚠️ Ingat:</strong> Scammer bergantung pada emosi dan ketergesaan mangsa. Sentiasa calm down, think twice, dan verify sebelum membuat apa-apa keputusan atau pembayaran.</p>
+          </div>
+        </div>
       `,
-      author: "Sarah Brosham",
-      date: "March 3, 2023",
-      category: "Property",
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/03/Cara-Kenal-Pasti-Scammer-Rumah-Sewa.jpeg?fit=1080%2C1080&ssl=1",
+      author: "Brosham Properties",
+      date: "2024-11-21",
+      category: "Keselamatan",
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Cara-kenalpasti-scammer.jpg",
       readTime: "6 min read",
     },
     "6": {
       id: "6",
-      title: "Ketahui Kos-Kos Tambahan Semasa Pembelian Rumah",
+      title: "Ketahui kos-kos tambahan yang perlu dibayar semasa beli rumah",
       content: `
-Sudah masuk tahun 2023, tapi masih ada lagi segelintir pembeli hartanah yang tidak tahu atau kurang pengetahuan tentang caj-caj lain yang terlibat dalam proses jual beli hartanah. Ada yang terkejut bila dapat tahu ada kos atau yuran lain yang perlu mereka sediakan sebelum memeterai perjanjian.
+        <div class="prose max-w-none">
+          <img src="https://www.broshamproperties.my/wp-content/uploads/2024/11/Ketahui-kos-kos-tambahan-yang-perlu-dibayar-semasa-beli-rumah.jpg" alt="Kos tambahan beli rumah" class="w-full rounded-lg mb-6" />
+          
+          <p>Ramai pembeli rumah pertama kali terkejut apabila mengetahui terdapat pelbagai kos tambahan yang perlu dibayar selain daripada harga pembelian dan deposit. Penting untuk mengetahui kos-kos ini awal untuk merancang kewangan dengan lebih baik.</p>
 
-Ramai tak tahu yang mereka bukan sahaja perlu sediakan bayaran pendahuluan, tapi mereka juga perlu sediakan bayaran tambahan untuk kos **CUKAI DUTI SETEM** dan **YURAN GUAMAN**. Oleh itu sebagai pembeli, anda perlu tahu dulu kos-kos yang terlibat supaya anda dapat merancang kewangan anda.
+          <h2>Kos-Kos Wajib Yang Perlu Dibayar</h2>
 
-Jom baca penerangan lebih lanjut..
+          <h3>1. Cukai Duti Setem</h3>
 
-## CUKAI DUTI SETEM
+          <h4>a) Duti Setem SPA (Sale & Purchase Agreement)</h4>
+          <ul>
+            <li>RM10 per salinan dokumen</li>
+            <li>Kos paling kecil tapi wajib ada</li>
+          </ul>
 
-Apa yang umum mengetahui, Duti Setem SPA hanya RM10 per salinan. Tetapi ada juga Duti Setem lain yang perlu diambil kira iaitu Duti Setem untuk Memorandum of Transfer (MOT) dan Surat Ikatan Penyerahan Hak (DOA). Kedua-dua yuran ini akan dikira berdasarkan pelan caj antara 1% hingga 4%.
+          <h4>b) Duti Setem MOT (Memorandum of Transfer)</h4>
+          <p>Dikira berdasarkan nilai hartanah dengan kadar berperingkat:</p>
+          
+          <table class="min-w-full border-collapse border border-gray-300 my-4">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border border-gray-300 px-4 py-2">Nilai Hartanah</th>
+                <th class="border border-gray-300 px-4 py-2">Kadar Duti Setem</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">RM100,000 pertama</td>
+                <td class="border border-gray-300 px-4 py-2">1%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">RM100,001 - RM500,000</td>
+                <td class="border border-gray-300 px-4 py-2">2%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">RM500,001 - RM1,000,000</td>
+                <td class="border border-gray-300 px-4 py-2">3%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">Melebihi RM1,000,000</td>
+                <td class="border border-gray-300 px-4 py-2">4%</td>
+              </tr>
+            </tbody>
+          </table>
 
-### Contoh:
+          <h4>c) Duti Setem Pinjaman Bank</h4>
+          <ul>
+            <li>0.5% daripada jumlah pinjaman</li>
+            <li>Dikenakan ke atas Loan Documentation Agreement (LDA)</li>
+          </ul>
 
-Ahmad membeli hartanah yang bernilai RM500,00. Bermakna Ahmad berada dalam kelompok pertama (1% untuk RM100,000) dan kedua (2% untuk RM400,000).
+          <h3>Contoh Pengiraan:</h3>
+          <div class="bg-gray-50 p-4 rounded-lg">
+            <p><strong>Hartanah bernilai RM800,000, pinjaman RM720,000 (90%)</strong></p>
+            
+            <p><strong>Duti Setem MOT:</strong></p>
+            <ul>
+              <li>RM100,000 pertama: RM100,000 × 1% = RM1,000</li>
+              <li>RM400,000 seterusnya: RM400,000 × 2% = RM8,000</li>
+              <li>RM300,000 seterusnya: RM300,000 × 3% = RM9,000</li>
+              <li><strong>Jumlah: RM18,000</strong></li>
+            </ul>
+            
+            <p><strong>Duti Setem Pinjaman:</strong></p>
+            <ul>
+              <li>RM720,000 × 0.5% = RM3,600</li>
+            </ul>
+            
+            <p><strong>Jumlah Duti Setem: RM21,600</strong></p>
+          </div>
 
-- Nilai hartanah = RM500,000
-- 1% daripada RM100,000 = RM1,000  
-- 2% daripada RM400,000 = RM8,000
-- **Jumlah duti setem yang perlu dibayar = RM9,000**
+          <h3>2. Yuran Guaman</h3>
 
-Selain itu, bayaran cukai duti setem sebanyak 0.5% DARIPADA JUMLAH PENUH PINJAMAN juga dikenakan ke atas perjanjian pinjaman pembeli hartanah.
+          <p>Yuran peguam untuk proses jual beli dikira berdasarkan skala yang ditetapkan:</p>
 
-### Contoh:
-- Nilai hartanah = RM500,000
-- Pendahuluan = 10% x RM500,000 = RM 50,000
-- Pembiayaan = 90% x RM500,000 = RM450,000
-- **Jumlah duti setem yang perlu dibayar = RM450,000 x 0.5% = RM2,250**
+          <table class="min-w-full border-collapse border border-gray-300 my-4">
+            <thead>
+              <tr class="bg-gray-100">
+                <th class="border border-gray-300 px-4 py-2">Nilai Hartanah</th>
+                <th class="border border-gray-300 px-4 py-2">Kadar Yuran</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">RM500,000 pertama</td>
+                <td class="border border-gray-300 px-4 py-2">1.00%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">RM500,001 - RM7,500,000</td>
+                <td class="border border-gray-300 px-4 py-2">0.80%</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 px-4 py-2">Melebihi RM7,500,000</td>
+                <td class="border border-gray-300 px-4 py-2">0.70%</td>
+              </tr>
+            </tbody>
+          </table>
 
-## YURAN GUAMAN
+          <h3>3. Kos-Kos Lain Yang Perlu Dipertimbang</h3>
 
-Apakah itu yuran guaman?
+          <h4>✅ Kos Bank/Pembiayaan:</h4>
+          <ul>
+            <li><strong>Processing Fee:</strong> 1% dari jumlah pinjaman (biasanya minimum RM3,000)</li>
+            <li><strong>Valuation Fee:</strong> RM300 - RM1,000 (bergantung nilai hartanah)</li>
+            <li><strong>Legal Fee untuk bank:</strong> Mengikut skala yang sama dengan yuran guaman pembeli</li>
+          </ul>
 
-Yuran guaman adalah sebahagian daripada SPA dan dicaj atas bantuan servis peguam dari segi proses perundangan semasa pembelian hartanah.
+          <h4>✅ Kos Insurans:</h4>
+          <ul>
+            <li><strong>Fire Insurance:</strong> Wajib untuk pinjaman (anggaran RM200-500/tahun)</li>
+            <li><strong>MRTA/MLTA:</strong> Melindungi pinjaman jika berlaku kematian/hilang upaya</li>
+          </ul>
 
-Yuran guaman akan dikira berdasarkan peratusan harga jualan hartanah, antara 0.5% sehingga ke 1% bergantung kepada nilai hartanah.
+          <h4>✅ Kos Utiliti & Penyambungan:</h4>
+          <ul>
+            <li>Deposit elektrik dan air</li>
+            <li>Yuran penyambungan internet</li>
+            <li>Yuran penyambungan Astro/TV</li>
+          </ul>
 
-### Contoh:
+          <h2>Jumlah Anggaran Kos Tambahan</h2>
 
-Farhana membeli hartanah yang bernilai RM600,000, bermakna yuran guaman beliau berada dalam kelompok pertama (1% untuk RM500,000) dan kedua (0.8% untuk RM100,000).
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h4>💡 Rule of Thumb:</h4>
+            <p>Sediakan <strong>3-5% tambahan</strong> dari harga hartanah untuk kos-kos tambahan ini.</p>
+            
+            <p><strong>Contoh untuk hartanah RM600,000:</strong></p>
+            <ul>
+              <li>Kos tambahan anggaran: RM18,000 - RM30,000</li>
+              <li>Belum termasuk deposit 10% dan down payment</li>
+            </ul>
+          </div>
 
-- Nilai hartanah = RM600,000
-- 1% daripada RM500,000 = RM5,000
-- 0.8% daripada RM100,000 = RM800  
-- **Jumlah yuran guaman = RM5,800**
+          <h2>Tips Menguruskan Kos</h2>
 
-Semoga serba sedikit penerangan daripada Bro Sham ini dapat memberi manfaat kepada para pembeli untuk merancang kewangan anda sebelum membeli rumah.
+          <ul>
+            <li><strong>Plan Awal:</strong> Kira semua kos sebelum commit beli rumah</li>
+            <li><strong>Simpan Wang:</strong> Mulakan tabung untuk kos-kos ini</li>
+            <li><strong>Compare Packages:</strong> Bank berbeza mungkin ada package berbeza</li>
+            <li><strong>Negotiate:</strong> Cuba negotiate dengan developer untuk subsidi sebahagian kos</li>
+          </ul>
+
+          <h2>Kos Yang Boleh Negotiate atau Avoid</h2>
+
+          <div class="bg-green-50 p-4 rounded-lg">
+            <h4>💰 Possible Savings:</h4>
+            <ul>
+              <li><strong>Legal Fee:</strong> Boleh pilih panel lawyer bank (biasanya lebih murah)</li>
+              <li><strong>Processing Fee:</strong> Sesetengah bank ada promotion waive fee</li>
+              <li><strong>Package Deal:</strong> Developer kadang subsidize legal fee</li>
+              <li><strong>First Time Buyer:</strong> Ada rebat duti setem untuk pembeli pertama</li>
+            </ul>
+          </div>
+
+          <h2>Kesimpulan</h2>
+
+          <p>Pembelian rumah melibatkan lebih daripada sekadar harga rumah dan deposit. Perancangan kewangan yang menyeluruh perlu mengambil kira semua kos tambahan ini untuk mengelakkan kejutan yang tidak diingini.</p>
+
+          <p><strong>Nasihat:</strong> Sentiasa minta pecahan terperinci semua kos dari ejen atau peguam anda sebelum proceed dengan pembelian.</p>
+        </div>
       `,
-      author: "Sarah Brosham",
-      date: "February 12, 2023",
-      category: "Property", 
-      image: "https://i0.wp.com/www.broshamproperties.my/wp-content/uploads/2023/02/Ketahui-Kos-Kos-Tambahan-Semasa-Pembelian-Rumah.jpeg?fit=1080%2C1080&ssl=1",
+      author: "Brosham Properties",
+      date: "2024-11-20",
+      category: "Kewangan", 
+      image: "https://www.broshamproperties.my/wp-content/uploads/2024/11/Ketahui-kos-kos-tambahan-yang-perlu-dibayar-semasa-beli-rumah.jpg",
       readTime: "8 min read",
     },
     "7": {
