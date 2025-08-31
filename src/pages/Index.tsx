@@ -266,34 +266,85 @@ const Index = () => {
 
 
       {/* Testimonials */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge variant="secondary" className="mb-4">Ulasan Pelanggan</Badge>
-              <h2 className="text-3xl font-bold mb-4">Apa Kata Pelanggan Kami</h2>
-              <p className="text-lg opacity-90 max-w-2xl mx-auto">
+      <section className="py-20 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent"></div>
+        
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16 animate-fade-in">
+              <Badge variant="outline" className="mb-6 px-4 py-2 text-lg bg-white/80 backdrop-blur-sm">
+                <Star className="w-4 h-4 mr-2 text-yellow-500" />
+                Ulasan Pelanggan
+              </Badge>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                Apa Kata Pelanggan Kami
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                 Jangan hanya percaya kata-kata kami - dengar dari keluarga-keluarga yang telah kami bantu mencari rumah impian mereka.
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid lg:grid-cols-3 gap-8">
               {testimonials.map((testimonial, index) => (
-                <Card key={index} className="bg-white/10 backdrop-blur-sm border-white/20">
-                  <CardContent className="p-6">
-                    <div className="flex mb-4">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <p className="text-white/90 mb-4 italic">"{testimonial.text}"</p>
-                    <div>
-                      <div className="font-semibold text-white">{testimonial.name}</div>
-                      <div className="text-white/70 text-sm">{testimonial.location}</div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div
+                  key={index}
+                  className="group animate-fade-in hover-scale transition-all duration-500"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <Card className="h-full bg-white dark:bg-slate-800 shadow-lg hover:shadow-2xl border-0 transition-all duration-300 group-hover:-translate-y-2 relative overflow-hidden">
+                    {/* Gradient accent */}
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-primary/80 to-primary/60"></div>
+                    
+                    <CardContent className="p-8">
+                      {/* Stars */}
+                      <div className="flex mb-6 justify-center">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star 
+                            key={i} 
+                            className="w-5 h-5 fill-yellow-400 text-yellow-400 transform group-hover:scale-110 transition-transform duration-300" 
+                            style={{ transitionDelay: `${i * 50}ms` }}
+                          />
+                        ))}
+                      </div>
+                      
+                      {/* Quote */}
+                      <div className="relative mb-8">
+                        <div className="absolute -top-4 -left-2 text-6xl text-primary/20 font-serif leading-none">"</div>
+                        <p className="text-foreground/90 leading-relaxed italic text-center relative z-10 text-lg">
+                          {testimonial.text}
+                        </p>
+                        <div className="absolute -bottom-4 -right-2 text-6xl text-primary/20 font-serif leading-none rotate-180">"</div>
+                      </div>
+                      
+                      {/* Customer info */}
+                      <div className="text-center pt-6 border-t border-border/50">
+                        <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-xl">
+                          {testimonial.name.charAt(0)}
+                        </div>
+                        <div className="font-bold text-foreground text-lg">{testimonial.name}</div>
+                        <div className="text-muted-foreground text-sm font-medium uppercase tracking-wide">
+                          {testimonial.location}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '0.8s' }}>
+              <div className="inline-flex flex-col sm:flex-row gap-4 items-center justify-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-border/50">
+                <div className="flex items-center text-muted-foreground">
+                  <Star className="w-5 h-5 fill-yellow-400 text-yellow-400 mr-2" />
+                  <span className="font-semibold">4.9/5 rating dari 250+ pelanggan</span>
+                </div>
+                <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300">
+                  Baca Semua Ulasan
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
