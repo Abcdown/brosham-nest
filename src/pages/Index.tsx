@@ -285,50 +285,100 @@ const Index = () => {
               </p>
             </div>
             
-            <div className="relative w-full max-w-4xl mx-auto">
-              <div className="overflow-hidden rounded-2xl">
-                <div className="flex transition-transform duration-500 ease-in-out" id="testimonialSlider">
-                  {testimonials.map((testimonial, index) => (
-                    <div key={index} className="w-full flex-shrink-0 px-4">
-                      <Card className="bg-white dark:bg-slate-800 shadow-2xl border-0 mx-auto max-w-2xl">
-                        <CardContent className="p-12 text-center">
-                          <div className="flex justify-center mb-6">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="w-6 h-6 fill-yellow-400 text-yellow-400 mx-1" />
-                            ))}
-                          </div>
-                          <div className="text-6xl text-primary/20 mb-4">"</div>
-                          <p className="text-xl text-foreground/90 leading-relaxed italic mb-8">
-                            {testimonial.text}
-                          </p>
-                          <div className="flex items-center justify-center">
-                            <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center text-white font-bold text-2xl mr-4">
-                              {testimonial.name.charAt(0)}
+            <div className="relative w-full max-w-7xl mx-auto">
+              <div className="overflow-hidden">
+                <div className="flex transition-transform duration-700 ease-in-out" id="testimonialSlider">
+                  {/* Group testimonials in sets of 3 */}
+                  {Array.from({ length: Math.ceil(testimonials.length / 3) }, (_, groupIndex) => (
+                    <div key={groupIndex} className="w-full flex-shrink-0 grid lg:grid-cols-3 gap-8 px-4">
+                      {testimonials.slice(groupIndex * 3, (groupIndex + 1) * 3).map((testimonial, index) => (
+                        <Card key={index} className="bg-white dark:bg-slate-800 shadow-xl hover:shadow-2xl border-0 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden group">
+                          {/* Gradient accent */}
+                          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-yellow-400 to-primary"></div>
+                          
+                          <CardContent className="p-8">
+                            {/* Stars */}
+                            <div className="flex justify-center mb-6">
+                              {[...Array(testimonial.rating)].map((_, i) => (
+                                <Star 
+                                  key={i} 
+                                  className="w-5 h-5 fill-yellow-400 text-yellow-400 mx-0.5 transform group-hover:scale-110 transition-transform duration-300" 
+                                  style={{ transitionDelay: `${i * 50}ms` }}
+                                />
+                              ))}
                             </div>
-                            <div className="text-left">
-                              <div className="font-bold text-lg">{testimonial.name}</div>
-                              <div className="text-muted-foreground uppercase tracking-wide text-sm">
+                            
+                            {/* Quote */}
+                            <div className="relative mb-8">
+                              <div className="absolute -top-2 -left-2 text-4xl text-primary/20 font-serif leading-none">"</div>
+                              <p className="text-foreground/90 leading-relaxed italic text-center relative z-10 text-base line-clamp-4">
+                                {testimonial.text}
+                              </p>
+                              <div className="absolute -bottom-2 -right-2 text-4xl text-primary/20 font-serif leading-none rotate-180">"</div>
+                            </div>
+                            
+                            {/* Customer info */}
+                            <div className="text-center pt-6 border-t border-border/30">
+                              <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary/70 rounded-full flex items-center justify-center mx-auto mb-3 text-white font-bold text-lg shadow-lg">
+                                {testimonial.name.charAt(0)}
+                              </div>
+                              <div className="font-bold text-foreground">{testimonial.name}</div>
+                              <div className="text-muted-foreground text-sm font-medium uppercase tracking-wide">
                                 {testimonial.location}
                               </div>
                             </div>
-                          </div>
-                        </CardContent>
-                      </Card>
+                          </CardContent>
+                        </Card>
+                      ))}
                     </div>
                   ))}
                 </div>
               </div>
               
+              {/* Navigation arrows */}
+              <button 
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 shadow-lg rounded-full flex items-center justify-center hover:shadow-xl transition-all duration-300 hover:scale-110 z-10"
+                onClick={() => {
+                  const slider = document.getElementById('testimonialSlider');
+                  if (slider) {
+                    const currentIndex = parseInt(slider.dataset.currentIndex || '0');
+                    const maxIndex = Math.ceil(testimonials.length / 3) - 1;
+                    const newIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+                    slider.style.transform = `translateX(-${newIndex * 100}%)`;
+                    slider.dataset.currentIndex = newIndex.toString();
+                  }
+                }}
+              >
+                <ArrowRight className="w-5 h-5 rotate-180 text-primary" />
+              </button>
+              
+              <button 
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 shadow-lg rounded-full flex items-center justify-center hover:shadow-xl transition-all duration-300 hover:scale-110 z-10"
+                onClick={() => {
+                  const slider = document.getElementById('testimonialSlider');
+                  if (slider) {
+                    const currentIndex = parseInt(slider.dataset.currentIndex || '0');
+                    const maxIndex = Math.ceil(testimonials.length / 3) - 1;
+                    const newIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+                    slider.style.transform = `translateX(-${newIndex * 100}%)`;
+                    slider.dataset.currentIndex = newIndex.toString();
+                  }
+                }}
+              >
+                <ArrowRight className="w-5 h-5 text-primary" />
+              </button>
+              
               {/* Navigation dots */}
-              <div className="flex justify-center mt-8 space-x-2">
-                {testimonials.map((_, index) => (
+              <div className="flex justify-center mt-8 space-x-3">
+                {Array.from({ length: Math.ceil(testimonials.length / 3) }, (_, index) => (
                   <button
                     key={index}
-                    className="w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300"
+                    className="w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125"
                     onClick={() => {
                       const slider = document.getElementById('testimonialSlider');
                       if (slider) {
                         slider.style.transform = `translateX(-${index * 100}%)`;
+                        slider.dataset.currentIndex = index.toString();
                       }
                     }}
                   />

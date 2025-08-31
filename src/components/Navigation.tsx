@@ -23,11 +23,21 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-              <Building className="w-5 h-5 text-primary-foreground" />
+          <Link to="/" className="flex items-center space-x-3">
+            <div className="relative">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary via-primary/90 to-primary/70 rounded-xl flex items-center justify-center shadow-lg">
+                <Building className="w-6 h-6 text-white" />
+              </div>
+              <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center">
+                <Home className="w-2.5 h-2.5 text-primary" />
+              </div>
             </div>
-            <span className="text-xl font-bold text-primary">BroSham</span>
+            <div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                BroSham
+              </span>
+              <div className="text-xs text-muted-foreground font-medium -mt-1">Properties</div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
@@ -78,12 +88,6 @@ const Navigation = () => {
                   </Link>
                 );
               })}
-              <div className="px-4 pt-2">
-                <Button variant="default" size="sm" className="w-full">
-                  <Phone className="w-4 h-4 mr-2" />
-                  6019 703 4036
-                </Button>
-              </div>
             </div>
           </div>
         )}
