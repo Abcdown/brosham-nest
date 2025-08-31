@@ -47,7 +47,7 @@ const Navigation = () => {
             ))}
             <Button variant="default" size="sm" className="ml-4">
               <Phone className="w-4 h-4 mr-2" />
-              019-703 4036
+              6019 703 4036
             </Button>
           </div>
 
@@ -85,7 +85,7 @@ const Navigation = () => {
               <div className="px-4 pt-2">
                 <Button variant="default" size="sm" className="w-full">
                   <Phone className="w-4 h-4 mr-2" />
-                  019-703 4036
+                  6019 703 4036
                 </Button>
               </div>
             </div>

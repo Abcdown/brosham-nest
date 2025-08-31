@@ -36,25 +36,19 @@ const Contact = () => {
     {
       icon: Phone,
       title: "Phone",
-      details: "(555) 123-4567",
+      details: "6019 703 4036",
       description: "Call us anytime for immediate assistance",
     },
     {
       icon: Mail,
       title: "Email",
-      details: "sarah@broshamproperties.com",
+      details: "sham@broshamproperties.my\nbroshamproperties@gmail.com",
       description: "We'll respond within 24 hours",
-    },
-    {
-      icon: MapPin,
-      title: "Office",
-      details: "123 Real Estate Blvd, Suite 100\nBeverly Hills, CA 90210",
-      description: "Visit us for in-person consultations",
     },
     {
       icon: Clock,
       title: "Office Hours",
-      details: "Mon-Fri: 9:00 AM - 7:00 PM\nSat-Sun: 10:00 AM - 5:00 PM",
+      details: "Mon-Fri: 9:00 AM - 5:00 PM\nSaturday: 9:00 AM - 5:00 PM",
       description: "Extended hours for your convenience",
     },
   ];
@@ -72,6 +66,19 @@ const Contact = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Ready to buy, sell, or invest? We're here to help you every step of the way.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Agent Image */}
+      <section className="py-8">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <img 
+              src="/lovable-uploads/49dff80c-c1fe-4c56-a8bf-ea754841314c.png" 
+              alt="Bro Sham - Professional Property Agent" 
+              className="mx-auto rounded-xl shadow-lg max-w-2xl w-full h-auto"
+            />
           </div>
         </div>
       </section>
@@ -128,12 +135,9 @@ const Contact = () => {
                         <SelectValue placeholder="Select a subject" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="buying">I'm interested in buying</SelectItem>
-                        <SelectItem value="selling">I want to sell my property</SelectItem>
-                        <SelectItem value="investment">Investment opportunities</SelectItem>
-                        <SelectItem value="valuation">Property valuation</SelectItem>
-                        <SelectItem value="consultation">Schedule consultation</SelectItem>
-                        <SelectItem value="other">Other inquiry</SelectItem>
+                        <SelectItem value="soalan">Soalan</SelectItem>
+                        <SelectItem value="nasihat">Nasihat</SelectItem>
+                        <SelectItem value="rundingan">Rundingan</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -191,74 +195,10 @@ const Contact = () => {
                 })}
               </div>
 
-              {/* Map Section */}
-              <Card className="bg-gradient-card">
-                <CardContent className="p-0">
-                  <div className="h-64 bg-muted rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                      <p className="text-muted-foreground">Interactive map would be displayed here</p>
-                      <p className="text-sm text-muted-foreground mt-2">
-                        123 Real Estate Blvd, Beverly Hills, CA 90210
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </div>
         </div>
       </div>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              <Card className="bg-gradient-card">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-3">How quickly can you respond to inquiries?</h3>
-                  <p className="text-muted-foreground text-sm">
-                    We typically respond to all inquiries within 2-4 hours during business hours, 
-                    and within 24 hours on weekends and holidays.
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gradient-card">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-3">Do you offer virtual consultations?</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Yes! We offer virtual consultations via video call for your convenience, 
-                    as well as virtual property tours when needed.
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gradient-card">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-3">What areas do you serve?</h3>
-                  <p className="text-muted-foreground text-sm">
-                    We primarily serve the Greater Los Angeles area, including Beverly Hills, 
-                    Santa Monica, Manhattan Beach, and surrounding communities.
-                  </p>
-                </CardContent>
-              </Card>
-              
-              <Card className="bg-gradient-card">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold mb-3">Is there a cost for initial consultation?</h3>
-                  <p className="text-muted-foreground text-sm">
-                    No, all initial consultations are completely free. We'll discuss your needs 
-                    and provide market insights at no charge.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Emergency Contact */}
       <section className="py-16 bg-primary text-primary-foreground">
@@ -270,7 +210,7 @@ const Contact = () => {
             </p>
             <Button variant="secondary" size="lg" className="text-lg px-8">
               <Phone className="w-5 h-5 mr-2" />
-              Emergency Line: (555) 999-HELP
+              Emergency Line: 6019 703 4036
             </Button>
           </div>
         </div>
