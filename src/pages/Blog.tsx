@@ -198,28 +198,6 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">
-              Stay Updated with Market Insights
-            </h2>
-            <p className="text-lg opacity-90 mb-8">
-              Subscribe to our newsletter and get the latest real estate tips and market updates delivered to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                placeholder="Enter your email" 
-                className="bg-primary-foreground text-primary placeholder:text-muted-foreground border-0"
-              />
-              <Button variant="secondary" className="whitespace-nowrap">
-                Subscribe Now
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };

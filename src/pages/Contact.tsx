@@ -215,21 +215,6 @@ Message: ${formData.message}
         </div>
       </div>
 
-      {/* Emergency Contact */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Need Immediate Assistance?</h2>
-            <p className="text-lg opacity-90 mb-8">
-              For urgent real estate matters or time-sensitive opportunities, call our emergency line.
-            </p>
-            <Button variant="secondary" size="lg" className="text-lg px-8">
-              <Phone className="w-5 h-5 mr-2" />
-              Emergency Line: 6019 703 4036
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
