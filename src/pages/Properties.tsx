@@ -178,27 +178,6 @@ const Properties = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">
-              Didn't Find What You're Looking For?
-            </h2>
-            <p className="text-lg opacity-90 mb-8">
-              Our expert team can help you find properties that match your specific needs and budget.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="secondary" size="lg">
-                Request Custom Search
-              </Button>
-              <Button variant="outline" size="lg" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                Schedule Consultation
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
