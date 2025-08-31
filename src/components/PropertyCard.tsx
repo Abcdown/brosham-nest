@@ -32,7 +32,7 @@ const PropertyCard = ({
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <Card className="group overflow-hidden border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-card">
+    <Card className="group overflow-hidden border-border hover:shadow-lg transition-all duration-300 hover:-translate-y-1 bg-gradient-card h-full flex flex-col">
       <div className="relative overflow-hidden">
         <img
           src={image}
@@ -64,33 +64,33 @@ const PropertyCard = ({
         </button>
       </div>
       
-      <CardContent className="p-6">
+      <CardContent className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-lg font-semibold text-foreground line-clamp-1">{title}</h3>
-          <span className="text-xl font-bold text-primary">{price}</span>
+          <h3 className="text-lg font-semibold text-foreground line-clamp-2 flex-1 mr-3 min-h-[3.5rem]">{title}</h3>
+          <span className="text-xl font-bold text-primary shrink-0">{price}</span>
         </div>
         
-        <div className="flex items-center text-muted-foreground mb-4">
-          <MapPin className="w-4 h-4 mr-1" />
-          <span className="text-sm">{location}</span>
+        <div className="flex items-center text-muted-foreground mb-4 min-h-[1.5rem]">
+          <MapPin className="w-4 h-4 mr-1 shrink-0" />
+          <span className="text-sm line-clamp-1">{location}</span>
         </div>
 
-        <div className="flex items-center justify-between mb-4 text-sm text-muted-foreground">
-          <div className="flex items-center">
+        <div className="grid grid-cols-3 gap-2 mb-6 text-sm text-muted-foreground">
+          <div className="flex items-center justify-center p-2 bg-muted/30 rounded-md">
             <Bed className="w-4 h-4 mr-1" />
             <span>{beds} beds</span>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center p-2 bg-muted/30 rounded-md">
             <Bath className="w-4 h-4 mr-1" />
             <span>{baths} baths</span>
           </div>
-          <div className="flex items-center">
+          <div className="flex items-center justify-center p-2 bg-muted/30 rounded-md">
             <Square className="w-4 h-4 mr-1" />
             <span>{sqft.toLocaleString()} sqft</span>
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-auto">
           <Button variant="default" size="sm" className="flex-1">
             View Details
           </Button>
