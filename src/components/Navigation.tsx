@@ -24,20 +24,11 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3">
-            <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary via-primary/90 to-primary/70 rounded-xl flex items-center justify-center shadow-lg">
-                <Building className="w-6 h-6 text-white" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full flex items-center justify-center">
-                <Home className="w-2.5 h-2.5 text-primary" />
-              </div>
-            </div>
-            <div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                BroSham
-              </span>
-              <div className="text-xs text-muted-foreground font-medium -mt-1">Properties</div>
-            </div>
+            <img 
+              src="/lovable-uploads/c70adf28-f0ed-4b62-8333-d15c9481be46.png" 
+              alt="BroSham Properties Logo" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
