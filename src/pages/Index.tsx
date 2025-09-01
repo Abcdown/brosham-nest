@@ -286,8 +286,12 @@ const Index = () => {
             </div>
             
             <div className="relative w-full max-w-7xl mx-auto">
-              <div className="overflow-hidden">
-                <div className="flex transition-transform duration-700 ease-in-out" id="testimonialSlider">
+              <div className="overflow-hidden rounded-2xl">
+                <div 
+                  className="flex transition-transform duration-700 ease-in-out" 
+                  id="testimonialSlider"
+                  data-current-index="0"
+                >
                   {/* Group testimonials in sets of 3 */}
                   {Array.from({ length: Math.ceil(testimonials.length / 3) }, (_, groupIndex) => (
                     <div key={groupIndex} className="w-full flex-shrink-0 grid lg:grid-cols-3 gap-8 px-4">
@@ -335,55 +339,87 @@ const Index = () => {
                 </div>
               </div>
               
-              {/* Navigation arrows */}
-              <button 
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 shadow-lg rounded-full flex items-center justify-center hover:shadow-xl transition-all duration-300 hover:scale-110 z-10"
-                onClick={() => {
-                  const slider = document.getElementById('testimonialSlider');
-                  if (slider) {
-                    const currentIndex = parseInt(slider.dataset.currentIndex || '0');
-                    const maxIndex = Math.ceil(testimonials.length / 3) - 1;
-                    const newIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
-                    slider.style.transform = `translateX(-${newIndex * 100}%)`;
-                    slider.dataset.currentIndex = newIndex.toString();
-                  }
-                }}
-              >
-                <ArrowRight className="w-5 h-5 rotate-180 text-primary" />
-              </button>
-              
-              <button 
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 shadow-lg rounded-full flex items-center justify-center hover:shadow-xl transition-all duration-300 hover:scale-110 z-10"
-                onClick={() => {
-                  const slider = document.getElementById('testimonialSlider');
-                  if (slider) {
-                    const currentIndex = parseInt(slider.dataset.currentIndex || '0');
-                    const maxIndex = Math.ceil(testimonials.length / 3) - 1;
-                    const newIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
-                    slider.style.transform = `translateX(-${newIndex * 100}%)`;
-                    slider.dataset.currentIndex = newIndex.toString();
-                  }
-                }}
-              >
-                <ArrowRight className="w-5 h-5 text-primary" />
-              </button>
-              
-              {/* Navigation dots */}
-              <div className="flex justify-center mt-8 space-x-3">
-                {Array.from({ length: Math.ceil(testimonials.length / 3) }, (_, index) => (
-                  <button
-                    key={index}
-                    className="w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125"
+              {Math.ceil(testimonials.length / 3) > 1 && (
+                <>
+                  {/* Navigation arrows */}
+                  <button 
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 shadow-lg rounded-full flex items-center justify-center hover:shadow-xl transition-all duration-300 hover:scale-110 z-10"
                     onClick={() => {
                       const slider = document.getElementById('testimonialSlider');
+                      const dots = document.querySelectorAll('[data-dot-index]');
                       if (slider) {
-                        slider.style.transform = `translateX(-${index * 100}%)`;
-                        slider.dataset.currentIndex = index.toString();
+                        const currentIndex = parseInt(slider.dataset.currentIndex || '0');
+                        const maxIndex = Math.ceil(testimonials.length / 3) - 1;
+                        const newIndex = currentIndex > 0 ? currentIndex - 1 : maxIndex;
+                        slider.style.transform = `translateX(-${newIndex * 100}%)`;
+                        slider.dataset.currentIndex = newIndex.toString();
+                        
+                        // Update dots
+                        dots.forEach((dot, i) => {
+                          dot.className = i === newIndex 
+                            ? "w-8 h-3 rounded-full bg-primary transition-all duration-300" 
+                            : "w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125";
+                        });
                       }
                     }}
-                  />
-                ))}
-              </div>
+                  >
+                    <ArrowRight className="w-5 h-5 rotate-180 text-primary" />
+                  </button>
+                  
+                  <button 
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white dark:bg-slate-800 shadow-lg rounded-full flex items-center justify-center hover:shadow-xl transition-all duration-300 hover:scale-110 z-10"
+                    onClick={() => {
+                      const slider = document.getElementById('testimonialSlider');
+                      const dots = document.querySelectorAll('[data-dot-index]');
+                      if (slider) {
+                        const currentIndex = parseInt(slider.dataset.currentIndex || '0');
+                        const maxIndex = Math.ceil(testimonials.length / 3) - 1;
+                        const newIndex = currentIndex < maxIndex ? currentIndex + 1 : 0;
+                        slider.style.transform = `translateX(-${newIndex * 100}%)`;
+                        slider.dataset.currentIndex = newIndex.toString();
+                        
+                        // Update dots
+                        dots.forEach((dot, i) => {
+                          dot.className = i === newIndex 
+                            ? "w-8 h-3 rounded-full bg-primary transition-all duration-300" 
+                            : "w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125";
+                        });
+                      }
+                    }}
+                  >
+                    <ArrowRight className="w-5 h-5 text-primary" />
+                  </button>
+                  
+                  {/* Navigation dots */}
+                  <div className="flex justify-center mt-12 space-x-3">
+                    {Array.from({ length: Math.ceil(testimonials.length / 3) }, (_, index) => (
+                      <button
+                        key={index}
+                        data-dot-index={index}
+                        className={index === 0 
+                          ? "w-8 h-3 rounded-full bg-primary transition-all duration-300" 
+                          : "w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125"
+                        }
+                        onClick={() => {
+                          const slider = document.getElementById('testimonialSlider');
+                          const dots = document.querySelectorAll('[data-dot-index]');
+                          if (slider) {
+                            slider.style.transform = `translateX(-${index * 100}%)`;
+                            slider.dataset.currentIndex = index.toString();
+                            
+                            // Update dots
+                            dots.forEach((dot, i) => {
+                              dot.className = i === index 
+                                ? "w-8 h-3 rounded-full bg-primary transition-all duration-300" 
+                                : "w-3 h-3 rounded-full bg-primary/30 hover:bg-primary transition-all duration-300 hover:scale-125";
+                            });
+                          }
+                        }}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
 
           </div>
