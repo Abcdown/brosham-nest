@@ -27,9 +27,6 @@ const HeroSection = () => {
               BROSHAM
               <span className="block text-secondary mt-2 text-2xl md:text-3xl font-normal">PERUNDING HARTANAH ANDA</span>
             </h1>
-            <p className="text-xl text-white/90 mb-8 drop-shadow">
-              Temui hartanah istimewa di lokasi terbaik. Rumah impian anda menanti dengan bimbingan pakar dan perkhidmatan peribadi kami.
-            </p>
             
             {/* Contact Info */}
             <div className="space-y-4 mb-8">
