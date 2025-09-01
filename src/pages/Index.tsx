@@ -386,19 +386,6 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Bottom CTA */}
-            <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '0.8s' }}>
-              <div className="inline-flex flex-col sm:flex-row gap-4 items-center justify-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-border/50">
-                <div className="flex items-center text-muted-foreground">
-                  <Star className="w-5 h-5 fill-yellow-400 text-yellow-400 mr-2" />
-                  <span className="font-semibold">4.9/5 rating dari 250+ pelanggan</span>
-                </div>
-                <Button className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 transition-all duration-300">
-                  Baca Semua Ulasan
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </div>
-            </div>
           </div>
         </div>
       </section>
