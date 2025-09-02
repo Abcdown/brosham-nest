@@ -15,6 +15,7 @@ import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import PropertyValueChecker from "./pages/PropertyValueChecker";
 import LoanEligibilityChecker from "./pages/LoanEligibilityChecker";
+import AdminUpload from "./pages/AdminUpload";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/semak-nilai-hartanah" element={<PropertyValueChecker />} />
             <Route path="/semak-kelayakan-loan" element={<LoanEligibilityChecker />} />
+            <Route path="/admin/upload" element={<AdminUpload />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
