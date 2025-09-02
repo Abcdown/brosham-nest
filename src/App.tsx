@@ -40,10 +40,14 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/semak-nilai-hartanah" element={<PropertyValueChecker />} />
             <Route path="/semak-kelayakan-loan" element={<LoanEligibilityChecker />} />
+
+            {/* New hidden admin page */}
             <Route path="/admin/upload" element={<AdminUpload />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+            {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+
           <Footer />
         </div>
       </BrowserRouter>
