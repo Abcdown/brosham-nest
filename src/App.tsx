@@ -17,6 +17,7 @@ import PropertyValueChecker from "./pages/PropertyValueChecker";
 import LoanEligibilityChecker from "./pages/LoanEligibilityChecker";
 import AdminUpload from "./pages/AdminUpload";
 import NotFound from "./pages/NotFound";
+import AdminUpload from "./pages/AdminUpload";
 
 const queryClient = new QueryClient();
 
