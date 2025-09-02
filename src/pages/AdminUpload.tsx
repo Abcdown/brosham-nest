@@ -102,14 +102,19 @@ const AdminUpload: React.FC = () => {
   };
 
   const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-    
-    const file = e.dataTransfer.files[0];
-    if (file) {
-      handleFileSelect(file);
-    }
+  e.preventDefault();
+  setDragOver(false);
+
+  const files = Array.from(e.dataTransfer.files ?? []);
+  if (files.length === 0) return;
+
+  if (files.length === 1) {
+    handleFileSelect(files[0]);
+  } else {
+    void uploadFiles(files);
+  }
   }, []);
+
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -150,6 +155,36 @@ const AdminUpload: React.FC = () => {
     }
   };
 
+  // NEW: sequential multi-file uploader
+const uploadFiles = async (files: File[]) => {
+  if (!apiKey || files.length === 0) return;
+
+  setUploading(true);
+  let ok = 0, fail = 0;
+
+  for (const file of files) {
+    if (!file.type.startsWith("image/")) { fail++; continue; }
+
+    const formData = new FormData();
+    formData.append("photo", file);
+
+    try {
+      const response = await fetch(`${API_BASE}/upload.php?key=${encodeURIComponent(apiKey)}`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+      if (data?.ok) ok++; else fail++;
+    } catch {
+      fail++;
+    }
+  }
+
+  toast.success(`Uploaded ${ok} file(s)` + (fail ? ` · ${fail} failed` : ""));
+  await fetchUploads();
+  setUploading(false);
+};
+  
   const clearSelection = () => {
     setSelectedFile(null);
     if (previewUrl) {
@@ -248,9 +283,19 @@ const AdminUpload: React.FC = () => {
                 <Input
                   type="file"
                   accept="image/*"
-                  onChange={(e) => e.target.files?.[0] && handleFileSelect(e.target.files[0])}
+                  multiple
+                  onChange={(e) => {
+                  const files = Array.from(e.target.files ?? []);
+                  if (files.length === 1) {
+                  // keep your existing preview flow for single selection
+                  handleFileSelect(files[0]);
+                  } else if (files.length > 1) {
+                  // upload many immediately
+                    void uploadFiles(files);
+                  }
+                  }}
                   className="max-w-xs mx-auto"
-                />
+              />
               </div>
             ) : (
               <div className="space-y-4">
