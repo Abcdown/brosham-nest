@@ -64,11 +64,19 @@ const AdminUpload: React.FC = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (apiKey) {
-      fetchUploads();
-    }
-  }, [apiKey]);
+// Global drag blockers (prevents browser from showing "forbidden"/navigating away)
+useEffect(() => {
+  const prevent = (e: DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+  };
+  window.addEventListener("dragover", prevent);
+  window.addEventListener("drop", prevent);
+  return () => {
+    window.removeEventListener("dragover", prevent);
+    window.removeEventListener("drop", prevent);
+  };
+}, []);
 
   const fetchUploads = async () => {
     if (!apiKey) return;
@@ -103,10 +111,22 @@ const AdminUpload: React.FC = () => {
 
 const handleDrop = useCallback((e: React.DragEvent) => {
   e.preventDefault();
-  e.stopPropagation();           // <-- add this
+  e.stopPropagation();
   setDragOver(false);
 
-  const files = Array.from(e.dataTransfer.files ?? []);
+  let files: File[] = [];
+
+  // Prefer DataTransferItemList for better cross-browser behavior
+  const items = e.dataTransfer?.items;
+  if (items && items.length) {
+    files = Array.from(items)
+      .filter((it) => it.kind === "file")
+      .map((it) => it.getAsFile())
+      .filter((f): f is File => !!f);
+  } else {
+    files = Array.from(e.dataTransfer?.files ?? []);
+  }
+
   if (files.length === 0) return;
 
   if (files.length === 1) {
@@ -115,6 +135,7 @@ const handleDrop = useCallback((e: React.DragEvent) => {
     void uploadFiles(files);
   }
 }, []);
+
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -281,14 +302,17 @@ const uploadFiles = async (files: File[]) => {
           <CardContent>
             {!selectedFile ? (
               <div
-                className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                dragOver ? 'border-primary bg-primary/5' : 'border-muted-foreground/25'
-                }`}
-                onDrop={handleDrop}
-                onDragOver={handleDragOver}   // 👈 must be here
-                onDragLeave={handleDragLeave} // 👈 must be here
-                onDragEnter={handleDragEnter}
-                >
+  role="button"
+  tabIndex={0}
+  className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+    dragOver ? 'border-primary bg-primary/5' : 'border-muted-foreground/25'
+  }`}
+  onDrop={handleDrop}
+  onDragOver={handleDragOver}
+  onDragLeave={handleDragLeave}
+  onDragEnter={handleDragEnter}
+>
+
 
                 <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                 <p className="text-lg mb-2">Drop image here or click to select</p>
