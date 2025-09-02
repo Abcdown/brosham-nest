@@ -118,8 +118,11 @@ const AdminUpload: React.FC = () => {
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
+    e.stopPropagation();
+    e.dataTransfer.dropEffect = "copy";  // 👈 tell browser it's a copy action
     setDragOver(true);
   }, []);
+
 
   const handleDragLeave = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -272,12 +275,13 @@ const uploadFiles = async (files: File[]) => {
             {!selectedFile ? (
               <div
                 className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
-                  dragOver ? 'border-primary bg-primary/5' : 'border-muted-foreground/25'
+                dragOver ? 'border-primary bg-primary/5' : 'border-muted-foreground/25'
                 }`}
                 onDrop={handleDrop}
-                onDragOver={handleDragOver}
-                onDragLeave={handleDragLeave}
-              >
+                onDragOver={handleDragOver}   // 👈 must be here
+                onDragLeave={handleDragLeave} // 👈 must be here
+                >
+
                 <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
                 <p className="text-lg mb-2">Drop image here or click to select</p>
                 <Input
