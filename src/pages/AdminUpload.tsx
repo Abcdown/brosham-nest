@@ -144,7 +144,7 @@ const handleDragLeave = useCallback((e: React.DragEvent) => {
     formData.append('photo', selectedFile);
 
     try {
-      const response = await fetch(`${API_BASE}/upload.php?key=${apiKey}`, {
+      const response = await fetch(`${API_BASE}/upload.php?key=${encodeURIComponent(apiKey)}`, {
         method: 'POST',
         body: formData,
       });
