@@ -101,8 +101,9 @@ const AdminUpload: React.FC = () => {
     setPreviewUrl(url);
   };
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
+const handleDrop = useCallback((e: React.DragEvent) => {
   e.preventDefault();
+  e.stopPropagation();           // <-- add this
   setDragOver(false);
 
   const files = Array.from(e.dataTransfer.files ?? []);
@@ -113,8 +114,7 @@ const AdminUpload: React.FC = () => {
   } else {
     void uploadFiles(files);
   }
-  }, []);
-
+}, []);
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
@@ -123,11 +123,18 @@ const AdminUpload: React.FC = () => {
     setDragOver(true);
   }, []);
 
+const handleDragEnter = useCallback((e: React.DragEvent) => {
+  e.preventDefault();
+  e.stopPropagation();
+  setDragOver(true);
+}, []);
 
-  const handleDragLeave = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    setDragOver(false);
-  }, []);
+const handleDragLeave = useCallback((e: React.DragEvent) => {
+  e.preventDefault();
+  e.stopPropagation();           // <-- add this
+  setDragOver(false);
+}, []);
+
 
   const handleUpload = async () => {
     if (!selectedFile || !apiKey) return;
@@ -280,6 +287,7 @@ const uploadFiles = async (files: File[]) => {
                 onDrop={handleDrop}
                 onDragOver={handleDragOver}   // 👈 must be here
                 onDragLeave={handleDragLeave} // 👈 must be here
+                onDragEnter={handleDragEnter}
                 >
 
                 <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
