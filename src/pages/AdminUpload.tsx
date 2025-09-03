@@ -90,7 +90,7 @@ useEffect(() => {
     
     setLoading(true);
     try {
-      const response = await fetch(`${API_BASE}/list.php?key=${apiKey}`);
+      const response = await fetch(`${API_BASE}/list.php?key=${encodeURIComponent(apiKey)}`);
       const data: ListResponse = await response.json();
       
       if (data.ok && data.items) {
