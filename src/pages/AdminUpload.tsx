@@ -120,25 +120,49 @@ const handleDrop = useCallback((e: React.DragEvent) => {
   e.stopPropagation();
   setDragOver(false);
 
+  console.log('Drop event triggered');
+  console.log('DataTransfer:', e.dataTransfer);
+  console.log('Items:', e.dataTransfer?.items);
+  console.log('Files:', e.dataTransfer?.files);
+
   let files: File[] = [];
 
-  // Prefer DataTransferItemList for better cross-browser behavior
-  const items = e.dataTransfer?.items;
-  if (items && items.length) {
-    files = Array.from(items)
-      .filter((it) => it.kind === "file")
-      .map((it) => it.getAsFile())
-      .filter((f): f is File => !!f);
-  } else {
-    files = Array.from(e.dataTransfer?.files ?? []);
+  // Try files first (more reliable on Safari/macOS)
+  if (e.dataTransfer?.files && e.dataTransfer.files.length > 0) {
+    files = Array.from(e.dataTransfer.files);
+    console.log('Using files API, found:', files.length);
+  } else if (e.dataTransfer?.items && e.dataTransfer.items.length > 0) {
+    // Fallback to items API
+    files = Array.from(e.dataTransfer.items)
+      .filter((item) => item.kind === "file")
+      .map((item) => item.getAsFile())
+      .filter((file): file is File => file !== null);
+    console.log('Using items API, found:', files.length);
   }
 
-  if (files.length === 0) return;
+  console.log('Final files array:', files);
 
-  if (files.length === 1) {
-    handleFileSelect(files[0]);
+  if (files.length === 0) {
+    console.log('No files detected');
+    toast.error('No files detected. Please try again.');
+    return;
+  }
+
+  // Filter for image files only
+  const imageFiles = files.filter(file => file.type.startsWith('image/'));
+  console.log('Image files:', imageFiles.length);
+
+  if (imageFiles.length === 0) {
+    toast.error('Please drop image files only');
+    return;
+  }
+
+  if (imageFiles.length === 1) {
+    console.log('Single file, showing preview');
+    handleFileSelect(imageFiles[0]);
   } else {
-    void uploadFiles(files);
+    console.log('Multiple files, uploading directly');
+    void uploadFiles(imageFiles);
   }
 }, []);
 
