@@ -17,6 +17,7 @@ import PropertyValueChecker from "./pages/PropertyValueChecker";
 import LoanEligibilityChecker from "./pages/LoanEligibilityChecker";
 import AdminUpload from "./pages/AdminUpload";
 import NotFound from "./pages/NotFound";
+import AdminListingForm from "./pages/AdminListingForm";
 
 const queryClient = new QueryClient();
 
@@ -39,6 +40,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/semak-nilai-hartanah" element={<PropertyValueChecker />} />
             <Route path="/semak-kelayakan-loan" element={<LoanEligibilityChecker />} />
+            <Route path="/admin/listings/new" element={<AdminListingForm />} />
 
             {/* New hidden admin page */}
             <Route path="/admin/upload" element={<AdminUpload />} />
