@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 
 const API_BASE = "https://staging.broshamproperties.my/api";
 const API_KEY_STORAGE = "BP_API_KEY";
+const MAX_BYTES = 5 * 1024 * 1024; // 5MB
 
 interface UploadResponse {
   ok: boolean;
@@ -109,7 +110,10 @@ useEffect(() => {
       toast.error('Please select an image file');
       return;
     }
-
+    if (file.size > MAX_BYTES) {
+      toast.error(`"${file.name}" is larger than 5 MB`);
+      return;
+    }
     setSelectedFile(file);
     const url = URL.createObjectURL(file);
     setPreviewUrl(url);
@@ -234,6 +238,8 @@ const uploadFiles = async (files: File[]) => {
 
   for (const file of files) {
     if (!file.type.startsWith("image/")) { fail++; continue; }
+    if (file.size > MAX_BYTES) { fail++; continue; }
+
 
     const formData = new FormData();
     formData.append("photo", file);
@@ -390,8 +396,14 @@ const uploadFiles = async (files: File[]) => {
                 </div>
                 <div className="flex gap-2">
                   <Button onClick={handleUpload} disabled={uploading}>
-                    {uploading ? 'Uploading...' : 'Upload'}
+                     {uploading ? (
+                      <span className="inline-flex items-center gap-2">
+                      <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent" />
+                      Uploading…
+                      </span>
+                      ) : 'Upload'}
                   </Button>
+
                   <Button variant="outline" onClick={clearSelection}>
                     Clear
                   </Button>
@@ -408,7 +420,13 @@ const uploadFiles = async (files: File[]) => {
           </CardHeader>
           <CardContent>
             {loading ? (
-              <p className="text-center text-muted-foreground">Loading...</p>
+              <div className="flex items-center justify-center py-8">
+                  <span className="inline-flex items-center gap-2 text-muted-foreground">
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-current border-r-transparent" />
+                    Loading…
+                  </span>
+              </div>
+
             ) : uploads.length === 0 ? (
               <p className="text-center text-muted-foreground">No uploads found</p>
             ) : (
