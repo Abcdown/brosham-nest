@@ -78,6 +78,12 @@ useEffect(() => {
   };
 }, []);
 
+  useEffect(() => {
+    if (apiKey) {
+      fetchUploads();
+    }
+  }, [apiKey]);
+
   const fetchUploads = async () => {
     if (!apiKey) return;
     
@@ -152,8 +158,17 @@ const handleDragEnter = useCallback((e: React.DragEvent) => {
 
 const handleDragLeave = useCallback((e: React.DragEvent) => {
   e.preventDefault();
-  e.stopPropagation();           // <-- add this
-  setDragOver(false);
+  e.stopPropagation();
+  
+  // Only set dragOver to false if we're actually leaving the dropzone
+  // This prevents false triggers when dragging over child elements
+  const rect = e.currentTarget.getBoundingClientRect();
+  const x = e.clientX;
+  const y = e.clientY;
+  
+  if (x < rect.left || x >= rect.right || y < rect.top || y >= rect.bottom) {
+    setDragOver(false);
+  }
 }, []);
 
 
@@ -315,23 +330,30 @@ const uploadFiles = async (files: File[]) => {
 
 
                 <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-                <p className="text-lg mb-2">Drop image here or click to select</p>
+                <p className="text-lg mb-2">Drop images here or click to select</p>
+                <p className="text-sm text-muted-foreground mb-4">Select multiple files to upload them all at once</p>
                 <Input
+                  id="file-input"
                   type="file"
                   accept="image/*"
                   multiple
                   onChange={(e) => {
-                  const files = Array.from(e.target.files ?? []);
-                  if (files.length === 1) {
-                  // keep your existing preview flow for single selection
-                  handleFileSelect(files[0]);
-                  } else if (files.length > 1) {
-                  // upload many immediately
-                    void uploadFiles(files);
-                  }
+                    const files = Array.from(e.target.files ?? []);
+                    if (files.length === 1) {
+                      handleFileSelect(files[0]);
+                    } else if (files.length > 1) {
+                      void uploadFiles(files);
+                    }
                   }}
-                  className="max-w-xs mx-auto"
-              />
+                  className="hidden"
+                />
+                <Button 
+                  variant="outline" 
+                  onClick={() => document.getElementById('file-input')?.click()}
+                  className="hover-scale"
+                >
+                  Choose Files
+                </Button>
               </div>
             ) : (
               <div className="space-y-4">
