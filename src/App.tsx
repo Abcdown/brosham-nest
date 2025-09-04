@@ -18,6 +18,11 @@ import LoanEligibilityChecker from "./pages/LoanEligibilityChecker";
 import AdminUpload from "./pages/AdminUpload";
 import NotFound from "./pages/NotFound";
 import AdminListingForm from "./pages/AdminListingForm";
+import Login from "./pages/Login";
+import AdminLayout from "./components/AdminLayout";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminBlog from "./pages/AdminBlog";
+import AdminListing from "./pages/AdminListing";
 
 const queryClient = new QueryClient();
 
@@ -42,7 +47,17 @@ const App = () => (
             <Route path="/semak-kelayakan-loan" element={<LoanEligibilityChecker />} />
             <Route path="/admin/listings/new" element={<AdminListingForm />} />
 
-            {/* New hidden admin page */}
+            {/* Authentication */}
+            <Route path="/login" element={<Login />} />
+
+            {/* Admin Routes */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminDashboard />} />
+              <Route path="blog" element={<AdminBlog />} />
+              <Route path="listing" element={<AdminListing />} />
+            </Route>
+
+            {/* Hidden admin upload page */}
             <Route path="/admin/upload" element={<AdminUpload />} />
 
             {/* Catch-all */}

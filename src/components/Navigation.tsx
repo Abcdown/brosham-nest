@@ -46,6 +46,11 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
+            <Link to="/login">
+              <Button variant="default" size="sm">
+                Login
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -79,6 +84,11 @@ const Navigation = () => {
                   </Link>
                 );
               })}
+              <Link to="/login" onClick={() => setIsOpen(false)}>
+                <Button variant="default" size="sm" className="w-full">
+                  Login
+                </Button>
+              </Link>
             </div>
           </div>
         )}
