@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { FileText, Building, LogOut, Menu, X } from "lucide-react";
+import Breadcrumb from "./Breadcrumb";
 
 const AdminLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -18,6 +19,20 @@ const AdminLayout = () => {
   const handleLogout = () => {
     localStorage.removeItem("ADMIN_TOKEN");
     navigate("/login");
+  };
+
+  const getBreadcrumbItems = () => {
+    const items = [{ label: "Admin" }];
+    
+    if (location.pathname === "/admin") {
+      items.push({ label: "Dashboard" });
+    } else if (location.pathname === "/admin/blog") {
+      items.push({ label: "Blog" });
+    } else if (location.pathname === "/admin/listing") {
+      items.push({ label: "Listing" });
+    }
+    
+    return items;
   };
 
   // Check authentication
@@ -86,6 +101,16 @@ const AdminLayout = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
+        {/* Top Header */}
+        <header className="bg-card border-b border-border p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+              <Breadcrumb items={getBreadcrumbItems()} />
+            </div>
+          </div>
+        </header>
+        
         <main className="flex-1 p-6">
           <Outlet />
         </main>
