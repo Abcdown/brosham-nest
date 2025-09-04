@@ -4,19 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Minus, Images, X } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
+import ImagesPanel from "@/components/admin/ImagesPanel";
 
-// Mock image URLs for the picker
-const MOCK_IMAGES = [
-  "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-  "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
-];
 
 const AdminListing = () => {
   const [title, setTitle] = useState("");
@@ -30,7 +21,6 @@ const AdminListing = () => {
   const [status, setStatus] = useState("");
   const [coverImageUrl, setCoverImageUrl] = useState("");
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
@@ -50,17 +40,12 @@ const AdminListing = () => {
     setPrice(formatPrice(price));
   };
 
-  const handleImageSelect = (imageUrl: string) => {
-    setSelectedImages(prev => {
-      if (prev.includes(imageUrl)) {
-        return prev.filter(url => url !== imageUrl);
-      }
-      return [...prev, imageUrl];
-    });
+  const handleImagesChange = (images: string[]) => {
+    setSelectedImages(images);
   };
 
-  const handleRemoveImage = (imageUrl: string) => {
-    setSelectedImages(prev => prev.filter(url => url !== imageUrl));
+  const handleCoverImageChange = (coverImage: string) => {
+    setCoverImageUrl(coverImage);
   };
 
   const handleSave = async () => {
@@ -257,94 +242,13 @@ const AdminListing = () => {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="coverImage">Cover Image URL</Label>
-              <Input
-                id="coverImage"
-                type="url"
-                value={coverImageUrl}
-                onChange={(e) => setCoverImageUrl(e.target.value)}
-                placeholder="https://example.com/image.jpg"
-              />
-            </div>
-
-            {/* Image Picker Section */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Label>Property Images</Label>
-                <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-                  <DialogTrigger asChild>
-                    <Button variant="outline">
-                      <Images className="h-4 w-4 mr-2" />
-                      Select Images
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-4xl">
-                    <DialogHeader>
-                      <DialogTitle>Select Property Images</DialogTitle>
-                      <DialogDescription>
-                        Click on images to select them for your property listing.
-                      </DialogDescription>
-                    </DialogHeader>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-h-96 overflow-y-auto">
-                      {MOCK_IMAGES.map((imageUrl, index) => (
-                        <div
-                          key={index}
-                          className={`relative cursor-pointer border-2 rounded-lg overflow-hidden transition-all ${
-                            selectedImages.includes(imageUrl)
-                              ? "border-primary ring-2 ring-primary/20"
-                              : "border-border hover:border-primary/50"
-                          }`}
-                          onClick={() => handleImageSelect(imageUrl)}
-                        >
-                          <img
-                            src={imageUrl}
-                            alt={`Property image ${index + 1}`}
-                            className="w-full h-24 object-cover"
-                          />
-                          {selectedImages.includes(imageUrl) && (
-                            <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
-                              <div className="bg-primary text-primary-foreground rounded-full p-1">
-                                ✓
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex justify-end">
-                      <Button onClick={() => setIsModalOpen(false)}>
-                        Done ({selectedImages.length} selected)
-                      </Button>
-                    </div>
-                  </DialogContent>
-                </Dialog>
-              </div>
-
-              {/* Selected Images Display */}
-              {selectedImages.length > 0 && (
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {selectedImages.map((imageUrl, index) => (
-                    <div key={index} className="relative group">
-                      <img
-                        src={imageUrl}
-                        alt={`Selected image ${index + 1}`}
-                        className="w-full h-20 object-cover rounded border"
-                      />
-                      <Button
-                        type="button"
-                        variant="destructive"
-                        size="icon"
-                        className="absolute -top-2 -right-2 h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity"
-                        onClick={() => handleRemoveImage(imageUrl)}
-                      >
-                        <X className="h-3 w-3" />
-                      </Button>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* Images Panel */}
+            <ImagesPanel
+              selectedImages={selectedImages}
+              coverImage={coverImageUrl}
+              onImagesChange={handleImagesChange}
+              onCoverImageChange={handleCoverImageChange}
+            />
 
             <div className="pt-4">
               <Button 
