@@ -73,27 +73,32 @@ class ImagesApi {
     return localStorage.getItem('BP_API_KEY');
   }
 
-  async upload(files: File[]): Promise<UploadedImage[]> {
-    // Mock implementation - simulate upload with progress
-    const uploads: UploadedImage[] = [];
-    
-    for (const file of files) {
-      // Simulate upload delay
-      await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000));
-      
-      const uploaded: UploadedImage = {
-        id: Math.random().toString(36).substr(2, 9),
-        name: file.name,
-        url: URL.createObjectURL(file), // In real implementation, this would be the server URL
-        folder: "properties",
-        size: file.size,
-        uploadedAt: new Date().toISOString()
-      };
-      
-      uploads.push(uploaded);
-    }
-    
-    return uploads;
+const apiKey = this.getApiKey();
+if (!apiKey) throw new Error('No API key set (BP_API_KEY)');
+
+const formData = new FormData();
+// server expects the field name 'photo' (one by one is fine)
+files.forEach(file => formData.append('photo', file));
+
+const res = await fetch(`/api/upload.php?key=${encodeURIComponent(apiKey)}`, {
+  method: 'POST',
+  body: formData
+});
+if (!res.ok) throw new Error('Upload failed');
+
+const payload = await res.json(); // your PHP returns an array or object — normalise below
+// Accept both single and array
+const arr = Array.isArray(payload) ? payload : [payload];
+
+return arr.map((f: any) => ({
+  id: `${f.folder}/${f.name}`,
+  name: f.name,
+  url: f.url,          // PHP returns a full public URL
+  folder: f.folder,
+  size: f.size ?? 0,
+  uploadedAt: f.uploadedAt ?? new Date().toISOString()
+}));
+
     
     // Real implementation would be:
     /*
@@ -118,10 +123,22 @@ class ImagesApi {
     */
   }
 
-  async list(): Promise<LibraryItem[]> {
-    // Mock implementation
-    await new Promise(resolve => setTimeout(resolve, 500)); // Simulate network delay
-    return [...MOCK_LIBRARY_IMAGES];
+const apiKey = this.getApiKey();
+if (!apiKey) throw new Error('No API key set (BP_API_KEY)');
+
+const res = await fetch(`/api/list.php?key=${encodeURIComponent(apiKey)}`);
+if (!res.ok) throw new Error('Failed to load image library');
+
+const files = await res.json();
+return files.map((f: any) => ({
+  id: `${f.folder}/${f.name}`,
+  name: f.name,
+  url: f.url,
+  folder: f.folder,
+  size: f.size ?? 0,
+  uploadedAt: f.uploadedAt ?? new Date().toISOString()
+}));
+
     
     // Real implementation would be:
     /*
@@ -139,9 +156,19 @@ class ImagesApi {
     */
   }
 
-  async remove(folder: string, name: string): Promise<void> {
-    // Mock implementation
-    await new Promise(resolve => setTimeout(resolve, 500));
+const apiKey = this.getApiKey();
+if (!apiKey) throw new Error('No API key set (BP_API_KEY)');
+
+// Your PHP expects x-www-form-urlencoded: key, folder, name
+const body = new URLSearchParams({ key: apiKey, folder, name });
+
+const res = await fetch('/api/delete.php', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+  body
+});
+if (!res.ok) throw new Error('Delete failed');
+
     
     // Real implementation would be:
     /*
