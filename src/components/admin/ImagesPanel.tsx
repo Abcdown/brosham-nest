@@ -21,11 +21,11 @@ import { imagesApi, LibraryItem, UploadedImage } from "@/lib/imagesApi";
 
 type ImagesPanelProps = {
   selected: string[];
-  onChange: (next: string[]) => void;
+  // allow either an array OR a functional updater
+  onChange: (next: string[] | ((prev: string[]) => string[])) => void;
   cover?: string | null;
   onCoverChange?: (url: string | null) => void;
 };
-
 
 const ImagesPanel = ({
   selected,
