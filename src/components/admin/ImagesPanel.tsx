@@ -99,7 +99,6 @@ const ImagesPanel = ({
       const uploadedImages = await imagesApi.upload(files);
       const urls = uploadedImages.map(u => u.url);
       onChange(prev => [...prev, ...urls]);
-
       
       clearInterval(progressInterval);
       
