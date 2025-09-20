@@ -23,7 +23,6 @@ const AdminListing = () => {
   const [bathrooms, setBathrooms] = useState(1);
   const [propertyType, setPropertyType] = useState("");
   const [status, setStatus] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const [isSaving, setIsSaving] = useState(false);
   
@@ -51,48 +50,64 @@ const AdminListing = () => {
     setCoverImageUrl(coverImage);
   };
 
-  const handleSave = async () => {
-    setIsLoading(true);
+const handleSave = async () => {
+  try {
+    setIsSaving(true);  // use the isSaving flag you already have
 
-    // Simple validation
+    // 1) basic validation
     if (!title.trim()) {
-      toast({
-        title: "Validation Error",
-        description: "Title is required",
-        variant: "destructive",
-      });
-      setIsLoading(false);
+      toast({ title: "Validation Error", description: "Title is required", variant: "destructive" });
       return;
     }
 
-    // Mock save functionality
-    const listingData = {
+    // 2) id + slug
+    const id = `ls_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+    const slug = (title || "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/(^-|-$)/g, "");
+
+    // 3) numeric cleanups
+    const priceNum = Number(String(price ?? "").replace(/[^\d.]/g, "")) || 0;
+
+    // 4) payload expected by PHP
+    const payload = {
+      id,
+      slug,
       title: title.trim(),
-      price,
+      summary: "",
+      status: "published",                // publish so it appears in index.json
+      price: priceNum,
+      currency: "RM",
       address,
       city,
       state,
       bedrooms,
       bathrooms,
-      propertyType,
-      status,
-      coverImageUrl,
-      selectedImages,
-      savedAt: new Date().toISOString(),
+      sizeSqft: null,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      cover: coverImageUrl ? { url: coverImageUrl } : undefined,
+      gallery: selectedImages.map((url) => ({ url })),
     };
 
-    // Simulate API call
-    setTimeout(() => {
-      console.log('Listing saved:', listingData);
-      
-      toast({
-        title: "Listing saved!",
-        description: "Your property listing has been successfully saved.",
-      });
-      
-      setIsLoading(false);
-    }, 1000);
-  };
+    // 5) call the real API
+    const res = await saveListing(payload);
+
+    toast({
+      title: "Listing saved!",
+      description: "Your property listing has been successfully saved.",
+    });
+
+  } catch (e: any) {
+    console.error(e);
+    toast({ title: "Save failed", description: e.message || String(e), variant: "destructive" });
+  } finally {
+    setIsSaving(false);
+  }
+};
+
 
   const canSave = title.trim().length > 0;
 
