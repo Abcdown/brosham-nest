@@ -244,11 +244,11 @@ const AdminListing = () => {
 
             {/* Images Panel */}
           <ImagesPanel
-  selected={selectedImages}
-  onChange={setSelectedImages}   // <-- pass the setter directly
-  cover={coverImageUrl}
-  onCoverChange={setCoverImageUrl}
-/>
+            selected={selectedImages}
+            onChange={setSelectedImages}   // <-- pass the setter directly
+            cover={coverImageUrl}
+            onCoverChange={setCoverImageUrl}
+          />
 
 
 
