@@ -21,8 +21,6 @@ const AdminListing = () => {
   const [bathrooms, setBathrooms] = useState(1);
   const [propertyType, setPropertyType] = useState("");
   const [status, setStatus] = useState("");
-  const [coverImageUrl, setCoverImageUrl] = useState("");
-  const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
