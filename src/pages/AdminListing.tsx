@@ -10,6 +10,8 @@ import ImagesPanel from "@/components/admin/ImagesPanel";
 
 
 const AdminListing = () => {
+  const [selectedImages, setSelectedImages] = useState<string[]>([]);
+  const [coverImageUrl, setCoverImageUrl] = useState<string | null>(null);
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [address, setAddress] = useState("");
