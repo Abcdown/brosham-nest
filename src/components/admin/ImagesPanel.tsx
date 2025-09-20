@@ -19,9 +19,6 @@ import {
 } from "lucide-react";
 import { imagesApi, LibraryItem, UploadedImage } from "@/lib/imagesApi";
 
-const [library, setLibrary] = useState<LibraryItem[]>([]);
-const [activeTab, setActiveTab] = useState<"upload"|"library">("upload");
-
 type ImagesPanelProps = {
   selected: string[];
   onChange: (next: string[]) => void;
@@ -30,11 +27,11 @@ type ImagesPanelProps = {
 };
 
 
-const ImagesPanel = ({ 
-  selectedImages, 
-  coverImage, 
-  onImagesChange, 
-  onCoverImageChange 
+const ImagesPanel = ({
+  selected,
+  onChange,
+  cover,
+  onCoverChange
 }: ImagesPanelProps) => {
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState<{ [key: string]: number }>({});
@@ -100,6 +97,9 @@ const ImagesPanel = ({
       }, 200);
 
       const uploadedImages = await imagesApi.upload(files);
+
+      const urls = uploadedImages.map(u => u.url);
+      onChange([...(selected ?? []), ...urls]);
       
       clearInterval(progressInterval);
       
@@ -200,7 +200,7 @@ const ImagesPanel = ({
     if (selectedLibraryItems.length === 1) {
       const selectedImage = libraryImages.find(img => img.id === selectedLibraryItems[0]);
       if (selectedImage) {
-        onCoverImageChange(selectedImage.url);
+        onCoverChange?.(selectedImage.url);
         toast({
           title: "Cover image set",
           description: "Cover image updated successfully"
@@ -215,14 +215,14 @@ const ImagesPanel = ({
       return image?.url;
     }).filter(Boolean) as string[];
     
-    const newImages = [...selectedImages];
+    const newImages = [...selected];
     selectedUrls.forEach(url => {
       if (!newImages.includes(url)) {
         newImages.push(url);
       }
     });
     
-    onImagesChange(newImages);
+    onChange(newImages);
     setSelectedLibraryItems([]);
     
     toast({
@@ -232,16 +232,16 @@ const ImagesPanel = ({
   };
 
   const handleRemoveFromListing = (url: string) => {
-    const newImages = selectedImages.filter(img => img !== url);
-    onImagesChange(newImages);
-    
-    if (coverImage === url) {
-      onCoverImageChange("");
+    const newImages = selected.filter(img => img !== url);
+    onChange(newImages);
+
+    if (cover === url) {
+      onCoverChange?.(null);
     }
   };
 
   const handleSetAsCover = (url: string) => {
-    onCoverImageChange(url);
+    oncoverChange(url);
   };
 
   return (
@@ -430,11 +430,11 @@ const ImagesPanel = ({
         </Tabs>
 
         {/* Selected Images Strip */}
-        {selectedImages.length > 0 && (
+        {selected?.length > 0 && (
           <div className="mt-6 space-y-3">
             <Label>Selected Images for This Listing</Label>
             <div className="grid grid-cols-2 md:grid-cols-6 gap-3">
-              {selectedImages.map((url, index) => (
+              {selected.map((url, index) => (
                 <div key={url} className="relative group">
                   <img
                     src={url}
@@ -443,7 +443,7 @@ const ImagesPanel = ({
                   />
                   
                   {/* Cover indicator */}
-                  {coverImage === url && (
+                  {cover === url && (
                     <div className="absolute top-1 left-1 bg-yellow-500 text-white rounded p-1">
                       <Star className="h-3 w-3 fill-current" />
                     </div>
@@ -451,7 +451,7 @@ const ImagesPanel = ({
                   
                   {/* Action buttons */}
                   <div className="absolute top-1 right-1 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                    {coverImage !== url && (
+                    {cover !== url && (
                       <Button
                         variant="secondary"
                         size="icon"
