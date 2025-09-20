@@ -19,12 +19,16 @@ import {
 } from "lucide-react";
 import { imagesApi, LibraryItem, UploadedImage } from "@/lib/imagesApi";
 
-interface ImagesPanelProps {
-  selectedImages: string[];
-  coverImage?: string;
-  onImagesChange: (images: string[]) => void;
-  onCoverImageChange: (coverImage: string) => void;
-}
+const [library, setLibrary] = useState<LibraryItem[]>([]);
+const [activeTab, setActiveTab] = useState<"upload"|"library">("upload");
+
+type ImagesPanelProps = {
+  selected: string[];
+  onChange: (next: string[]) => void;
+  cover?: string | null;
+  onCoverChange?: (url: string | null) => void;
+};
+
 
 const ImagesPanel = ({ 
   selectedImages, 
