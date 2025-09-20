@@ -97,9 +97,9 @@ const ImagesPanel = ({
       }, 200);
 
       const uploadedImages = await imagesApi.upload(files);
-
       const urls = uploadedImages.map(u => u.url);
-      onChange([...(selected ?? []), ...urls]);
+      onChange(prev => [...prev, ...urls]);
+
       
       clearInterval(progressInterval);
       
@@ -222,8 +222,12 @@ const ImagesPanel = ({
       }
     });
     
-    onChange(newImages);
+    onChange(prev => {
+    const add = selectedUrls.filter(url => !prev.includes(url));
+    return [...prev, ...add];
+    });
     setSelectedLibraryItems([]);
+
     
     toast({
       title: "Images added",
@@ -232,8 +236,7 @@ const ImagesPanel = ({
   };
 
   const handleRemoveFromListing = (url: string) => {
-    const newImages = selected.filter(img => img !== url);
-    onChange(newImages);
+    onChange(prev => prev.filter(img => img !== url));
 
     if (cover === url) {
       onCoverChange?.(null);
@@ -241,8 +244,9 @@ const ImagesPanel = ({
   };
 
   const handleSetAsCover = (url: string) => {
-    oncoverChange(url);
+    onCoverChange?.(url);
   };
+
 
   return (
     <Card className="w-full">
@@ -301,11 +305,12 @@ const ImagesPanel = ({
               <Input
                 ref={fileInputRef}
                 type="file"
-                multiple
+                multiple          // ✅ keep this
                 accept="image/*"
                 className="hidden"
                 onChange={(e) => handleFileSelect(e.target.files)}
               />
+
             </div>
 
             {/* Upload Progress */}
