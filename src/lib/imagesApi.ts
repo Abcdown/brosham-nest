@@ -31,31 +31,46 @@ class ImagesApi {
 
   // 1) Upload images → POST /api/upload.php?key=...
   async upload(files: File[]): Promise<UploadedImage[]> {
-    const apiKey = this.getApiKey();
-    if (!apiKey) throw new Error("No API key set (BP_API_KEY)");
+  const apiKey = this.getApiKey();
+  if (!apiKey) throw new Error("No API key set (BP_API_KEY)");
 
-    const formData = new FormData();
-    // PHP expects 'photo'; append each file
-    for (const file of files) formData.append("photo", file);
+  const results: UploadedImage[] = [];
+
+  // Upload EACH file in its own request, gather all results
+  for (const file of files) {
+    const fd = new FormData();
+    fd.append("photo", file); // your PHP expects field name 'photo'
 
     const res = await fetch(`/api/upload.php?key=${encodeURIComponent(apiKey)}`, {
       method: "POST",
-      body: formData,
+      body: fd,
     });
-    if (!res.ok) throw new Error("Upload failed");
 
-    const payload = await res.json();
-    const arr = Array.isArray(payload) ? payload : [payload];
+    const text = await res.text();
+    if (!res.ok) throw new Error(`Upload failed (${res.status}): ${text.slice(0,150)}`);
 
-    return arr.map((f: any) => ({
-      id: `${f.folder}/${f.name}`,
-      name: f.name,
-      url: f.url,
-      folder: f.folder,
-      size: f.size ?? 0,
-      uploadedAt: f.uploadedAt ?? new Date().toISOString(),
-    }));
+    let json: any;
+    try { json = JSON.parse(text); } 
+    catch { throw new Error("Upload returned invalid JSON"); }
+
+    // Normalise: accept either a single object or an array
+    const arr = Array.isArray(json) ? json : [json];
+
+    for (const f of arr) {
+      results.push({
+        id: `${f.folder}/${f.name}`,
+        name: f.name,
+        url: f.url,
+        folder: f.folder,
+        size: f.size ?? 0,
+        uploadedAt: f.uploadedAt ?? new Date().toISOString(),
+      });
+    }
   }
+
+  return results;
+}
+
 
   // 2) List library → GET /api/list.php?key=...
  async list(): Promise<LibraryItem[]> {
