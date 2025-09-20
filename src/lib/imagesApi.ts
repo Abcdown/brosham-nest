@@ -1,5 +1,7 @@
 // src/lib/ImagesApi.ts
 
+console.log("[ImagesApi] loaded v1 @", new Date().toISOString());
+
 export interface UploadedImage {
   id: string;
   name: string;
@@ -56,23 +58,41 @@ class ImagesApi {
   }
 
   // 2) List library → GET /api/list.php?key=...
-  async list(): Promise<LibraryItem[]> {
-    const apiKey = this.getApiKey();
-    if (!apiKey) throw new Error("No API key set (BP_API_KEY)");
+ async list(): Promise<LibraryItem[]> {
+  const apiKey = this.getApiKey();
+  console.log("[ImagesApi] list() using key:", !!apiKey);
+  if (!apiKey) throw new Error("No API key set (BP_API_KEY)");
 
-    const res = await fetch(`/api/list.php?key=${encodeURIComponent(apiKey)}`);
-    if (!res.ok) throw new Error("Failed to load image library");
+  const url = `/api/list.php?key=${encodeURIComponent(apiKey)}`;
+  console.log("[ImagesApi] list() →", url);
 
-    const files = await res.json();
-    return files.map((f: any) => ({
-      id: `${f.folder}/${f.name}`,
-      name: f.name,
-      url: f.url,
-      folder: f.folder,
-      size: f.size ?? 0,
-      uploadedAt: f.uploadedAt ?? new Date().toISOString(),
-    }));
+  // No cache so you always see fresh files
+  const res = await fetch(url, { cache: "no-store" });
+  const text = await res.text();
+
+  if (!res.ok) {
+    console.error("[ImagesApi] list() HTTP", res.status, text.slice(0, 400));
+    throw new Error(`list.php ${res.status}`);
   }
+
+  let json: any;
+  try {
+    json = JSON.parse(text);
+  } catch (e) {
+    console.error("[ImagesApi] list() invalid JSON:", text.slice(0, 400));
+    throw new Error("list.php returned invalid JSON");
+  }
+
+  const arr = Array.isArray(json) ? json : (json.files || json.data || []);
+  return (arr || []).map((f: any) => ({
+    id: `${f.folder}/${f.name}`,
+    name: f.name,
+    url: f.url,
+    folder: f.folder,
+    size: f.size ?? 0,
+    uploadedAt: f.uploadedAt ?? new Date().toISOString(),
+  }));
+}
 
   // 3) Delete item → POST x-www-form-urlencoded to /api/delete.php
   async remove(folder: string, name: string): Promise<void> {
