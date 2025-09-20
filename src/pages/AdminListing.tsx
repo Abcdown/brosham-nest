@@ -1,3 +1,4 @@
+import { saveListing } from "@/lib/listingsApi";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,6 +8,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useToast } from "@/hooks/use-toast";
 import { Plus, Minus } from "lucide-react";
 import ImagesPanel from "@/components/admin/ImagesPanel";
+
 
 
 const AdminListing = () => {
@@ -23,7 +25,8 @@ const AdminListing = () => {
   const [status, setStatus] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-
+  const [isSaving, setIsSaving] = useState(false);
+  
   const formatPrice = (value: string) => {
     const numericValue = value.replace(/[^\d]/g, '');
     if (numericValue) {
@@ -253,13 +256,10 @@ const AdminListing = () => {
 
 
             <div className="pt-4">
-              <Button 
-                onClick={handleSave}
-                disabled={!canSave || isLoading}
-                className="w-full"
-              >
-                {isLoading ? "Saving..." : "Save Listing"}
+              <Button onClick={handleSave} disabled={isSaving}>
+                  {isSaving ? "Saving..." : "Save Listing"}
               </Button>
+
             </div>
           </div>
         </CardContent>
