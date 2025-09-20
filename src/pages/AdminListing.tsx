@@ -71,6 +71,9 @@ const handleSave = async () => {
     // 3) numeric cleanups
     const priceNum = Number(String(price ?? "").replace(/[^\d.]/g, "")) || 0;
 
+    // 3.1) Make sure a cover image is set
+    const coverUrl = coverImageUrl ?? selectedImages[0] ?? null;
+    
     // 4) payload expected by PHP
     const payload = {
       id,
@@ -88,10 +91,10 @@ const handleSave = async () => {
       sizeSqft: null,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
-      cover: coverImageUrl ? { url: coverImageUrl } : undefined,
+      cover: coverUrl ? { url: coverUrl } : undefined,
       gallery: selectedImages.map((url) => ({ url })),
     };
-
+    
     // 5) call the real API
     const res = await saveListing(payload);
 
