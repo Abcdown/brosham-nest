@@ -1,128 +1,185 @@
-// src/pages/properties.tsx
-import { useEffect, useMemo, useState } from "react";
-import { fetchListings, rm, type ListingLite } from "@/lib/publicListings";
-
-// Demo fallback (so the page never looks empty on day 1)
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import PropertyCard from "@/components/PropertyCard";
+import { Search, Filter, Grid, List } from "lucide-react";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
+import heroProperty from "@/assets/hero-property.jpg";
 
-type DemoCard = {
-  id: string;
-  slug: string;
-  title: string;
-  price: number;
-  address?: string;
-  city?: string;
-  state?: string;
-  bedrooms?: number;
-  bathrooms?: number;
-  sizeSqft?: number;
-  cover?: { url: string | null };
-};
+const Properties = () => {
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
+  const [searchTerm, setSearchTerm] = useState("");
 
-const DEMO: DemoCard[] = [
-  {
-    id: "demo-1",
-    slug: "modern-luxury-villa",
-    title: "Modern Luxury Villa",
-    price: 1250000,
-    address: "Beverly Hills, CA",
-    bedrooms: 4,
-    bathrooms: 3,
-    sizeSqft: 3200,
-    cover: { url: property1 },
-  },
-  {
-    id: "demo-2",
-    slug: "contemporary-family-home",
-    title: "Contemporary Family Home",
-    price: 850000,
-    address: "Manhattan Beach, CA",
-    bedrooms: 3,
-    bathrooms: 2,
-    sizeSqft: 2400,
-    cover: { url: property2 },
-  },
-  {
-    id: "demo-3",
-    slug: "luxury-oceanfront-estate",
-    title: "Luxury Oceanfront Estate",
-    price: 2100000,
-    address: "Malibu, CA",
-    bedrooms: 5,
-    bathrooms: 4,
-    sizeSqft: 4500,
-    cover: { url: property3 },
-  },
-];
+  // Sample property data
+  const properties = [
+    {
+      id: "1",
+      title: "Modern Luxury Villa",
+      price: "$1,250,000",
+      location: "Beverly Hills, CA",
+      beds: 4,
+      baths: 3,
+      sqft: 3200,
+      image: property1,
+      status: "For Sale" as const,
+      featured: true,
+    },
+    {
+      id: "2",
+      title: "Contemporary Family Home",
+      price: "$850,000",
+      location: "Manhattan Beach, CA",
+      beds: 3,
+      baths: 2,
+      sqft: 2400,
+      image: property2,
+      status: "For Sale" as const,
+    },
+    {
+      id: "3",
+      title: "Luxury Oceanfront Estate",
+      price: "$2,100,000",
+      location: "Malibu, CA",
+      beds: 5,
+      baths: 4,
+      sqft: 4500,
+      image: property3,
+      status: "For Sale" as const,
+      featured: true,
+    },
+    {
+      id: "4",
+      title: "Designer Modern Residence",
+      price: "$1,680,000",
+      location: "West Hollywood, CA",
+      beds: 4,
+      baths: 3,
+      sqft: 3800,
+      image: heroProperty,
+      status: "For Sale" as const,
+    },
+  ];
 
-export default function Properties() {
-  const [items, setItems] = useState<ListingLite[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchListings()
-      .then((arr) => setItems(arr || []))
-      .finally(() => setLoading(false));
-  }, []);
-
-  // if live items exist, use them; otherwise show the demo content
-  const cards = useMemo(() => {
-    if (items.length > 0) return items.map((x) => ({
-      id: x.id, slug: x.slug, title: x.title, price: x.price,
-      address: x.address, city: x.city, state: x.state,
-      bedrooms: x.bedrooms ?? undefined, bathrooms: x.bathrooms ?? undefined, sizeSqft: x.sizeSqft ?? undefined,
-      cover: x.cover,
-    }) as DemoCard);
-    return DEMO;
-  }, [items]);
+  const filteredProperties = properties.filter(property =>
+    property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    property.location.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <header className="text-center mb-8">
-        <p className="text-sm uppercase tracking-wide text-muted-foreground">Property Listings</p>
-        <h1 className="text-3xl md:text-4xl font-extrabold mt-1">Discover Your Perfect Property</h1>
-        <p className="text-muted-foreground mt-2">Browse our curated collection of premium properties in the most desirable locations.</p>
-        <div className="mt-3 text-sm">{cards.length} properties found</div>
-      </header>
+    <div className="min-h-screen">
+      {/* Header */}
+      <section className="py-16 bg-gradient-to-br from-background to-muted/50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge variant="outline" className="mb-4">Property Listings</Badge>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              Discover Your Perfect Property
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Browse our curated collection of premium properties in the most desirable locations.
+            </p>
+          </div>
+        </div>
+      </section>
 
-      {/* Grid */}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {cards.map((it) => (
-          <article key={it.id} className="rounded-2xl overflow-hidden border bg-white shadow-sm hover:shadow-md transition">
-            <a href={`/properties/${it.slug}`} className="block">
-              <img
-                src={it.cover?.url || "/images/placeholder.jpg"}
-                alt={it.title}
-                className="w-full h-56 object-cover"
-                loading="lazy"
-              />
-            </a>
-            <div className="p-4">
-              <a href={`/properties/${it.slug}`} className="block">
-                <h3 className="text-lg font-semibold leading-snug">{it.title}</h3>
-              </a>
-              <div className="mt-1 font-bold">{rm(it.price)}</div>
-              <div className="text-sm text-muted-foreground">
-                {[it.address, it.city, it.state].filter(Boolean).join(", ")}
+      {/* Filters */}
+      <section className="py-8 border-b">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
+            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+              <div className="relative flex-1 sm:w-80">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <Input
+                  placeholder="Search properties..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="pl-10"
+                />
               </div>
-              <div className="mt-3 text-xs text-muted-foreground flex gap-4">
-                {typeof it.bedrooms === "number" && <span>{it.bedrooms} beds</span>}
-                {typeof it.bathrooms === "number" && <span>{it.bathrooms} baths</span>}
-                {typeof it.sizeSqft === "number" && <span>{it.sizeSqft} sqft</span>}
-              </div>
-              <div className="mt-4 flex gap-2">
-                <a href={`/properties/${it.slug}`} className="px-3 py-2 rounded-lg bg-primary text-primary-foreground text-sm">View Details</a>
-                <a href="/contact" className="px-3 py-2 rounded-lg border text-sm">Schedule Tour</a>
+              <Select>
+                <SelectTrigger className="w-full sm:w-40">
+                  <SelectValue placeholder="Property Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Types</SelectItem>
+                  <SelectItem value="house">House</SelectItem>
+                  <SelectItem value="condo">Condo</SelectItem>
+                  <SelectItem value="apartment">Apartment</SelectItem>
+                  <SelectItem value="villa">Villa</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select>
+                <SelectTrigger className="w-full sm:w-40">
+                  <SelectValue placeholder="Price Range" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">All Prices</SelectItem>
+                  <SelectItem value="500k-750k">$500K - $750K</SelectItem>
+                  <SelectItem value="750k-1m">$750K - $1M</SelectItem>
+                  <SelectItem value="1m-2m">$1M - $2M</SelectItem>
+                  <SelectItem value="2m+">$2M+</SelectItem>
+                </SelectContent>
+              </Select>
+              <Button variant="outline">
+                <Filter className="w-4 h-4 mr-2" />
+                More Filters
+              </Button>
+            </div>
+            
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-muted-foreground mr-2">
+                {filteredProperties.length} properties found
+              </span>
+              <div className="flex border rounded-md">
+                <button
+                  onClick={() => setViewMode("grid")}
+                  className={`p-2 ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                >
+                  <Grid className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={`p-2 ${viewMode === "list" ? "bg-primary text-primary-foreground" : "hover:bg-muted"}`}
+                >
+                  <List className="w-4 h-4" />
+                </button>
               </div>
             </div>
-          </article>
-        ))}
-      </div>
+          </div>
+        </div>
+      </section>
 
-      {/* Subtle loading state (only shown before the first render) */}
-      {loading && <p className="mt-8 text-center text-sm text-muted-foreground">Loading listings…</p>}
-    </main>
+      {/* Properties Grid */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className={`grid gap-8 ${
+            viewMode === "grid" 
+              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
+              : "grid-cols-1 max-w-4xl mx-auto"
+          }`}>
+            {filteredProperties.map((property) => (
+              <PropertyCard key={property.id} {...property} />
+            ))}
+          </div>
+
+          {filteredProperties.length === 0 && (
+            <div className="text-center py-12">
+              <h3 className="text-xl font-semibold mb-2">No properties found</h3>
+              <p className="text-muted-foreground mb-4">
+                Try adjusting your search criteria to find more properties.
+              </p>
+              <Button onClick={() => setSearchTerm("")}>Clear Search</Button>
+            </div>
+          )}
+        </div>
+      </section>
+
+    </div>
   );
-}
+};
+
+export default Properties;
