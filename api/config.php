@@ -11,8 +11,8 @@ if (!defined('API_ACCESS')) {
 // Database credentials
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'staging_broshamp');
-define('DB_USER', 'root'); // Change this to your actual database username
-define('DB_PASS', ''); // Change this to your actual database password
+define('DB_USER', 'bros_api'); // Change this to your actual database username
+define('DB_PASS', 'tavjot-pehvu5-jeRmyj'); // Change this to your actual database password
 define('DB_CHARSET', 'utf8mb4');
 
 // API Key for general operations (used in your existing APIs)
