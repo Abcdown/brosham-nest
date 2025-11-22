@@ -3,11 +3,15 @@ import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { FileText, Building, Settings, LogOut, Menu, X } from "lucide-react";
 import Breadcrumb from "./Breadcrumb";
+import { AuthAPI } from "@/lib/authApi";
+import { useToast } from "@/hooks/use-toast";
 
 const AdminLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [userName, setUserName] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const sidebarItems = [
     { name: "Blog", path: "/admin/blog", icon: FileText },
@@ -17,9 +21,18 @@ const AdminLayout = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
-  const handleLogout = () => {
-    localStorage.removeItem("ADMIN_TOKEN");
-    navigate("/login");
+  const handleLogout = async () => {
+    try {
+      await AuthAPI.logout();
+      toast({
+        title: "Logged out",
+        description: "You have been successfully logged out.",
+      });
+      navigate("/login");
+    } catch (error) {
+      console.error('Logout error:', error);
+      navigate("/login");
+    }
   };
 
   const getBreadcrumbItems = () => {
@@ -38,12 +51,22 @@ const AdminLayout = () => {
     return items;
   };
 
-  // Check authentication
+  // Check authentication and load user
   useEffect(() => {
-    const token = localStorage.getItem("ADMIN_TOKEN");
-    if (!token) {
-      navigate("/login");
-    }
+    const checkAuth = async () => {
+      const isAuth = AuthAPI.isAuthenticated();
+      if (!isAuth) {
+        navigate("/login");
+        return;
+      }
+      
+      const user = AuthAPI.getCurrentUser();
+      if (user) {
+        setUserName(user.full_name || user.username);
+      }
+    };
+    
+    checkAuth();
   }, [navigate]);
 
   return (
@@ -54,7 +77,12 @@ const AdminLayout = () => {
         <div className="p-4 border-b border-border">
           <div className="flex items-center justify-between">
             {isSidebarOpen && (
-              <h2 className="text-lg font-semibold">Admin Dashboard</h2>
+              <div>
+                <h2 className="text-lg font-semibold">Admin Dashboard</h2>
+                {userName && (
+                  <p className="text-xs text-muted-foreground mt-1">{userName}</p>
+                )}
+              </div>
             )}
             <Button
               variant="ghost"
