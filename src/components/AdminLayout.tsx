@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Building, LogOut, Menu, X } from "lucide-react";
+import { FileText, Building, Settings, LogOut, Menu, X } from "lucide-react";
 import Breadcrumb from "./Breadcrumb";
 
 const AdminLayout = () => {
@@ -12,6 +12,7 @@ const AdminLayout = () => {
   const sidebarItems = [
     { name: "Blog", path: "/admin/blog", icon: FileText },
     { name: "Listing", path: "/admin/listing", icon: Building },
+    { name: "Settings", path: "/admin/settings", icon: Settings },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -30,6 +31,8 @@ const AdminLayout = () => {
       items.push({ label: "Blog" });
     } else if (location.pathname === "/admin/listing") {
       items.push({ label: "Listing" });
+    } else if (location.pathname === "/admin/settings") {
+      items.push({ label: "Settings" });
     }
     
     return items;

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { FileText, Building, ArrowRight } from "lucide-react";
+import { FileText, Building, Settings, ArrowRight } from "lucide-react";
 
 const AdminDashboard = () => {
   return (
@@ -13,7 +13,7 @@ const AdminDashboard = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <Card className="hover:shadow-md transition-shadow">
           <CardHeader>
             <div className="flex items-center space-x-3">
@@ -62,6 +62,33 @@ const AdminDashboard = () => {
             <Link to="/admin/listing">
               <Button variant="secondary" className="w-full">
                 Go to Listing
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+
+        <Card className="hover:shadow-md transition-shadow">
+          <CardHeader>
+            <div className="flex items-center space-x-3">
+              <div className="p-2 bg-orange-500/10 rounded-lg">
+                <Settings className="h-6 w-6 text-orange-600" />
+              </div>
+              <div>
+                <CardTitle>Page Settings</CardTitle>
+                <CardDescription>
+                  Control page visibility and status
+                </CardDescription>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <p className="text-sm text-muted-foreground mb-4">
+              Enable or disable public pages like Listings and Gallery.
+            </p>
+            <Link to="/admin/settings">
+              <Button variant="outline" className="w-full">
+                Go to Settings
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>

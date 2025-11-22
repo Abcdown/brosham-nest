@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { isPageEnabled } from "@/lib/pageSettings";
+import UnderConstruction from "@/components/UnderConstruction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -13,6 +15,20 @@ import heroProperty from "@/assets/hero-property.jpg";
 const Properties = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchTerm, setSearchTerm] = useState("");
+  const [isEnabled, setIsEnabled] = useState(true);
+
+  useEffect(() => {
+    setIsEnabled(isPageEnabled("listings"));
+  }, []);
+
+  if (!isEnabled) {
+    return (
+      <UnderConstruction
+        pageName="Property Listings"
+        description="We're currently updating our property portfolio. Our stunning collection of premium properties will be available soon!"
+      />
+    );
+  }
 
   // Sample property data
   const properties = [

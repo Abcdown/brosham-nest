@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { isPageEnabled } from "@/lib/pageSettings";
+import UnderConstruction from "@/components/UnderConstruction";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -16,6 +18,20 @@ import houseFlip2 from "@/assets/house-flip-2.jpg";
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [isEnabled, setIsEnabled] = useState(true);
+
+  useEffect(() => {
+    setIsEnabled(isPageEnabled("gallery"));
+  }, []);
+
+  if (!isEnabled) {
+    return (
+      <UnderConstruction
+        pageName="Property Gallery"
+        description="We're curating an amazing collection of property photos and videos. Our stunning gallery will be available soon!"
+      />
+    );
+  }
 
   // Automated slider images
   const sliderImages = [

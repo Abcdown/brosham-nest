@@ -23,6 +23,7 @@ import AdminLayout from "./components/AdminLayout";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminBlog from "./pages/AdminBlog";
 import AdminListing from "./pages/AdminListing";
+import AdminSettings from "./pages/AdminSettings";
 
 const queryClient = new QueryClient();
 
@@ -54,6 +55,7 @@ const AppContent = () => {
           <Route index element={<AdminDashboard />} />
           <Route path="blog" element={<AdminBlog />} />
           <Route path="listing" element={<AdminListing />} />
+          <Route path="settings" element={<AdminSettings />} />
         </Route>
 
         {/* Hidden admin upload page */}
