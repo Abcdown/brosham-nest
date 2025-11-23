@@ -1,6 +1,6 @@
 <?php
 // api/login.php
-// Admin login endpoint
+// Admin login endpoint - PRODUCTION VERSION
 
 define('API_ACCESS', true);
 require_once 'config.php';
@@ -42,41 +42,28 @@ try {
     $stmt->execute(['username' => $username]);
     $user = $stmt->fetch();
     
-    // Debug logging (remove in production)
-    error_log("Login attempt for: " . $username);
-    error_log("User found: " . ($user ? 'yes' : 'no'));
-    
     if (!$user) {
         // User not found - use generic error message for security
-        error_log("User not found in database");
         jsonResponse(['error' => 'Invalid credentials'], 401);
     }
     
     // Check if user is active
     if (!$user['is_active']) {
-        error_log("User account is disabled");
         jsonResponse(['error' => 'Account is disabled'], 403);
     }
     
     // Verify password
-    error_log("Verifying password...");
     if (!password_verify($password, $user['password'])) {
-        error_log("Password verification failed");
         jsonResponse(['error' => 'Invalid credentials'], 401);
     }
-    
-    error_log("Login successful for: " . $username);
     
     // Update last login
     $updateStmt = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = :id");
     $updateStmt->execute(['id' => $user['id']]);
     
-    // Generate session token (simple approach - you can use JWT for production)
+    // Generate session token
     $token = bin2hex(random_bytes(32));
     $tokenExpiry = time() + SESSION_LIFETIME;
-    
-    // Store session in database (create sessions table) or use JWT
-    // For now, we'll return a simple token that the frontend will store
     
     // Remove password from response
     unset($user['password']);

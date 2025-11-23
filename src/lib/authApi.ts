@@ -74,7 +74,17 @@ export class AuthAPI {
         body: JSON.stringify(credentials),
       });
 
-      const data = await response.json();
+      const text = await response.text();
+      console.log('Raw response:', text);
+
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (parseError) {
+        console.error('JSON parse error:', parseError);
+        console.error('Response text:', text);
+        throw new Error('Server returned invalid response. Check console for details.');
+      }
 
       if (!response.ok) {
         throw new Error(data.error || 'Login failed');
