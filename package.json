@@ -5,8 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "build:dev": "vite build --mode development",
+    "build": "vite build && bash copy-api.sh",
+    "build:dev": "vite build --mode development && bash copy-api.sh",
+    "build:prod": "vite build && bash copy-api.sh",
     "lint": "eslint .",
     "preview": "vite preview"
   },
