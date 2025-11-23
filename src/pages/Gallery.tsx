@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { isPageEnabled } from "@/lib/pageSettings";
+import { getPageSettings } from "@/lib/pageSettings";
 import UnderConstruction from "@/components/UnderConstruction";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,11 @@ const Gallery = () => {
   const [isEnabled, setIsEnabled] = useState(true);
 
   useEffect(() => {
-    setIsEnabled(isPageEnabled("gallery"));
+    const loadSettings = async () => {
+      const settings = await getPageSettings();
+      setIsEnabled(settings.gallery);
+    };
+    loadSettings();
   }, []);
 
   if (!isEnabled) {

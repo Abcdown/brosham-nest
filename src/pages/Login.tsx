@@ -128,18 +128,6 @@ const Login = () => {
               )}
             </Button>
           </form>
-          
-          <div className="mt-6 pt-6 border-t text-center">
-            <p className="text-sm text-muted-foreground">
-              Default credentials for testing:
-            </p>
-            <p className="text-xs text-muted-foreground mt-1">
-              Username: <code className="bg-muted px-2 py-1 rounded">admin</code>
-            </p>
-            <p className="text-xs text-muted-foreground">
-              Password: <code className="bg-muted px-2 py-1 rounded">Admin@123</code>
-            </p>
-          </div>
         </CardContent>
       </Card>
     </div>
