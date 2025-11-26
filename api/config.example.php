@@ -57,23 +57,5 @@ function getDbConnection() {
     }
 }
 
-// CORS headers
-function setCorsHeaders() {
-    header('Access-Control-Allow-Origin: ' . ALLOWED_ORIGINS);
-    header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
-    header('Access-Control-Allow-Headers: Content-Type, Authorization');
-    header('Content-Type: application/json; charset=utf-8');
-    
-    // Handle preflight requests
-    if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-        http_response_code(200);
-        exit();
-    }
-}
-
-// JSON response helper
-function jsonResponse($data, $status = 200) {
-    http_response_code($status);
-    echo json_encode($data);
-    exit();
-}
+// Note: setCorsHeaders() and jsonResponse() are now in _bootstrap.php
+// to avoid duplicate function declarations
