@@ -15,7 +15,7 @@ const AdminLayout = () => {
 
   const sidebarItems = [
     { name: "Blog", path: "/admin/blog", icon: FileText },
-    { name: "Listing", path: "/admin/listing", icon: Building },
+    { name: "Listings", path: "/admin/listings", icon: Building },
     { name: "Settings", path: "/admin/settings", icon: Settings },
   ];
 
@@ -42,8 +42,8 @@ const AdminLayout = () => {
       items.push({ label: "Dashboard" });
     } else if (location.pathname === "/admin/blog") {
       items.push({ label: "Blog" });
-    } else if (location.pathname === "/admin/listing") {
-      items.push({ label: "Listing" });
+    } else if (location.pathname.startsWith("/admin/listing")) {
+      items.push({ label: "Listings" });
     } else if (location.pathname === "/admin/settings") {
       items.push({ label: "Settings" });
     }

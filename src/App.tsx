@@ -23,6 +23,7 @@ import AdminLayout from "./components/AdminLayout";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminBlog from "./pages/AdminBlog";
 import AdminListing from "./pages/AdminListing";
+import AdminListingsList from "./pages/AdminListingsList";
 import AdminSettings from "./pages/AdminSettings";
 
 const queryClient = new QueryClient();
@@ -54,7 +55,9 @@ const AppContent = () => {
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
           <Route path="blog" element={<AdminBlog />} />
-          <Route path="listing" element={<AdminListing />} />
+          <Route path="listings" element={<AdminListingsList />} />
+          <Route path="listing/create" element={<AdminListing />} />
+          <Route path="listing/edit/:id" element={<AdminListing />} />
           <Route path="settings" element={<AdminSettings />} />
         </Route>
 
