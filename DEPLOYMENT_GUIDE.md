@@ -111,7 +111,12 @@ define('DB_USER', 'broshamp');
 define('DB_PASS', '^UR9bvof$b1veI1');
 ```
 
-**⚠️ IMPORTANT:** Always verify `config.php` after deployment!
+**⚠️ IMPORTANT:** Always verify `api/config.php` after deployment!
+
+**Critical Check:**
+- Make sure `setCorsHeaders()` and `jsonResponse()` are NOT in `config.php`
+- These functions should ONLY be in `_bootstrap.php`
+- Duplicate declarations will cause 500 errors
 
 ---
 
