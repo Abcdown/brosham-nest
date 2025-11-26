@@ -3,7 +3,7 @@
 // Admin login endpoint
 
 define('API_ACCESS', true);
-require_once 'config.php';
+require_once '_bootstrap.php';
 
 setCorsHeaders();
 
