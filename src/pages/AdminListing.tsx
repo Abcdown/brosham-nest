@@ -1,4 +1,4 @@
-import { saveListing } from "@/lib/listingsApi";
+import { ListingsAPI, type Listing } from "@/lib/listingsApi";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,7 +22,9 @@ const AdminListing = () => {
   const [bedrooms, setBedrooms] = useState(1);
   const [bathrooms, setBathrooms] = useState(1);
   const [propertyType, setPropertyType] = useState("");
-  const [status, setStatus] = useState("");
+  const [propertyCategory, setPropertyCategory] = useState("");
+  const [status, setStatus] = useState("for-sale");
+  const [features, setFeatures] = useState<string[]>([]);
   const { toast } = useToast();
   const [isSaving, setIsSaving] = useState(false);
   
@@ -74,13 +76,9 @@ const handleSave = async () => {
     // 3.1) Make sure a cover image is set
     const coverUrl = coverImageUrl ?? selectedImages[0] ?? null;
     
-    // 4) payload expected by PHP
-    const payload = {
-      id,
-      slug,
+    // 4) payload for new database API
+    const payload: Listing = {
       title: title.trim(),
-      summary: "",
-      status: "published",                // publish so it appears in index.json
       price: priceNum,
       currency: "RM",
       address,
@@ -89,14 +87,18 @@ const handleSave = async () => {
       bedrooms,
       bathrooms,
       sizeSqft: null,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      cover: coverUrl ? { url: coverUrl } : undefined,
+      propertyType,
+      propertyCategory,
+      status,
+      listingStatus: "active",
+      coverImage: coverUrl,
       gallery: selectedImages.map((url) => ({ url })),
+      features,
+      isFeatured: false,
     };
     
-    // 5) call the real API
-    const res = await saveListing(payload);
+    // 5) call the new database API
+    const res = await ListingsAPI.save(payload);
 
     toast({
       title: "Listing saved!",
@@ -150,17 +152,19 @@ const handleSave = async () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="propertyType">Property Type</Label>
-                <Select value={propertyType} onValueChange={setPropertyType}>
+                <Label htmlFor="propertyCategory">Property Category</Label>
+                <Select value={propertyCategory} onValueChange={setPropertyCategory}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Select property type" />
+                    <SelectValue placeholder="Select property category" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="house">House</SelectItem>
+                    <SelectItem value="single-story">Single Story</SelectItem>
+                    <SelectItem value="double-story">Double Story</SelectItem>
                     <SelectItem value="condo">Condominium</SelectItem>
                     <SelectItem value="apartment">Apartment</SelectItem>
-                    <SelectItem value="townhouse">Townhouse</SelectItem>
-                    <SelectItem value="land">Land</SelectItem>
+                    <SelectItem value="bungalow">Bungalow</SelectItem>
+                    <SelectItem value="semi-d">Semi-Detached</SelectItem>
+                    <SelectItem value="terrace">Terrace</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

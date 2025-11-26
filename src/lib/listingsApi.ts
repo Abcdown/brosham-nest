@@ -1,16 +1,131 @@
-export async function saveListing(listing: any) {
-  const key = localStorage.getItem("BP_API_KEY");
-  if (!key) throw new Error("Missing BP_API_KEY");
+// API client for listings management
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
-  const res = await fetch(`/api/listing-save.php?key=${encodeURIComponent(key)}`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(listing),
-  });
-
-  const text = await res.text();
-  if (!res.ok) throw new Error(`Save failed (${res.status}): ${text.slice(0, 200)}`);
-
-  try { return JSON.parse(text); }
-  catch { throw new Error("Invalid JSON from listing-save.php"); }
+export interface Listing {
+  id?: string;
+  slug?: string;
+  title: string;
+  summary?: string;
+  price: number;
+  currency?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  bedrooms?: number;
+  bathrooms?: number;
+  sizeSqft?: number;
+  propertyType?: string;
+  propertyCategory?: string;
+  status?: string;
+  listingStatus?: string;
+  coverImage?: string;
+  gallery?: Array<{ url: string }>;
+  features?: string[];
+  isFeatured?: boolean;
+  sortOrder?: number;
+  createdAt?: string;
+  updatedAt?: string;
 }
+
+export interface ListingsResponse {
+  success: boolean;
+  listings: Listing[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export const ListingsAPI = {
+  // Get all listings (admin)
+  async getAll(params?: {
+    status?: string;
+    category?: string;
+    featured?: boolean;
+    limit?: number;
+    offset?: number;
+  }): Promise<ListingsResponse> {
+    const token = localStorage.getItem('auth_token');
+    const queryParams = new URLSearchParams();
+    
+    if (params?.status) queryParams.append('status', params.status);
+    if (params?.category) queryParams.append('category', params.category);
+    if (params?.featured !== undefined) queryParams.append('featured', params.featured.toString());
+    if (params?.limit) queryParams.append('limit', params.limit.toString());
+    if (params?.offset) queryParams.append('offset', params.offset.toString());
+    
+    const response = await fetch(`${API_URL}/listings-list.php?${queryParams}`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to fetch listings');
+    }
+    
+    return response.json();
+  },
+
+  // Get public listings (no auth required)
+  async getPublic(): Promise<{ success: boolean; listings: Listing[] }> {
+    const response = await fetch(`${API_URL}/listings-list.php`);
+    
+    if (!response.ok) {
+      throw new Error('Failed to fetch public listings');
+    }
+    
+    return response.json();
+  },
+
+  // Create or update listing
+  async save(listing: Listing): Promise<{ success: boolean; id: string; action: string }> {
+    const token = localStorage.getItem('auth_token');
+    
+    if (!token) {
+      throw new Error('Not authenticated');
+    }
+    
+    const response = await fetch(`${API_URL}/listings-save.php`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(listing),
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to save listing');
+    }
+    
+    return response.json();
+  },
+
+  // Delete listing
+  async delete(id: string): Promise<{ success: boolean; message: string }> {
+    const token = localStorage.getItem('auth_token');
+    
+    if (!token) {
+      throw new Error('Not authenticated');
+    }
+    
+    const response = await fetch(`${API_URL}/listings-delete.php`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ id }),
+    });
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Failed to delete listing');
+    }
+    
+    return response.json();
+  },
+};
