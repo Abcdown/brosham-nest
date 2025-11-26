@@ -44,7 +44,7 @@ export const ListingsAPI = {
     limit?: number;
     offset?: number;
   }): Promise<ListingsResponse> {
-    const token = localStorage.getItem('auth_token');
+    const token = localStorage.getItem('ADMIN_TOKEN');
     const queryParams = new URLSearchParams();
     
     if (params?.status) queryParams.append('status', params.status);
@@ -81,7 +81,7 @@ export const ListingsAPI = {
 
   // Create or update listing
   async save(listing: Listing): Promise<{ success: boolean; id: string; action: string }> {
-    const token = localStorage.getItem('auth_token');
+    const token = localStorage.getItem('ADMIN_TOKEN');
     
     if (!token) {
       throw new Error('Not authenticated');
