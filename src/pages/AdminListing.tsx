@@ -1,17 +1,23 @@
 import { ListingsAPI, type Listing } from "@/lib/listingsApi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Loader2 } from "lucide-react";
 import ImagesPanel from "@/components/admin/ImagesPanel";
 
 
 
 const AdminListing = () => {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const isEditMode = !!id;
+  const [isLoading, setIsLoading] = useState(isEditMode);
+  const [listingId, setListingId] = useState<string | undefined>(id);
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
   const [coverImageUrl, setCoverImageUrl] = useState<string | null>(null);
   const [title, setTitle] = useState("");
@@ -27,6 +33,64 @@ const AdminListing = () => {
   const [features, setFeatures] = useState<string[]>([]);
   const { toast } = useToast();
   const [isSaving, setIsSaving] = useState(false);
+  
+  // Load existing listing data if in edit mode
+  useEffect(() => {
+    if (isEditMode && id) {
+      loadListing(id);
+    }
+  }, [id, isEditMode]);
+  
+  const loadListing = async (listingId: string) => {
+    try {
+      setIsLoading(true);
+      // Get all listings and find the one we need
+      const response = await ListingsAPI.getAll();
+      const listing = response.listings.find(l => l.id === listingId);
+      
+      if (!listing) {
+        toast({
+          title: "Error",
+          description: "Listing not found",
+          variant: "destructive",
+        });
+        navigate('/admin/listings');
+        return;
+      }
+      
+      // Populate form fields
+      setTitle(listing.title || "");
+      setPrice(listing.price ? listing.price.toString() : "");
+      setAddress(listing.address || "");
+      setCity(listing.city || "");
+      setState(listing.state || "");
+      setBedrooms(listing.bedrooms || 1);
+      setBathrooms(listing.bathrooms || 1);
+      setPropertyType(listing.propertyType || "");
+      setPropertyCategory(listing.propertyCategory || "");
+      setStatus(listing.status || "for-sale");
+      setFeatures(listing.features || []);
+      setCoverImageUrl(listing.coverImage || null);
+      
+      // Handle gallery images
+      if (listing.gallery && Array.isArray(listing.gallery)) {
+        const imageUrls = listing.gallery.map(img => 
+          typeof img === 'string' ? img : img.url
+        ).filter(Boolean);
+        setSelectedImages(imageUrls);
+      }
+      
+    } catch (error: any) {
+      console.error("Error loading listing:", error);
+      toast({
+        title: "Error",
+        description: error.message || "Failed to load listing",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   
   const formatPrice = (value: string) => {
     const numericValue = value.replace(/[^\d]/g, '');
@@ -54,7 +118,7 @@ const AdminListing = () => {
 
 const handleSave = async () => {
   try {
-    setIsSaving(true);  // use the isSaving flag you already have
+    setIsSaving(true);
 
     // 1) basic validation
     if (!title.trim()) {
@@ -62,8 +126,8 @@ const handleSave = async () => {
       return;
     }
 
-    // 2) id + slug
-    const id = `ls_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
+    // 2) Use existing ID if editing, generate new one if creating
+    const finalId = listingId || `ls_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
     const slug = (title || "")
       .toLowerCase()
       .trim()
@@ -76,8 +140,9 @@ const handleSave = async () => {
     // 3.1) Make sure a cover image is set
     const coverUrl = coverImageUrl ?? selectedImages[0] ?? null;
     
-    // 4) payload for new database API
+    // 4) payload for database API
     const payload: Listing = {
+      id: finalId, // Include ID for updates
       title: title.trim(),
       price: priceNum,
       currency: "RM",
@@ -97,13 +162,20 @@ const handleSave = async () => {
       isFeatured: false,
     };
     
-    // 5) call the new database API
+    // 5) call the database API
     const res = await ListingsAPI.save(payload);
 
     toast({
-      title: "Listing saved!",
-      description: "Your property listing has been successfully saved.",
+      title: isEditMode ? "Listing updated!" : "Listing created!",
+      description: isEditMode 
+        ? "Your property listing has been successfully updated."
+        : "Your property listing has been successfully created.",
     });
+    
+    // Navigate back to listings page
+    setTimeout(() => {
+      navigate('/admin/listings');
+    }, 1000);
 
   } catch (e: any) {
     console.error(e);
@@ -116,13 +188,29 @@ const handleSave = async () => {
 
   const canSave = title.trim().length > 0;
 
+  // Show loading state while fetching listing data
+  if (isLoading) {
+    return (
+      <div className="max-w-4xl mx-auto space-y-6">
+        <Card>
+          <CardContent className="flex items-center justify-center py-12">
+            <Loader2 className="w-8 h-8 animate-spin text-primary" />
+            <span className="ml-2 text-muted-foreground">Loading listing...</span>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Create New Property Listing</CardTitle>
+          <CardTitle>{isEditMode ? 'Edit Property Listing' : 'Create New Property Listing'}</CardTitle>
           <CardDescription>
-            Fill in the property details below to create a new listing.
+            {isEditMode 
+              ? 'Update the property details below.'
+              : 'Fill in the property details below to create a new listing.'}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -278,10 +366,9 @@ const handleSave = async () => {
 
 
             <div className="pt-4">
-              <Button onClick={handleSave} disabled={isSaving}>
-                  {isSaving ? "Saving..." : "Save Listing"}
+              <Button onClick={handleSave} disabled={isSaving || !canSave}>
+                {isSaving ? "Saving..." : isEditMode ? "Update Listing" : "Create Listing"}
               </Button>
-
             </div>
           </div>
         </CardContent>
