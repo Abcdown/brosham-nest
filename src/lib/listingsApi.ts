@@ -65,7 +65,16 @@ export const ListingsAPI = {
       throw new Error(error.error || 'Failed to fetch listings');
     }
     
-    return response.json();
+    const data = await response.json();
+    
+    // Ensure the response has the expected structure
+    return {
+      success: data.success ?? true,
+      listings: Array.isArray(data.listings) ? data.listings : [],
+      total: data.total ?? 0,
+      limit: data.limit ?? 50,
+      offset: data.offset ?? 0,
+    };
   },
 
   // Get public listings (no auth required)
@@ -106,7 +115,7 @@ export const ListingsAPI = {
 
   // Delete listing
   async delete(id: string): Promise<{ success: boolean; message: string }> {
-    const token = localStorage.getItem('auth_token');
+    const token = localStorage.getItem('ADMIN_TOKEN');
     
     if (!token) {
       throw new Error('Not authenticated');

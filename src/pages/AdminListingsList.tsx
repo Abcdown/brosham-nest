@@ -42,7 +42,7 @@ const AdminListingsList = () => {
     try {
       setIsLoading(true);
       const response = await ListingsAPI.getAll();
-      setListings(response.listings);
+      setListings(response.listings || []);
     } catch (error: any) {
       console.error("Error loading listings:", error);
       toast({
