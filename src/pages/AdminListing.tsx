@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
@@ -30,6 +31,7 @@ const AdminListing = () => {
   const [propertyType, setPropertyType] = useState("");
   const [propertyCategory, setPropertyCategory] = useState("");
   const [status, setStatus] = useState("for-sale");
+  const [isFeatured, setIsFeatured] = useState(false);
   const [features, setFeatures] = useState<string[]>([]);
   const { toast } = useToast();
   const [isSaving, setIsSaving] = useState(false);
@@ -69,6 +71,7 @@ const AdminListing = () => {
       setPropertyType(listing.propertyType || "");
       setPropertyCategory(listing.propertyCategory || "");
       setStatus(listing.status || "for-sale");
+      setIsFeatured(listing.isFeatured || false);
       setFeatures(listing.features || []);
       setCoverImageUrl(listing.coverImage || null);
       
@@ -159,7 +162,7 @@ const handleSave = async () => {
       coverImage: coverUrl,
       gallery: selectedImages.map((url) => ({ url })),
       features,
-      isFeatured: false,
+      isFeatured: isFeatured,
     };
     
     // 5) call the database API
@@ -352,6 +355,26 @@ const handleSave = async () => {
                     <SelectItem value="sold">Sold</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
+            </div>
+
+            {/* Featured Checkbox */}
+            <div className="flex items-center space-x-2 p-4 bg-muted/50 rounded-lg">
+              <Checkbox 
+                id="featured" 
+                checked={isFeatured}
+                onCheckedChange={(checked) => setIsFeatured(checked as boolean)}
+              />
+              <div className="flex-1">
+                <Label 
+                  htmlFor="featured" 
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 cursor-pointer"
+                >
+                  Mark as Featured Property
+                </Label>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Featured properties will be displayed prominently on the homepage
+                </p>
               </div>
             </div>
 
