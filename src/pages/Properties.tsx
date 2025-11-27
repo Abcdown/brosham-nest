@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
 import { getPageSettings } from "@/lib/pageSettings";
+import { ListingsAPI } from "@/lib/listingsApi";
 import UnderConstruction from "@/components/UnderConstruction";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Badge } from "@/components/ui/badge";
 import PropertyCard from "@/components/PropertyCard";
-import { Search, Filter, Grid, List } from "lucide-react";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
-import heroProperty from "@/assets/hero-property.jpg";
+import { Search, Filter, Grid, List, Loader2 } from "lucide-react";
 
 const Properties = () => {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchTerm, setSearchTerm] = useState("");
   const [isEnabled, setIsEnabled] = useState(true);
+  const [properties, setProperties] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -24,6 +23,43 @@ const Properties = () => {
     };
     loadSettings();
   }, []);
+  
+  useEffect(() => {
+    const loadProperties = async () => {
+      try {
+        setIsLoading(true);
+        console.log('[Properties] Fetching listings from API...');
+        const response = await ListingsAPI.getPublic();
+        console.log('[Properties] API Response:', response);
+        console.log('[Properties] Total listings:', response.listings?.length);
+        
+        // Transform API data to match PropertyCard props
+        const transformedProperties = response.listings.map((listing: any) => ({
+          id: listing.id,
+          title: listing.title,
+          price: `${listing.currency || 'RM'} ${listing.price?.toLocaleString() || '0'}`,
+          location: listing.city && listing.state ? `${listing.city}, ${listing.state}` : listing.city || listing.state || 'Location not specified',
+          beds: listing.bedrooms || 0,
+          baths: listing.bathrooms || 0,
+          sqft: listing.sizeSqft || 0,
+          image: listing.coverImage || '/placeholder-property.jpg',
+          status: (listing.status === 'for-sale' ? 'For Sale' : listing.status === 'for-rent' ? 'For Rent' : 'Sold') as 'For Sale' | 'For Rent' | 'Sold',
+          featured: listing.isFeatured || false,
+        }));
+        
+        setProperties(transformedProperties);
+      } catch (error) {
+        console.error('Error loading properties:', error);
+        setProperties([]);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    if (isEnabled) {
+      loadProperties();
+    }
+  }, [isEnabled]);
 
   if (!isEnabled) {
     return (
@@ -32,59 +68,9 @@ const Properties = () => {
         description="We're currently updating our property portfolio. Our stunning collection of premium properties will be available soon!"
       />
     );
-  }
+    }
 
-  // Sample property data
-  const properties = [
-    {
-      id: "1",
-      title: "Modern Luxury Villa",
-      price: "$1,250,000",
-      location: "Beverly Hills, CA",
-      beds: 4,
-      baths: 3,
-      sqft: 3200,
-      image: property1,
-      status: "For Sale" as const,
-      featured: true,
-    },
-    {
-      id: "2",
-      title: "Contemporary Family Home",
-      price: "$850,000",
-      location: "Manhattan Beach, CA",
-      beds: 3,
-      baths: 2,
-      sqft: 2400,
-      image: property2,
-      status: "For Sale" as const,
-    },
-    {
-      id: "3",
-      title: "Luxury Oceanfront Estate",
-      price: "$2,100,000",
-      location: "Malibu, CA",
-      beds: 5,
-      baths: 4,
-      sqft: 4500,
-      image: property3,
-      status: "For Sale" as const,
-      featured: true,
-    },
-    {
-      id: "4",
-      title: "Designer Modern Residence",
-      price: "$1,680,000",
-      location: "West Hollywood, CA",
-      beds: 4,
-      baths: 3,
-      sqft: 3800,
-      image: heroProperty,
-      status: "For Sale" as const,
-    },
-  ];
-
-  const filteredProperties = properties.filter(property =>
+    const filteredProperties = properties.filter(property =>
     property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     property.location.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -176,24 +162,33 @@ const Properties = () => {
       {/* Properties Grid */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className={`grid gap-8 ${
-            viewMode === "grid" 
-              ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
-              : "grid-cols-1 max-w-4xl mx-auto"
-          }`}>
-            {filteredProperties.map((property) => (
-              <PropertyCard key={property.id} {...property} />
-            ))}
-          </div>
-
-          {filteredProperties.length === 0 && (
-            <div className="text-center py-12">
-              <h3 className="text-xl font-semibold mb-2">No properties found</h3>
-              <p className="text-muted-foreground mb-4">
-                Try adjusting your search criteria to find more properties.
-              </p>
-              <Button onClick={() => setSearchTerm("")}>Clear Search</Button>
+          {isLoading ? (
+            <div className="flex items-center justify-center py-12">
+              <Loader2 className="w-8 h-8 animate-spin text-primary" />
+              <span className="ml-2 text-muted-foreground">Loading properties...</span>
             </div>
+          ) : (
+            <>
+              <div className={`grid gap-8 ${
+                viewMode === "grid" 
+                  ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
+                  : "grid-cols-1 max-w-4xl mx-auto"
+              }`}>
+                {filteredProperties.map((property) => (
+                  <PropertyCard key={property.id} {...property} />
+                ))}
+              </div>
+
+              {filteredProperties.length === 0 && !isLoading && (
+                <div className="text-center py-12">
+                  <h3 className="text-xl font-semibold mb-2">No properties found</h3>
+                  <p className="text-muted-foreground mb-4">
+                    Try adjusting your search criteria to find more properties.
+                  </p>
+                  <Button onClick={() => setSearchTerm("")}>Clear Search</Button>
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
