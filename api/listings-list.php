@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         $stmt->execute($params);
         $listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        // Parse JSON fields
+        // Parse JSON fields and transform to camelCase for frontend
         foreach ($listings as &$listing) {
             $listing['gallery'] = json_decode($listing['gallery'] ?? '[]', true);
             $listing['features'] = json_decode($listing['features'] ?? '[]', true);
@@ -83,6 +83,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $listing['bedrooms'] = intval($listing['bedrooms']);
             $listing['bathrooms'] = intval($listing['bathrooms']);
             $listing['size_sqft'] = intval($listing['size_sqft']);
+            
+            // Transform snake_case to camelCase for frontend compatibility
+            $listing['coverImage'] = $listing['cover_image'];
+            $listing['propertyType'] = $listing['property_type'];
+            $listing['propertyCategory'] = $listing['property_category'];
+            $listing['listingStatus'] = $listing['listing_status'];
+            $listing['isFeatured'] = $listing['is_featured'];
+            $listing['sizeSqft'] = $listing['size_sqft'];
+            $listing['sortOrder'] = $listing['sort_order'];
+            $listing['createdAt'] = $listing['created_at'];
+            $listing['updatedAt'] = $listing['updated_at'];
         }
         
         jsonResponse([
