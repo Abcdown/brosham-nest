@@ -41,7 +41,11 @@ const AdminListingsList = () => {
   const loadListings = async () => {
     try {
       setIsLoading(true);
+      const token = localStorage.getItem('ADMIN_TOKEN');
       console.log('Fetching listings from API...');
+      console.log('Token present:', !!token);
+      console.log('Token value:', token ? token.substring(0, 20) + '...' : 'none');
+      
       const response = await ListingsAPI.getAll();
       console.log('API Response:', response);
       console.log('Listings count:', response.listings?.length || 0);

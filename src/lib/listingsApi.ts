@@ -45,6 +45,9 @@ export const ListingsAPI = {
     offset?: number;
   }): Promise<ListingsResponse> {
     const token = localStorage.getItem('ADMIN_TOKEN');
+    console.log('[ListingsAPI.getAll] Starting request');
+    console.log('[ListingsAPI.getAll] Token:', token ? 'present' : 'missing');
+    
     const queryParams = new URLSearchParams();
     
     if (params?.status) queryParams.append('status', params.status);
@@ -53,19 +56,33 @@ export const ListingsAPI = {
     if (params?.limit) queryParams.append('limit', params.limit.toString());
     if (params?.offset) queryParams.append('offset', params.offset.toString());
     
-    const response = await fetch(`${API_URL}/listings-list.php?${queryParams}`, {
+    const url = `${API_URL}/listings-list.php?${queryParams}`;
+    console.log('[ListingsAPI.getAll] URL:', url);
+    
+    const response = await fetch(url, {
       headers: {
         'Authorization': `Bearer ${token}`,
         'Content-Type': 'application/json',
       },
     });
     
+    console.log('[ListingsAPI.getAll] Response status:', response.status);
+    console.log('[ListingsAPI.getAll] Response OK:', response.ok);
+    
     if (!response.ok) {
-      const error = await response.json();
+      const errorText = await response.text();
+      console.error('[ListingsAPI.getAll] Error response:', errorText);
+      let error;
+      try {
+        error = JSON.parse(errorText);
+      } catch (e) {
+        error = { error: errorText };
+      }
       throw new Error(error.error || 'Failed to fetch listings');
     }
     
     const data = await response.json();
+    console.log('[ListingsAPI.getAll] Response data:', data);
     
     // Ensure the response has the expected structure
     return {
