@@ -41,8 +41,15 @@ const AdminListingsList = () => {
   const loadListings = async () => {
     try {
       setIsLoading(true);
+      console.log('Fetching listings from API...');
       const response = await ListingsAPI.getAll();
+      console.log('API Response:', response);
+      console.log('Listings count:', response.listings?.length || 0);
       setListings(response.listings || []);
+      
+      if (!response.listings || response.listings.length === 0) {
+        console.warn('No listings returned from API');
+      }
     } catch (error: any) {
       console.error("Error loading listings:", error);
       toast({
