@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Building, Settings, LogOut, Menu, X } from "lucide-react";
+import { FileText, Building, Settings, LogOut, Menu, X, Home } from "lucide-react";
 import Breadcrumb from "./Breadcrumb";
 import { AuthAPI } from "@/lib/authApi";
 import { useToast } from "@/hooks/use-toast";
@@ -14,6 +14,7 @@ const AdminLayout = () => {
   const { toast } = useToast();
 
   const sidebarItems = [
+    { name: "Home", path: "/", icon: Home, external: true },
     { name: "Blog", path: "/admin/blog", icon: FileText },
     { name: "Listings", path: "/admin/listings", icon: Building },
     { name: "Settings", path: "/admin/settings", icon: Settings },
@@ -99,6 +100,25 @@ const AdminLayout = () => {
           <div className="space-y-2">
             {sidebarItems.map((item) => {
               const Icon = item.icon;
+              const content = (
+                <>
+                  <Icon className="h-5 w-5 flex-shrink-0" />
+                  {isSidebarOpen && <span className="font-medium">{item.name}</span>}
+                </>
+              );
+              
+              if (item.external) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.path}
+                    className="flex items-center space-x-3 px-3 py-2 rounded-md transition-colors duration-200 text-muted-foreground hover:bg-muted hover:text-primary"
+                  >
+                    {content}
+                  </a>
+                );
+              }
+              
               return (
                 <Link
                   key={item.name}
@@ -109,8 +129,7 @@ const AdminLayout = () => {
                       : "text-muted-foreground hover:bg-muted hover:text-primary"
                   }`}
                 >
-                  <Icon className="h-5 w-5 flex-shrink-0" />
-                  {isSidebarOpen && <span className="font-medium">{item.name}</span>}
+                  {content}
                 </Link>
               );
             })}
