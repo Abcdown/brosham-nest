@@ -71,12 +71,34 @@ try {
     $updateStmt = $pdo->prepare("UPDATE users SET last_login = NOW() WHERE id = :id");
     $updateStmt->execute(['id' => $user['id']]);
     
-    // Generate session token (simple approach - you can use JWT for production)
-    $token = bin2hex(random_bytes(32));
+    // Generate JWT token
     $tokenExpiry = time() + SESSION_LIFETIME;
     
-    // Store session in database (create sessions table) or use JWT
-    // For now, we'll return a simple token that the frontend will store
+    // Create JWT header
+    $header = json_encode([
+        'typ' => 'JWT',
+        'alg' => 'HS256'
+    ]);
+    
+    // Create JWT payload
+    $payload = json_encode([
+        'user_id' => $user['id'],
+        'username' => $user['username'],
+        'role' => $user['role'],
+        'iat' => time(),
+        'exp' => $tokenExpiry
+    ]);
+    
+    // Encode Header and Payload
+    $base64UrlHeader = base64UrlEncode($header);
+    $base64UrlPayload = base64UrlEncode($payload);
+    
+    // Create Signature
+    $signature = hash_hmac('sha256', $base64UrlHeader . "." . $base64UrlPayload, JWT_SECRET, true);
+    $base64UrlSignature = base64UrlEncode($signature);
+    
+    // Create JWT
+    $token = $base64UrlHeader . "." . $base64UrlPayload . "." . $base64UrlSignature;
     
     // Remove password from response
     unset($user['password']);
