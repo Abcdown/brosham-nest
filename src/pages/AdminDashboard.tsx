@@ -59,9 +59,9 @@ const AdminDashboard = () => {
             <p className="text-sm text-muted-foreground mb-4">
               Showcase properties with detailed information and stunning images.
             </p>
-            <Link to="/admin/listing">
+            <Link to="/admin/listings">
               <Button variant="secondary" className="w-full">
-                Go to Listing
+                Go to Listings
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
