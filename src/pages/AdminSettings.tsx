@@ -18,8 +18,11 @@ const AdminSettings = () => {
 
   useEffect(() => {
     // Load current settings
-    const currentSettings = getPageSettings();
-    setSettings(currentSettings);
+    const loadSettings = async () => {
+      const currentSettings = await getPageSettings();
+      setSettings(currentSettings);
+    };
+    loadSettings();
   }, []);
 
   const handleToggle = (page: keyof PageSettings) => {
@@ -29,10 +32,10 @@ const AdminSettings = () => {
     }));
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     setIsSaving(true);
     try {
-      updatePageSettings(settings);
+      await updatePageSettings(settings);
       toast({
         title: "Settings saved",
         description: "Page visibility settings have been updated successfully.",

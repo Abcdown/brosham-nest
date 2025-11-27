@@ -129,13 +129,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['admin'])) {
         $stmt = $pdo->query($sql);
         $listings = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        // Parse JSON fields and format data
+        // Parse JSON fields and format data with camelCase transformation
         foreach ($listings as &$listing) {
             $listing['is_featured'] = (bool)$listing['is_featured'];
             $listing['price'] = floatval($listing['price']);
             $listing['bedrooms'] = intval($listing['bedrooms']);
             $listing['bathrooms'] = intval($listing['bathrooms']);
             $listing['size_sqft'] = intval($listing['size_sqft']);
+            
+            // Transform snake_case to camelCase for frontend compatibility
+            $listing['coverImage'] = $listing['cover_image'];
+            $listing['propertyType'] = $listing['property_type'];
+            $listing['propertyCategory'] = $listing['property_category'];
+            $listing['isFeatured'] = $listing['is_featured'];
+            $listing['sizeSqft'] = $listing['size_sqft'];
+            $listing['createdAt'] = $listing['created_at'];
         }
         
         jsonResponse([

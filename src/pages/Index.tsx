@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { ListingsAPI } from "@/lib/listingsApi";
 import HeroSection from "@/components/HeroSection";
 import PropertyCard from "@/components/PropertyCard";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,53 +14,60 @@ import {
   MapPin, 
   Phone, 
   Mail,
-  CheckCircle 
+  CheckCircle,
+  Loader2
 } from "lucide-react";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
 import agentPortrait from "@/assets/agent-portrait.jpg";
 
 const Index = () => {
-  // Featured properties data
-  const featuredProperties = [
-    {
-      id: "1",
-      title: "Vila Mewah Moden",
-      price: "RM 1,250,000",
-      location: "Beverly Hills, CA",
-      beds: 4,
-      baths: 3,
-      sqft: 3200,
-      image: property1,
-      status: "For Sale" as const,
-      featured: true,
-    },
-    {
-      id: "2",
-      title: "Rumah Keluarga Kontemporari",
-      price: "RM 850,000",
-      location: "Manhattan Beach, CA",
-      beds: 3,
-      baths: 2,
-      sqft: 2400,
-      image: property2,
-      status: "For Sale" as const,
-      featured: true,
-    },
-    {
-      id: "3",
-      title: "Rumah Mewah Tepi Pantai",
-      price: "RM 2,100,000",
-      location: "Malibu, CA",
-      beds: 5,
-      baths: 4,
-      sqft: 4500,
-      image: property3,
-      status: "For Sale" as const,
-      featured: true,
-    },
-  ];
+  const [featuredProperties, setFeaturedProperties] = useState<any[]>([]);
+  const [isLoadingProperties, setIsLoadingProperties] = useState(true);
+  
+  useEffect(() => {
+    const loadFeaturedProperties = async () => {
+      try {
+        setIsLoadingProperties(true);
+        const response = await ListingsAPI.getPublic();
+        
+        console.log('[Homepage] All listings:', response.listings);
+        console.log('[Homepage] Featured check:', response.listings.map(l => ({
+          id: l.id,
+          title: l.title,
+          isFeatured: l.isFeatured,
+          is_featured: l.is_featured
+        })));
+        
+        // Filter only featured properties and transform data
+        const featured = response.listings
+          .filter((listing: any) => {
+            console.log(`[Homepage] Checking ${listing.title}: isFeatured=${listing.isFeatured}, is_featured=${listing.is_featured}`);
+            return listing.isFeatured || listing.is_featured;
+          })
+          .slice(0, 3) // Get only first 3 featured
+          .map((listing: any) => ({
+            id: listing.id,
+            title: listing.title,
+            price: `${listing.currency || 'RM'} ${listing.price?.toLocaleString() || '0'}`,
+            location: listing.city && listing.state ? `${listing.city}, ${listing.state}` : listing.city || listing.state || 'Location not specified',
+            beds: listing.bedrooms || 0,
+            baths: listing.bathrooms || 0,
+            sqft: listing.sizeSqft || 0,
+            image: listing.coverImage || '/placeholder-property.jpg',
+            status: (listing.status === 'for-sale' ? 'For Sale' : listing.status === 'for-rent' ? 'For Rent' : 'Sold') as 'For Sale' | 'For Rent' | 'Sold',
+            featured: true,
+          }));
+        
+        setFeaturedProperties(featured);
+      } catch (error) {
+        console.error('Error loading featured properties:', error);
+        setFeaturedProperties([]);
+      } finally {
+        setIsLoadingProperties(false);
+      }
+    };
+    
+    loadFeaturedProperties();
+  }, []);
 
   const stats = [
     { icon: Home, label: "Hartanah Terjual", value: "500+" },
@@ -157,18 +166,35 @@ const Index = () => {
             </p>
           </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
-              {featuredProperties.map((property) => (
-                <PropertyCard key={property.id} {...property} />
-              ))}
-            </div>
-            
-            <div className="text-center">
-              <Button size="lg" variant="outline">
-                Lihat Semua Hartanah
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
+            {isLoadingProperties ? (
+              <div className="flex items-center justify-center py-12">
+                <Loader2 className="w-8 h-8 animate-spin text-primary" />
+                <span className="ml-2 text-muted-foreground">Loading featured properties...</span>
+              </div>
+            ) : featuredProperties.length > 0 ? (
+              <>
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
+                  {featuredProperties.map((property) => (
+                    <PropertyCard key={property.id} {...property} />
+                  ))}
+                </div>
+                
+                <div className="text-center">
+                  <Button size="lg" variant="outline" onClick={() => window.location.href = '/properties'}>
+                    Lihat Semua Hartanah
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground mb-4">No featured properties available at the moment.</p>
+                <Button size="lg" variant="outline" onClick={() => window.location.href = '/properties'}>
+                  View All Properties
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </section>

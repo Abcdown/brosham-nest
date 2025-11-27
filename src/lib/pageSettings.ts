@@ -60,7 +60,7 @@ export async function getPageSettings(): Promise<PageSettings> {
 
 export async function updatePageSettings(settings: Partial<PageSettings>): Promise<void> {
   try {
-    const token = localStorage.getItem('auth_token');
+    const token = localStorage.getItem('ADMIN_TOKEN');
     if (!token) {
       throw new Error('Not authenticated');
     }
