@@ -84,6 +84,12 @@ export const ListingsAPI = {
     const data = await response.json();
     console.log('[ListingsAPI.getAll] Response data:', data);
     
+    // Check if the API returned an error even with 200 status
+    if (data.success === false) {
+      console.error('[ListingsAPI.getAll] API returned error:', data.error);
+      throw new Error(data.error || 'Failed to fetch listings');
+    }
+    
     // Ensure the response has the expected structure
     return {
       success: data.success ?? true,

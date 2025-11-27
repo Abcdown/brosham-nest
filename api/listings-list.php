@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         if (!$userData) {
             http_response_code(401);
             jsonResponse(['success' => false, 'error' => 'Invalid token']);
+            exit; // Ensure execution stops here
         }
     }
     

@@ -56,11 +56,24 @@ const AdminListingsList = () => {
       }
     } catch (error: any) {
       console.error("Error loading listings:", error);
+      
+      // Check if it's an authentication error
+      const isAuthError = error.message?.includes('Invalid token') || error.message?.includes('authentication');
+      
       toast({
-        title: "Error",
-        description: error.message || "Failed to load listings",
+        title: isAuthError ? "Authentication Error" : "Error",
+        description: isAuthError 
+          ? "Your session has expired. Please log in again."
+          : error.message || "Failed to load listings",
         variant: "destructive",
       });
+      
+      // If authentication error, redirect to login after a short delay
+      if (isAuthError) {
+        setTimeout(() => {
+          navigate('/login');
+        }, 2000);
+      }
     } finally {
       setIsLoading(false);
     }
