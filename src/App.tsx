@@ -25,6 +25,8 @@ import AdminBlog from "./pages/AdminBlog";
 import AdminListing from "./pages/AdminListing";
 import AdminListingsList from "./pages/AdminListingsList";
 import AdminSettings from "./pages/AdminSettings";
+import AdminBlogList from "@/pages/AdminBlogList";
+import AdminBlogForm from "@/pages/AdminBlogForm";
 
 const queryClient = new QueryClient();
 
@@ -54,12 +56,14 @@ const AppContent = () => {
         {/* Admin Routes */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route index element={<AdminDashboard />} />
-          <Route path="blog" element={<AdminBlog />} />
-          <Route path="listings" element={<AdminListingsList />} />
-          <Route path="listing/create" element={<AdminListing />} />
-          <Route path="listing/edit/:id" element={<AdminListing />} />
-          <Route path="settings" element={<AdminSettings />} />
-        </Route>
+		  <Route path="blog" element={<AdminBlogList />} />
+		  <Route path="blog/create" element={<AdminBlogForm />} />
+		  <Route path="blog/edit/:id" element={<AdminBlogForm />} />
+		  <Route path="listings" element={<AdminListingsList />} />
+		  <Route path="listing/create" element={<AdminListing />} />
+		  <Route path="listing/edit/:id" element={<AdminListing />} />
+		  <Route path="settings" element={<AdminSettings />} />
+		</Route>
 
         {/* Hidden admin upload page */}
         <Route path="/admin/upload" element={<AdminUpload />} />
