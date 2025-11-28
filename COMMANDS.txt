@@ -1,0 +1,84 @@
+⚡ COPY & PASTE COMMANDS - BLOG FIX
+=====================================
+
+📍 STEP 1: BUILD (On Your Computer)
+────────────────────────────────────
+cd /Users/izwanrasip/Desktop/brosham-nest
+npm run build
+
+
+📍 STEP 2: COMMIT TO GIT (Optional)
+────────────────────────────────────
+git add .
+git commit -m "Fix: Blog slug issue - add debug tools"
+git push origin main
+
+
+📍 STEP 3: ON STAGING SERVER (if using Git)
+────────────────────────────────────
+ssh user@staging.broshamproperties.my
+cd /path/to/project
+git pull origin main
+npm run build
+
+
+📍 ALTERNATIVE: FILES TO UPLOAD (if using FTP)
+────────────────────────────────────
+public/blog-fixer.html          → /public_html/
+api/fix-blog-slugs.php          → /public_html/api/
+api/blog-debug.php              → /public_html/api/
+api/blog-list.php               → /public_html/api/
+dist/*                          → /public_html/
+
+
+📍 STEP 4: FIX DATABASE
+────────────────────────────────────
+🌐 Open in browser:
+https://staging.broshamproperties.my/blog-fixer.html
+
+👆 Click: "Fix Missing Slugs" button
+
+
+📍 STEP 5: TEST
+────────────────────────────────────
+🌐 Visit:
+https://staging.broshamproperties.my/blog
+
+✅ Click on posts to verify they load
+
+
+📍 DEBUG ENDPOINTS (If Needed)
+────────────────────────────────────
+https://staging.broshamproperties.my/api/blog-debug.php
+https://staging.broshamproperties.my/api/blog-list.php
+
+
+📍 SQL FIX (Alternative Method)
+────────────────────────────────────
+UPDATE blog_posts 
+SET slug = LOWER(
+    TRIM(
+        REPLACE(
+            REPLACE(
+                REPLACE(title, ' ', '-'),
+                '.', ''
+            ),
+            ',', ''
+        )
+    )
+)
+WHERE slug IS NULL OR slug = '';
+
+
+📍 VERIFY IN DATABASE
+────────────────────────────────────
+SELECT id, slug, title, status 
+FROM blog_posts 
+WHERE status = 'published'
+ORDER BY created_at DESC;
+
+
+=====================================
+⏱️  Total time: 5-10 minutes
+🎯 Success: Blog posts load without "Not Found" error
+=====================================

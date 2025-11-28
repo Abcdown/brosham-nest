@@ -1,0 +1,172 @@
+import { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { FileText, Building, Settings, LogOut, Menu, X, Home } from "lucide-react";
+import Breadcrumb from "./Breadcrumb";
+import { AuthAPI } from "@/lib/authApi";
+import { useToast } from "@/hooks/use-toast";
+
+const AdminLayout = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [userName, setUserName] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { toast } = useToast();
+
+  const sidebarItems = [
+    { name: "Home", path: "/", icon: Home, external: true },
+    { name: "Blog", path: "/admin/blog", icon: FileText },
+    { name: "Listings", path: "/admin/listings", icon: Building },
+    { name: "Settings", path: "/admin/settings", icon: Settings },
+  ];
+
+  const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = async () => {
+    try {
+      await AuthAPI.logout();
+      toast({
+        title: "Logged out",
+        description: "You have been successfully logged out.",
+      });
+      navigate("/login");
+    } catch (error) {
+      console.error('Logout error:', error);
+      navigate("/login");
+    }
+  };
+
+  const getBreadcrumbItems = () => {
+    const items = [{ label: "Admin" }];
+    
+    if (location.pathname === "/admin") {
+      items.push({ label: "Dashboard" });
+    } else if (location.pathname === "/admin/blog") {
+      items.push({ label: "Blog" });
+    } else if (location.pathname.startsWith("/admin/listing")) {
+      items.push({ label: "Listings" });
+    } else if (location.pathname === "/admin/settings") {
+      items.push({ label: "Settings" });
+    }
+    
+    return items;
+  };
+
+  // Check authentication and load user
+  useEffect(() => {
+    const checkAuth = async () => {
+      const isAuth = AuthAPI.isAuthenticated();
+      if (!isAuth) {
+        navigate("/login");
+        return;
+      }
+      
+      const user = AuthAPI.getCurrentUser();
+      if (user) {
+        setUserName(user.full_name || user.username);
+      }
+    };
+    
+    checkAuth();
+  }, [navigate]);
+
+  return (
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar */}
+      <div className={`${isSidebarOpen ? "w-64" : "w-16"} transition-all duration-300 bg-card border-r border-border flex flex-col`}>
+        {/* Sidebar Header */}
+        <div className="p-4 border-b border-border">
+          <div className="flex items-center justify-between">
+            {isSidebarOpen && (
+              <div>
+                <h2 className="text-lg font-semibold">Admin Dashboard</h2>
+                {userName && (
+                  <p className="text-xs text-muted-foreground mt-1">{userName}</p>
+                )}
+              </div>
+            )}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+            >
+              {isSidebarOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            </Button>
+          </div>
+        </div>
+
+        {/* Sidebar Navigation */}
+        <nav className="flex-1 p-4">
+          <div className="space-y-2">
+            {sidebarItems.map((item) => {
+              const Icon = item.icon;
+              const content = (
+                <>
+                  <Icon className="h-5 w-5 flex-shrink-0" />
+                  {isSidebarOpen && <span className="font-medium">{item.name}</span>}
+                </>
+              );
+              
+              if (item.external) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.path}
+                    className="flex items-center space-x-3 px-3 py-2 rounded-md transition-colors duration-200 text-muted-foreground hover:bg-muted hover:text-primary"
+                  >
+                    {content}
+                  </a>
+                );
+              }
+              
+              return (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={`flex items-center space-x-3 px-3 py-2 rounded-md transition-colors duration-200 ${
+                    isActive(item.path)
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted hover:text-primary"
+                  }`}
+                >
+                  {content}
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
+
+        {/* Sidebar Footer */}
+        <div className="p-4 border-t border-border">
+          <Button
+            variant="ghost"
+            className={`${isSidebarOpen ? "w-full justify-start" : "w-full justify-center"}`}
+            onClick={handleLogout}
+          >
+            <LogOut className="h-4 w-4" />
+            {isSidebarOpen && <span className="ml-2">Logout</span>}
+          </Button>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col">
+        {/* Top Header */}
+        <header className="bg-card border-b border-border p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-bold">Admin Dashboard</h1>
+              <Breadcrumb items={getBreadcrumbItems()} />
+            </div>
+          </div>
+        </header>
+        
+        <main className="flex-1 p-6">
+          <Outlet />
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default AdminLayout;

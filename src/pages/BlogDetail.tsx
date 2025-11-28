@@ -26,12 +26,18 @@ const BlogDetail = () => {
       setIsLoading(true);
       const response = await BlogAPI.getPublic();
       
+      console.log('[BlogDetail] Looking for post with id/slug:', id);
+      console.log('[BlogDetail] Available posts:', response.posts.map(p => ({ id: p.id, slug: p.slug, title: p.title })));
+      
       // Find post by slug or id
       const foundPost = response.posts.find(
         p => p.slug === id || p.id === id
       );
       
+      console.log('[BlogDetail] Found post:', foundPost ? foundPost.title : 'NOT FOUND');
+      
       if (!foundPost) {
+        console.error('[BlogDetail] Post not found. Searched for:', id);
         setPost(null);
       } else {
         setPost(foundPost);
