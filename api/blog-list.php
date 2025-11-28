@@ -5,28 +5,26 @@ require_once '_bootstrap.php';
 header('Content-Type: application/json');
 setCorsHeaders();
 
-// Check if this is an authenticated admin request
-$isAdminRequest = false;
+// Check authentication
+$isAuthenticated = false;
 $token = getBearerToken();
 
 if ($token) {
     $userData = verifyToken($token);
     if ($userData) {
-        $isAdminRequest = true;
+        $isAuthenticated = true;
     }
 }
 
-// Admin endpoint - list all blog posts
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && $isAdminRequest) {
-    try {
-        $pdo = getDbConnection();
-        
-        // Get filter parameters
+try {
+    $pdo = getDbConnection();
+    
+    // Admin authenticated request - return all posts
+    if ($isAuthenticated && $_SERVER['REQUEST_METHOD'] === 'GET') {
         $status = $_GET['status'] ?? null;
         $limit = intval($_GET['limit'] ?? 100);
         $offset = intval($_GET['offset'] ?? 0);
         
-        // Build query
         $where = [];
         $params = [];
         
@@ -43,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $isAdminRequest) {
         $countStmt->execute($params);
         $total = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
         
-        // Get blog posts
+        // Get posts
         $sql = "SELECT 
                     id, slug, title, excerpt, content, cover_image,
                     author_id, author_name, status, tags, views,
@@ -60,13 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $isAdminRequest) {
         $stmt->execute($params);
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        // Parse JSON fields and transform to camelCase
+        // Transform data
         foreach ($posts as &$post) {
             $post['tags'] = json_decode($post['tags'] ?? '[]', true);
             $post['is_featured'] = (bool)$post['is_featured'];
             $post['views'] = intval($post['views']);
-            
-            // Transform to camelCase
             $post['coverImage'] = $post['cover_image'];
             $post['authorId'] = $post['author_id'];
             $post['authorName'] = $post['author_name'];
@@ -83,23 +79,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $isAdminRequest) {
             'limit' => $limit,
             'offset' => $offset
         ]);
-        
-    } catch (PDOException $e) {
-        error_log("Database error: " . $e->getMessage());
-        http_response_code(500);
-        jsonResponse(['success' => false, 'error' => 'Database error']);
+        exit;
     }
-    exit;
-}
-
-// Public endpoint - ONLY published posts
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && !$isAdminRequest) {
-    try {
-        $pdo = getDbConnection();
-        
+    
+    // Public unauthenticated request - ONLY published posts
+    if (!$isAuthenticated && $_SERVER['REQUEST_METHOD'] === 'GET') {
         $sql = "SELECT 
                     id, slug, title, excerpt, cover_image,
-                    author_name, published_at, views, tags
+                    author_name, published_at, views, tags, content
                 FROM blog_posts 
                 WHERE status = 'published'
                 ORDER BY published_at DESC, created_at DESC 
@@ -108,7 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !$isAdminRequest) {
         $stmt = $pdo->query($sql);
         $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-        // Transform to camelCase
+        error_log('[blog-list.php] Public request - Found ' . count($posts) . ' published posts');
+        
+        // Transform data
         foreach ($posts as &$post) {
             $post['tags'] = json_decode($post['tags'] ?? '[]', true);
             $post['views'] = intval($post['views']);
@@ -121,15 +110,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !$isAdminRequest) {
             'success' => true,
             'posts' => $posts
         ]);
-        
-    } catch (PDOException $e) {
-        error_log("Database error: " . $e->getMessage());
-        http_response_code(500);
-        jsonResponse(['success' => false, 'error' => 'Database error']);
+        exit;
     }
+    
+} catch (PDOException $e) {
+    error_log("Database error in blog-list.php: " . $e->getMessage());
+    http_response_code(500);
+    jsonResponse(['success' => false, 'error' => 'Database error']);
     exit;
 }
 
-// If we get here, method not allowed
+// If we reach here, method not allowed
 http_response_code(405);
 jsonResponse(['success' => false, 'error' => 'Method not allowed']);
