@@ -5,19 +5,19 @@ require_once '_bootstrap.php';
 header('Content-Type: application/json');
 setCorsHeaders();
 
-// GET request - list all blog posts (admin only)
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    // Verify authentication for admin
-    $token = getBearerToken();
-    if ($token) {
-        $userData = verifyToken($token);
-        if (!$userData) {
-            http_response_code(401);
-            jsonResponse(['success' => false, 'error' => 'Invalid token']);
-            exit;
-        }
+// Check if this is an authenticated admin request
+$isAdminRequest = false;
+$token = getBearerToken();
+
+if ($token) {
+    $userData = verifyToken($token);
+    if ($userData) {
+        $isAdminRequest = true;
     }
-    
+}
+
+// Admin endpoint - list all blog posts
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && $isAdminRequest) {
     try {
         $pdo = getDbConnection();
         
@@ -89,10 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         http_response_code(500);
         jsonResponse(['success' => false, 'error' => 'Database error']);
     }
+    exit;
 }
 
-// Public endpoint for published posts
-if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['admin'])) {
+// Public endpoint - ONLY published posts
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && !$isAdminRequest) {
     try {
         $pdo = getDbConnection();
         
@@ -126,4 +127,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && !isset($_GET['admin'])) {
         http_response_code(500);
         jsonResponse(['success' => false, 'error' => 'Database error']);
     }
+    exit;
 }
+
+// If we get here, method not allowed
+http_response_code(405);
+jsonResponse(['success' => false, 'error' => 'Method not allowed']);
