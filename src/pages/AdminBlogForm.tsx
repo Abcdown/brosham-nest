@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2 } from "lucide-react";
+import RichTextEditor from "@/components/RichTextEditor";
 
 const AdminBlogForm = () => {
   const { id } = useParams<{ id: string }>();
@@ -241,12 +242,10 @@ const AdminBlogForm = () => {
 
             <div className="space-y-2">
               <Label htmlFor="content">Content *</Label>
-              <Textarea
-                id="content"
+              <RichTextEditor
                 value={content}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={setContent}
                 placeholder="Write your blog post content here..."
-                className="min-h-[300px]"
               />
             </div>
 

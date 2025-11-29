@@ -1,0 +1,15 @@
+# Rich Text Editor - Installation Commands
+
+# Step 1: Install dependencies
+npm install react-quill quill --save
+
+# Step 2: Build
+npm run build
+
+# Step 3: Commit to Git
+git add .
+git commit -m "Add: Rich text editor with formatting toolbar for blog posts"
+git push origin main
+
+# That's it! Files will auto-deploy to staging
+# Or manually copy from httpdocs/dist/ to httpdocs/ in Plesk
