@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* React Quill Styles */
-@import 'react-quill/dist/quill.snow.css';
-
 /* Brosham Properties Design System - Premium Real Estate Theme */
 
 @layer base {
