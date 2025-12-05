@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate, Outlet } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { FileText, Building, Settings, LogOut, Menu, X, Home } from "lucide-react";
+import { FileText, Building, Settings, LogOut, Menu, X, Home, Image } from "lucide-react";
 import Breadcrumb from "./Breadcrumb";
 import { AuthAPI } from "@/lib/authApi";
 import { useToast } from "@/hooks/use-toast";
@@ -17,6 +17,7 @@ const AdminLayout = () => {
     { name: "Home", path: "/", icon: Home, external: true },
     { name: "Blog", path: "/admin/blog", icon: FileText },
     { name: "Listings", path: "/admin/listings", icon: Building },
+    { name: "Gallery", path: "/admin/gallery", icon: Image },
     { name: "Settings", path: "/admin/settings", icon: Settings },
   ];
 
@@ -45,6 +46,8 @@ const AdminLayout = () => {
       items.push({ label: "Blog" });
     } else if (location.pathname.startsWith("/admin/listing")) {
       items.push({ label: "Listings" });
+    } else if (location.pathname === "/admin/gallery") {
+      items.push({ label: "Gallery" });
     } else if (location.pathname === "/admin/settings") {
       items.push({ label: "Settings" });
     }

@@ -1,0 +1,715 @@
+# 🏢 Brosham Properties - Complete Project Summary
+
+**Last Updated:** November 29, 2025  
+**Project Status:** ✅ Production-ready on staging server  
+**Claude Session:** Extended troubleshooting and feature development
+
+---
+
+## 📋 TABLE OF CONTENTS
+
+1. [Project Overview](#project-overview)
+2. [Tech Stack](#tech-stack)
+3. [Repository & Deployment](#repository--deployment)
+4. [Server Configuration](#server-configuration)
+5. [Database Setup](#database-setup)
+6. [Project Structure](#project-structure)
+7. [Working Features](#working-features)
+8. [Recent Updates](#recent-updates)
+9. [Development Workflow](#development-workflow)
+10. [Important Files](#important-files)
+11. [Known Issues & Solutions](#known-issues--solutions)
+12. [Deployment Procedures](#deployment-procedures)
+13. [Admin Access](#admin-access)
+14. [Next Steps & TODO](#next-steps--todo)
+
+---
+
+## 🎯 PROJECT OVERVIEW
+
+**Brosham Properties** is a modern real estate website built with React for property listings and blog management.
+
+### Key Information
+- **Project Name:** brosham-nest
+- **Local Path:** `/Users/izwanrasip/Desktop/brosham-nest/`
+- **Staging URL:** https://staging.broshamproperties.my
+- **Production URL:** https://broshamproperties.my (not yet deployed)
+- **Owner:** Nor Izwan Rasip (izwanrasip@mac / nrasip@gmail.com)
+
+### Purpose
+- Real estate property listings
+- Blog/news system for real estate content
+- Admin dashboard for content management
+- Customer inquiries and contact forms
+
+---
+
+## 🛠 TECH STACK
+
+### Frontend
+- **Framework:** React 18
+- **Build Tool:** Vite
+- **Language:** TypeScript
+- **UI Library:** shadcn/ui (Radix UI primitives)
+- **Styling:** Tailwind CSS
+- **Routing:** React Router v6
+- **Forms:** React Hook Form
+- **Rich Text:** React Quill (for blog editor)
+
+### Backend
+- **Server:** PHP (shared hosting)
+- **Database:** MySQL
+- **File Storage:** Lovable Uploads (for images)
+- **API:** Custom PHP endpoints
+
+### Key Dependencies
+```json
+{
+  "react": "^18.x",
+  "react-router-dom": "^6.x",
+  "react-quill": "^2.x",
+  "tailwindcss": "^3.x",
+  "@radix-ui/react-*": "Latest",
+  "lucide-react": "Latest"
+}
+```
+
+---
+
+## 📦 REPOSITORY & DEPLOYMENT
+
+### Git Repository
+- **Platform:** GitHub
+- **URL:** https://github.com/Abcdmn/brosham-nest
+- **Active Branch:** `main` (only branch)
+- **Username:** Abcdmn
+- **Total Commits:** 120+ items
+
+### Branch History
+- ❌ `deploy-static` - Deleted (was causing confusion)
+- ✅ `main` - Current and only active branch
+
+### Deployment Method
+- **Type:** Automated Git deployment via Plesk
+- **Mode:** Automatic (deploys on push)
+- **Webhook:** Configured in Plesk
+
+---
+
+## 🖥 SERVER CONFIGURATION
+
+### Hosting Details
+- **Provider:** MSC Hosting (w1214.mschosting.com)
+- **Server Type:** Shared hosting (Plesk)
+- **Control Panel:** Plesk (https://w1214.mschosting.com:8443)
+- **Server User:** broshamp
+- **SSH Access:** Forbidden (disabled in Plesk)
+
+### Domain Configuration
+**Staging Site:**
+- **Domain:** staging.broshamproperties.my
+- **Document Root (Plesk setting):** `/../staging.broshamproperties.my`
+- **Actual Web Root:** `/home/broshamproperties.my/staging.broshamproperties.my/`
+- **File Manager Path:** `Home directory > staging.broshamproperties.my > httpdocs`
+
+**Production Site:**
+- **Domain:** broshamproperties.my
+- **Status:** Not yet deployed
+
+### SSL/TLS
+- **Staging:** Let's Encrypt SSL (enabled)
+- **HTTPS Redirect:** Yes (301 redirect)
+
+---
+
+## 🗄 DATABASE SETUP
+
+### Connection Details
+```php
+// In api/config.php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'broshamp_nest');
+define('DB_USER', 'broshamp_admin');
+define('DB_PASS', '[REDACTED - check config.php]');
+```
+
+### Important Tables
+1. **`blog_posts`** - Blog content
+   - Fields: id, slug, title, excerpt, content, cover_image, status, tags, is_featured, author_id, created_at, updated_at
+   - Issue fixed: Missing slugs (all posts now have proper slugs)
+
+2. **`listings`** - Property listings
+   - Fields: id, title, description, price, location, etc.
+
+3. **`users`** - Admin users
+   - Authentication for admin dashboard
+
+### Database Access
+- **phpMyAdmin:** Available in Plesk > Databases
+- **Direct Connection:** Only from server (no remote access)
+
+---
+
+## 📁 PROJECT STRUCTURE
+
+```
+brosham-nest/
+├── src/
+│   ├── components/
+│   │   ├── ui/                    # shadcn/ui components
+│   │   └── RichTextEditor.tsx     # Blog rich text editor
+│   ├── pages/
+│   │   ├── Blog.tsx               # Blog listing page
+│   │   ├── BlogDetail.tsx         # Individual blog post
+│   │   ├── AdminBlogForm.tsx      # Create/edit blog posts
+│   │   ├── AdminBlogList.tsx      # Admin blog management
+│   │   └── ...
+│   ├── lib/
+│   │   ├── blogApi.ts             # Blog API client
+│   │   └── ...
+│   └── App.tsx
+├── api/                           # PHP backend
+│   ├── config.php                 # Database configuration
+│   ├── blog-list.php              # Get all blog posts
+│   ├── blog-save.php              # Create/update posts
+│   ├── blog-delete.php            # Delete posts
+│   ├── blog-fixer.php             # Tool to fix missing slugs
+│   ├── blog-debug.php             # Debug endpoint
+│   └── ...
+├── public/
+│   ├── blog-fixer.html            # Visual slug fixer tool
+│   └── ...
+├── dist/                          # Build output (committed to Git)
+│   ├── index.html
+│   ├── assets/
+│   ├── api/
+│   └── ...
+├── database/
+│   └── fix_blog_slugs.sql         # SQL script for slug fixes
+├── documentation/                 # Project guides
+│   ├── RICH_TEXT_EDITOR_GUIDE.md
+│   ├── INSTALL_RICH_EDITOR.txt
+│   └── [20+ other MD files]
+└── package.json
+```
+
+---
+
+## ✅ WORKING FEATURES
+
+### Public Features
+- ✅ Homepage with property listings
+- ✅ Property detail pages
+- ✅ Blog listing page (with featured posts)
+- ✅ Individual blog post pages (by slug)
+- ✅ Contact form
+- ✅ About page
+- ✅ Responsive design
+
+### Admin Features
+- ✅ Admin authentication/login
+- ✅ Blog post management (CRUD)
+- ✅ Rich text editor for blog content
+- ✅ Property listings management
+- ✅ Draft/Published status toggle
+- ✅ Featured post designation
+- ✅ Tag management
+- ✅ Cover image URLs
+
+### Technical Features
+- ✅ React Router for navigation
+- ✅ API integration with PHP backend
+- ✅ Database connectivity
+- ✅ SEO-friendly URLs (slugs)
+- ✅ Image handling (via URLs)
+- ✅ Automated Git deployment
+
+---
+
+## 🔄 RECENT UPDATES
+
+### November 29, 2025 - Major Session
+
+**1. Blog Slug Fix (COMPLETED ✅)**
+- **Issue:** Blog posts had NULL/empty slug values, causing 404 errors
+- **Root Cause:** Database missing slug data
+- **Solution:** Created multiple fix tools
+- **Status:** All 12 published posts now have proper slugs
+
+**2. Git Workflow Cleanup (COMPLETED ✅)**
+- **Issue:** Two branches (main & deploy-static) causing confusion
+- **Solution:** Merged deploy-static into main, deleted deploy-static
+- **Current:** Only main branch exists
+- **Status:** Clean, simple workflow
+
+**3. Deployment Path Issues (COMPLETED ✅)**
+- **Issue:** Files deploying to wrong location
+- **Problem:** dist/ folder one level too deep
+- **Solution:** Added deployment script: `cp -r dist/* .`
+- **Status:** Automated deployment working perfectly
+
+**4. Rich Text Editor (COMPLETED ✅)**
+- **Added:** React Quill editor to blog form
+- **Features:** Full formatting toolbar (bold, italic, headers, lists, links, images, etc.)
+- **Implementation:** RichTextEditor component created
+- **Status:** Working on staging, auto-deployed
+
+### Tools Created
+1. `blog-fixer.html` - Visual HTML tool for fixing slugs
+2. `api/blog-fixer.php` - PHP version (bypasses React Router)
+3. `api/blog-debug.php` - Debug endpoint for testing
+4. `database/fix_blog_slugs.sql` - SQL migration script
+5. `RichTextEditor.tsx` - Rich text component
+
+---
+
+## 🔧 DEVELOPMENT WORKFLOW
+
+### Making Changes Locally
+
+```bash
+cd /Users/izwanrasip/Desktop/brosham-nest
+
+# Make your code changes in src/
+
+# Build the project
+npm run build
+
+# Commit and push
+git add .
+git commit -m "Description of changes"
+git push origin main
+```
+
+### Automatic Deployment
+1. Code pushed to GitHub
+2. Plesk webhook triggers pull
+3. Files deployed to `/home/broshamproperties.my/staging.broshamproperties.my/`
+4. Deployment script runs: `cp -r dist/* .`
+5. Site updates automatically! ✅
+
+### Manual File Copy (Backup Method)
+If auto-deploy fails:
+1. Go to Plesk > Files > staging.broshamproperties.my > httpdocs > dist
+2. Select all files
+3. Copy
+4. Navigate to parent (httpdocs)
+5. Paste and overwrite
+
+---
+
+## 📄 IMPORTANT FILES
+
+### Configuration Files
+- `api/config.php` - Database credentials (CRITICAL - contains password)
+- `vite.config.ts` - Build configuration
+- `tailwind.config.ts` - Styling configuration
+- `tsconfig.json` - TypeScript settings
+- `.gitignore` - Git ignore rules (NOTE: dist/ removed from ignore)
+
+### API Endpoints
+- `/api/blog-list.php` - GET all blog posts
+- `/api/blog-save.php` - POST create/update posts
+- `/api/blog-delete.php` - DELETE posts
+- `/api/blog-fixer.php` - Utility to fix slugs
+- `/api/blog-debug.php` - Debug endpoint
+- `/api/blog-test.php` - Test endpoint
+
+### Helper Scripts
+- `copy-api.sh` - Copies API files to dist during build
+- `deploy.sh` - Deployment helper script
+
+### Documentation Files (20+ created)
+- `FIX_README.md` - Blog fix overview
+- `DEPLOY_SIMPLE.md` - Deployment guide
+- `VISUAL_GUIDE.md` - Visual fixing guide
+- `RICH_TEXT_EDITOR_GUIDE.md` - Editor documentation
+- `INSTALL_RICH_EDITOR.txt` - Quick install commands
+- And 15+ more guides in the root directory
+
+---
+
+## 🐛 KNOWN ISSUES & SOLUTIONS
+
+### Issue 1: Blog Post 404 Errors ✅ FIXED
+**Symptom:** Blog detail pages showed "Blog Post Not Found"
+**Cause:** NULL slug values in database
+**Solution:** Used blog-fixer tools to generate slugs from titles
+**Status:** RESOLVED
+
+### Issue 2: Git Branch Confusion ✅ FIXED
+**Symptom:** Changes not appearing on staging
+**Cause:** Pushing to main, but Plesk pulling from deploy-static
+**Solution:** Merged branches, deleted deploy-static
+**Status:** RESOLVED
+
+### Issue 3: Deployment Path Issues ✅ FIXED
+**Symptom:** 404 on entire staging site after deployment
+**Cause:** Files deploying to dist/ subfolder, web server looking in root
+**Solution:** Added post-deployment script to copy files
+**Status:** RESOLVED
+
+### Issue 4: GitHub Actions Workflow Errors ⚠️ ONGOING
+**Symptom:** Push fails with PAT (Personal Access Token) error
+**Cause:** `.github/workflows/build-and-publish.yml` needs PAT
+**Solution:** Removed workflow file
+**Impact:** Non-critical, doesn't affect deployment
+**Status:** WORKAROUND IN PLACE
+
+### Issue 5: config.php Password ✅ FIXED
+**Symptom:** Blog API returning empty results
+**Cause:** Wrong database password in config.php
+**Solution:** Updated password to match Plesk database
+**Status:** RESOLVED
+
+---
+
+## 🚀 DEPLOYMENT PROCEDURES
+
+### Plesk Git Configuration
+
+**Repository Settings:**
+- Repository name: brosham-nest
+- URL: https://github.com/Abcdmn/brosham-nest
+- Branch: main
+- Username: Abcdmn
+- Password: [GitHub Personal Access Token]
+
+**Deployment Settings:**
+- Mode: Automatic
+- Server path: `/home/broshamproperties.my/staging.broshamproperties.my`
+- Additional deployment actions: ✅ Enabled
+
+**Deployment Script:**
+```bash
+cp -r dist/* .
+```
+
+### Build Process
+
+**Handled by Vite:**
+1. Compiles TypeScript to JavaScript
+2. Bundles React components
+3. Processes Tailwind CSS
+4. Optimizes assets
+5. Copies API files (via copy-api.sh)
+6. Outputs to dist/
+
+**Build Command:**
+```bash
+npm run build
+```
+
+### Deployment Flow Diagram
+```
+Local Machine
+    ↓ (npm run build)
+dist/ folder created
+    ↓ (git commit & push)
+GitHub Repository (main branch)
+    ↓ (Plesk webhook)
+Plesk pulls code
+    ↓
+Files in /staging.../
+    ↓ (deployment script runs)
+cp -r dist/* .
+    ↓
+Live on staging! ✅
+```
+
+---
+
+## 👤 ADMIN ACCESS
+
+### Staging Admin Panel
+- **URL:** https://staging.broshamproperties.my/admin
+- **Login:** https://staging.broshamproperties.my/login
+- **Credentials:** [Check with site owner]
+
+### Admin Features Available
+- Blog post creation/editing
+- Property listings management
+- User management
+- Settings
+
+### Plesk Access
+- **URL:** https://w1214.mschosting.com:8443
+- **Username:** broshamp
+- **Password:** [Check with site owner]
+
+---
+
+## 📝 NEXT STEPS & TODO
+
+### Immediate Tasks
+- [ ] Test rich text editor thoroughly
+- [ ] Create sample blog posts with formatting
+- [ ] Verify all blog posts display correctly
+- [ ] Test image uploads in editor
+
+### Short-term Improvements
+- [ ] Add image upload functionality (vs. URLs)
+- [ ] Implement blog categories/taxonomy
+- [ ] Add search functionality to blog
+- [ ] Create sitemap.xml for SEO
+- [ ] Add meta tags for social sharing
+
+### Medium-term Goals
+- [ ] Deploy to production (broshamproperties.my)
+- [ ] Set up email notifications for inquiries
+- [ ] Add analytics (Google Analytics)
+- [ ] Implement caching for better performance
+- [ ] Add pagination to blog list
+
+### Long-term Vision
+- [ ] Property search/filter functionality
+- [ ] User registration for saved searches
+- [ ] Email marketing integration
+- [ ] Mobile app consideration
+- [ ] Multi-language support (BM/EN)
+
+---
+
+## 🔑 KEY LEARNINGS FROM THIS SESSION
+
+### Git Best Practices
+1. ✅ Use only one main branch for simplicity
+2. ✅ Commit dist/ folder for static site hosting
+3. ✅ Remove problematic workflow files
+4. ✅ Use clear, descriptive commit messages
+
+### Plesk Deployment
+1. ✅ Understand document root vs deployment path
+2. ✅ Use post-deployment scripts for file manipulation
+3. ✅ Test in File Manager to verify file locations
+4. ✅ Check Apache error logs for debugging
+
+### React Development
+1. ✅ Component-based architecture works well
+2. ✅ API integration through separate lib/ folder
+3. ✅ Use shadcn/ui for consistent components
+4. ✅ TypeScript helps catch errors early
+
+### Database Management
+1. ✅ Always have backup/fix scripts
+2. ✅ Use slug generation utilities
+3. ✅ Keep config.php credentials secure
+4. ✅ Test with debug endpoints
+
+---
+
+## 📞 SUPPORT & CONTACTS
+
+### Project Owner
+- **Name:** Nor Izwan Rasip
+- **Email:** nrasip@gmail.com / izwanrasip@mac
+- **Location:** Bukit Mertajam, Penang, MY
+
+### Hosting Support
+- **Provider:** MSC Hosting
+- **Website:** [Check Plesk for support details]
+- **Control Panel:** https://w1214.mschosting.com:8443
+
+### Development Tools
+- **Code Editor:** VS Code (recommended)
+- **Terminal:** macOS Terminal
+- **Git Client:** Command line / GitHub Desktop
+- **Browser:** Chrome/Safari for testing
+
+---
+
+## 📚 DOCUMENTATION REFERENCE
+
+All these files are in the project root:
+
+### Setup Guides
+- `RICH_TEXT_EDITOR_GUIDE.md` - Complete editor documentation
+- `INSTALL_RICH_EDITOR.txt` - Quick install commands
+- `DEPLOY_SIMPLE.md` - Simple deployment guide
+- `STANDARD_WORKFLOW.md` - Standard git workflow
+
+### Troubleshooting
+- `FIX_404.md` - Fix 404 errors
+- `USE_PHP_VERSION.md` - Blog fixer PHP version
+- `BLOG_DEBUG_GUIDE.md` - Debugging blog issues
+- `FIX_AND_DEPLOY.md` - Complete fix and deploy guide
+
+### Reference
+- `QUICK_REFERENCE.md` - Quick command reference
+- `COMMANDS.txt` - Common commands list
+- `COMPLETE_SUMMARY.md` - Detailed summary
+- `BLOG_FIX_CHECKLIST.md` - Blog fix checklist
+
+---
+
+## 🎯 QUICK COMMAND REFERENCE
+
+### Development
+```bash
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+### Git Operations
+```bash
+# Check status
+git status
+
+# Add all changes
+git add .
+
+# Commit with message
+git commit -m "Your message"
+
+# Push to GitHub
+git push origin main
+
+# View commit history
+git log --oneline -10
+```
+
+### Deployment
+```bash
+# Full deployment process
+npm run build
+git add .
+git commit -m "Update: [description]"
+git push origin main
+# Wait for auto-deploy OR manually copy files in Plesk
+```
+
+---
+
+## 🔒 SECURITY NOTES
+
+### Sensitive Files (Never commit these)
+- `api/config.php` - Contains DB password
+- `.env` files - Environment variables
+- Private keys or tokens
+
+### Current Security Measures
+- ✅ HTTPS enabled (SSL certificate)
+- ✅ Database credentials in separate config file
+- ✅ Admin authentication required
+- ✅ Git repository is private (check if needed)
+
+### Recommendations
+- [ ] Change default admin password
+- [ ] Enable 2FA on Plesk if available
+- [ ] Regular database backups
+- [ ] Monitor error logs for suspicious activity
+- [ ] Keep dependencies updated (npm audit)
+
+---
+
+## 📊 PROJECT STATISTICS
+
+### Codebase
+- **Total Commits:** 120+
+- **Primary Language:** TypeScript/JavaScript
+- **Files:** 100+ source files
+- **Components:** 20+ React components
+- **API Endpoints:** 10+ PHP files
+
+### Content
+- **Blog Posts:** 12 published posts
+- **Property Listings:** [Check admin panel]
+- **Pages:** 10+ routes
+
+### Performance
+- **Build Time:** ~30-60 seconds
+- **Deployment Time:** ~1-2 minutes
+- **Site Load Time:** [Test with PageSpeed Insights]
+
+---
+
+## ✨ SUCCESS METRICS
+
+### What's Working Well
+1. ✅ Automated deployment pipeline
+2. ✅ Clean, modern UI with Tailwind
+3. ✅ Rich text editing capability
+4. ✅ SEO-friendly blog URLs
+5. ✅ Responsive design
+6. ✅ Fast build times with Vite
+
+### Areas for Improvement
+1. ⚠️ Image upload (currently URL-based)
+2. ⚠️ No search functionality yet
+3. ⚠️ Manual database backups
+4. ⚠️ No automated testing
+5. ⚠️ Production deployment pending
+
+---
+
+## 🎓 TECHNICAL DECISIONS
+
+### Why React?
+- Modern, component-based architecture
+- Large ecosystem and community
+- Good TypeScript support
+- Fast development with Vite
+
+### Why PHP Backend?
+- Shared hosting requirement
+- Simple, proven technology
+- Direct MySQL access
+- Low server requirements
+
+### Why Not Use WordPress?
+- More control over features
+- Modern frontend framework
+- Custom admin dashboard
+- Better performance potential
+
+### Why shadcn/ui?
+- Customizable components
+- Tailwind-based styling
+- No runtime JS overhead
+- Copy-paste simplicity
+
+---
+
+## 📖 GLOSSARY
+
+**Terms Used in This Project:**
+
+- **Slug:** URL-friendly version of title (e.g., "my-blog-post")
+- **dist/:** Distribution folder (build output)
+- **Plesk:** Web hosting control panel
+- **shadcn/ui:** Component library built on Radix UI
+- **Vite:** Modern build tool for frontend
+- **React Router:** Client-side routing library
+- **Quill:** Rich text WYSIWYG editor
+- **CRUD:** Create, Read, Update, Delete operations
+- **SSR:** Server-Side Rendering (not used in this project)
+- **SPA:** Single Page Application (what this project is)
+
+---
+
+## 🎉 CONCLUSION
+
+This project is in excellent shape with:
+- ✅ Stable staging environment
+- ✅ Working blog system with rich editing
+- ✅ Automated deployment pipeline
+- ✅ Clean codebase and documentation
+- ✅ Ready for production deployment
+
+**Next conversation:** Just upload this document and continue where you left off!
+
+---
+
+**Document Version:** 1.0  
+**Created:** November 29, 2025  
+**Last Modified:** November 29, 2025  
+**For:** Future Claude conversations and project reference

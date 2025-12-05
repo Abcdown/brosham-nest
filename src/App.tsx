@@ -27,6 +27,7 @@ import AdminListingsList from "./pages/AdminListingsList";
 import AdminSettings from "./pages/AdminSettings";
 import AdminBlogList from "@/pages/AdminBlogList";
 import AdminBlogForm from "@/pages/AdminBlogForm";
+import AdminGalleryList from "@/pages/AdminGalleryList";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +63,7 @@ const AppContent = () => {
 		  <Route path="listings" element={<AdminListingsList />} />
 		  <Route path="listing/create" element={<AdminListing />} />
 		  <Route path="listing/edit/:id" element={<AdminListing />} />
+		  <Route path="gallery" element={<AdminGalleryList />} />
 		  <Route path="settings" element={<AdminSettings />} />
 		</Route>
 
