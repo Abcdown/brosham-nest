@@ -22,7 +22,19 @@ export interface LibraryItem {
 
 class ImagesApi {
   private getApiKey(): string | null {
-    return localStorage.getItem("BP_API_KEY");
+    // Try localStorage first (for backwards compatibility)
+    const stored = localStorage.getItem("BP_API_KEY");
+    if (stored) return stored;
+    
+    // Otherwise, get from environment variable
+    const envKey = import.meta.env.VITE_BP_API_KEY;
+    if (envKey) {
+      // Store it in localStorage for future use
+      localStorage.setItem("BP_API_KEY", envKey);
+      return envKey;
+    }
+    
+    return null;
   }
 
   hasApiKey(): boolean {
