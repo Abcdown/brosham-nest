@@ -93,8 +93,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 $listing['bathrooms'] = intval($listing['bathrooms']);
                 $listing['size_sqft'] = intval($listing['size_sqft']);
                 
+                // Fix cover_image - remove JSON encoding escapes if present
+                $coverImage = $listing['cover_image'];
+                if (!empty($coverImage)) {
+                    // stripslashes removes backslashes: https:\/\/ becomes https://
+                    $coverImage = stripslashes($coverImage);
+                }
+                
                 // Transform snake_case to camelCase for frontend compatibility
-                $listing['coverImage'] = $listing['cover_image'];
+                $listing['coverImage'] = $coverImage;
                 $listing['propertyType'] = $listing['property_type'];
                 $listing['propertyCategory'] = $listing['property_category'];
                 $listing['listingStatus'] = $listing['listing_status'];
@@ -145,8 +152,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 $listing['bathrooms'] = intval($listing['bathrooms']);
                 $listing['size_sqft'] = intval($listing['size_sqft']);
                 
+                // Fix cover_image - remove JSON encoding escapes if present
+                $coverImage = $listing['cover_image'];
+                if (!empty($coverImage)) {
+                    // stripslashes removes backslashes: https:\/\/ becomes https://
+                    $coverImage = stripslashes($coverImage);
+                }
+                
                 // Transform snake_case to camelCase for frontend compatibility
-                $listing['coverImage'] = $listing['cover_image'];
+                $listing['coverImage'] = $coverImage;
                 $listing['propertyType'] = $listing['property_type'];
                 $listing['propertyCategory'] = $listing['property_category'];
                 $listing['isFeatured'] = $listing['is_featured'];
