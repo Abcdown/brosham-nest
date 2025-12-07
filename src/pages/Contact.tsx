@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { MapPin, Phone, Mail, Clock, Send, MessageSquare } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import PageHero from "@/components/PageHero";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -70,20 +71,12 @@ Message: ${formData.message}
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <section className="py-16 bg-gradient-to-br from-background to-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4">Contact Us</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Let's Start Your Real Estate Journey
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Ready to buy, sell, or invest? We're here to help you every step of the way.
-            </p>
-          </div>
-        </div>
-      </section>
+	  {/* Hero Section */}
+	        <PageHero
+	          badge="Contact Us"
+	          title="Let's Start Your Real Estate Journey"
+	          description="Ready to buy, sell, or invest? We're here to help you every step of the way."
+	        />
 
       {/* Agent Image */}
       <section className="py-8">

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BlogAPI, type BlogPost } from "@/lib/blogApi";
+import PageHero from "@/components/PageHero";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -54,20 +55,12 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Header */}
-      <section className="py-16 bg-gradient-to-br from-background to-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4">Blog & Insights</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Property News & Tips
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Stay updated with the latest real estate trends, market insights, and expert advice.
-            </p>
-          </div>
-        </div>
-      </section>
+	  {/* Hero Section */}
+	        <PageHero
+	          badge="Blog & Insights"
+	          title="Property News & Tips"
+	          description="Stay updated with the latest real estate trends, market insights, and expert advice."
+	        />
 
       {/* Search */}
       <section className="py-8 border-b">

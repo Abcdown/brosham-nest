@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { getPageSettings } from "@/lib/pageSettings";
 import { ListingsAPI } from "@/lib/listingsApi";
 import UnderConstruction from "@/components/UnderConstruction";
+import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Badge } from "@/components/ui/badge";
 import PropertyCard from "@/components/PropertyCard";
 import { Search, Filter, Grid, List, Loader2 } from "lucide-react";
 
@@ -68,29 +68,21 @@ const Properties = () => {
         description="We're currently updating our property portfolio. Our stunning collection of premium properties will be available soon!"
       />
     );
-    }
+  }
 
-    const filteredProperties = properties.filter(property =>
+  const filteredProperties = properties.filter(property =>
     property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
     property.location.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="min-h-screen">
-      {/* Header */}
-      <section className="py-16 bg-gradient-to-br from-background to-muted/50">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="outline" className="mb-4">Property Listings</Badge>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Discover Your Perfect Property
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Browse our curated collection of premium properties in the most desirable locations.
-            </p>
-          </div>
-        </div>
-      </section>
+    <div className="min-h-screen pt-16">
+      {/* Hero Section - Standardized */}
+      <PageHero
+        badge="Property Listings"
+        title="Hartanah Istimewa Menanti"
+        description="Temui pilihan hartanah premium kami yang dipilih khas di lokasi-lokasi yang paling diingini."
+      />
 
       {/* Filters */}
       <section className="py-8 border-b">
@@ -192,7 +184,6 @@ const Properties = () => {
           )}
         </div>
       </section>
-
     </div>
   );
 };
